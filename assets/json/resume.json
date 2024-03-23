@@ -16,12 +16,12 @@
   },
   "work": [
     {
-      "name": "Institute for Advanced Study, Princeton University",
-      "position": "Professor of Theoretical Physics",
-      "startDate": "1933-01-01",
-      "endDate": "1955-01-01",
-      "summary": "Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.",
-      "highlights": ["Relativity"]
+      "name": "Howard Hughes Medical Institute, Janelia Research Campus, Ashburn, VA",
+      "position": "Research Technician II, Jayaraman Lab",
+      "startDate": "2021-12",
+      "endDate": "Present",
+      "summary": "\n- Pioneers the use of mature Danionella, tiny, translucent fish, to study the neuronal basis of navigation\n- Collaboratively designs, tests and optimizes a multi-component behavioral rig, including a fish tank, maze arena, IR lighting, synchronous cameras, automated feeding, and sound stimuli and recording\n- Establishes replicability by using MATLAB and python for machine learning based animal tracking\n- Builds team knowledge by regularly presenting data and scientific literature at lab meetings",
+      "highlights": [""]
     }
   ],
   "volunteer": [

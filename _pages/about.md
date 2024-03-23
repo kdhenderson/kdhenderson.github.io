@@ -9,11 +9,9 @@ profile:
   image: KristinHenderson_pic_website.jpeg
   image_circular: true # crops the image to make it circular
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p></p>
 
-news: true # includes a list of news items
+news: false # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
@@ -24,7 +22,7 @@ I'm a native Virginian and currently live in Leesburg, VA.
 
 I earned a Bachelor of Science in Biology from the Evergreen State College in Olympia, WA. Since then, I have worked with marine invertebrates, plants, fungi, fruit flies and now fish.
 
-In my current role as a biological research technician at Howard Hughes Medical Institute, I observe and quantify the behavior of miniature, translucent fish in the recently discovered genus, **Danionella**. My ultimate goal is to understand complex navigational behaviors at a neuronal circuit level in a vertebrate system.
+In my current role as a biological research technician at Howard Hughes Medical Institute, I observe and quantify the behavior of miniature, translucent fish in the recently discovered genus, *Danionella*. My ultimate goal is to understand complex navigational behaviors at a neuronal circuit level in a vertebrate system.
 
 I am currently pursuing a Master of Science in Data Science at Southern Methodist University in Dallas, TX. Throughout my career, I have focused on generating data and using analytical tools to extract information to explain those data. While I will always have a passion for the natural world, I am drawn to data science for its ability to reach people across many industries and address a myriad of questions and problems. This passion has led me to pursue graduate work in this field.
 

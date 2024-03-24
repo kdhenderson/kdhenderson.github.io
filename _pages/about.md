@@ -30,6 +30,3 @@ Outside of work and school, I volunteer as a Certified Virginia Master Naturalis
 
 Please check out my portfolio and feel free to contact me. I'm always looking for new challenges and ways to apply my skills.
 
-
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
-

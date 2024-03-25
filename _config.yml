@@ -464,7 +464,7 @@ vega-lite:
 
 jekyll_get_json:
   - data: resume
-    json: https://gist.github.com/kdhenderson/f6efb2b61941a77bc98cc5066f710684 # assets/json/resume.json # it can also be an url
+    json: assets/json/resume.json # it can also be an url
 jsonresume:
   - basics
   - education

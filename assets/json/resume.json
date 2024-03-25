@@ -3,8 +3,8 @@
   "headings": {
     "work": "",
     "skills": "",
-    "awards": "Volunteer Experience",
-    "projects": "Publications"
+    "volunteer work": "Volunteer Experience",
+    "publications": "Publications"
   },
   "basics": {
     "name": "Kristin Henderson",
@@ -36,7 +36,7 @@
       "location": "Ashburn, VA",
       "position": "Research Technician II, Jayaraman Lab",
       "website": "",
-      "startDate": "Dec 2021",
+      "startDate": "2021",
       "endDate": "Present",
       "highlights": [
         "Pioneers the use of mature Danionella, tiny, translucent fish, to study the neuronal basis of navigation",
@@ -57,8 +57,8 @@
       "company": "Howard Hughes Medical Institute, Janelia Research Campus",
       "position": "Research Technician II, Keleman Lab",
       "location": "Ashburn, VA",
-      "startDate": "Jan 2017",
-      "endDate": "Dec 2021"
+      "startDate": "2017",
+      "endDate": "2021"
     },
     {
       "highlights": [
@@ -68,8 +68,8 @@
       "company": "Howard Hughes Medical Institute, Janelia Research Campus",
       "position": "Research Technician I, Project Technical Resources",
       "location": "Ashburn, VA",
-      "startDate": "Jun 2015",
-      "endDate": "Dec 2016"
+      "startDate": "2015",
+      "endDate": "2016"
     }
   ],
   "skills": [
@@ -97,7 +97,7 @@
       "name": "Other Tools"
     }
   ],
-  "projects": [
+  "publications": [
     {
       "name": "",
       "description": "Meissner, G et al. [including Henderson, K]. A split-GAL4 driver line for Drosophila CNS cell types. bioRxiv (2024).",
@@ -114,7 +114,7 @@
       "url": "https://doi.org/10.1038/s41467-022-28256-1"
     }
   ],
-  "awards": [
+  "volunteer work": [
     {
       "title": "Certified Virginia Master Naturalist, Banshee Reeks Chapter, Leesburg, VA",
       "date": "May 2018 – Present",
@@ -127,7 +127,7 @@
     "education",
     "work",
     "skills",
-    "projects",
-    "awards"
+    "publications",
+    "volunteer work"
   ]
 }

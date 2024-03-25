@@ -30,5 +30,5 @@ Outside of work and school, I volunteer as a Certified Virginia Master Naturalis
 
 Please check out my portfolio and feel free to contact me. I'm always looking for new challenges and ways to apply my skills.
 
-This site is a portfolio of past python projects: http://kdhende.pythonanywhere.com/works.html.
+For a portfolio of past python projects, please take a look at http://kdhende.pythonanywhere.com/works.html.
 

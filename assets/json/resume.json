@@ -3,7 +3,7 @@
   "headings": {
     "work": "",
     "skills": "",
-    "volunteer work": "Volunteer Experience",
+    "volunteer": "Volunteer Experience",
     "publications": "Publications"
   },
   "basics": {
@@ -79,7 +79,8 @@
         "R",
         "Python",
         "MATLAB"
-      ]
+      ],
+      "name": "Programming"
     },
     {
       "keywords": [
@@ -114,7 +115,7 @@
       "url": "https://doi.org/10.1038/s41467-022-28256-1"
     }
   ],
-  "volunteer work": [
+  "volunteer": [
     {
       "title": "Certified Virginia Master Naturalist, Banshee Reeks Chapter, Leesburg, VA",
       "date": "2018 – Present",
@@ -128,6 +129,6 @@
     "work",
     "skills",
     "publications",
-    "volunteer work"
+    "volunteer"
   ]
 }

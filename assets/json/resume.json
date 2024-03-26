@@ -3,8 +3,6 @@
   "headings": {
     "work": "",
     "skills": "",
-    "volunteer": "Volunteer Experience",
-    "publications": "Publications"
   },
   "basics": {
     "name": "Kristin Henderson",
@@ -96,30 +94,6 @@
         "Machine learning & computer vision"
       ],
       "name": "Other Tools"
-    }
-  ],
-  "publications": [
-    {
-      "name": "",
-      "description": "Meissner, G et al. [including Henderson, K]. A split-GAL4 driver line for Drosophila CNS cell types. bioRxiv (2024).",
-      "url": "https://doi.org/10.1101/2024.01.09.574419",
-      "keywords": [
-        ""
-      ]
-    },
-    {
-      "keywords": [
-        ""
-      ],
-      "description": "Lei, Z., Henderson, K. & Keleman, K. A neural circuit linking learning and sleep in Drosophila long-term memory. Nat Commun 13, 609 (2022).",
-      "url": "https://doi.org/10.1038/s41467-022-28256-1"
-    }
-  ],
-  "volunteer": [
-    {
-      "title": "Certified Virginia Master Naturalist, Banshee Reeks Chapter, Leesburg, VA",
-      "date": "2018 – Present",
-      "summary": "Secretary, Board of Directors, 2018 – 2021; 450+ administrative, outreach, stewardship and citizen science volunteer hours"
     }
   ],
   "sections": [

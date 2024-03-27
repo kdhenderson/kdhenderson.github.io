@@ -2,14 +2,14 @@
 title: "my senior project: a biochemical study of comb jellies"
 layout: page
 description: a project with a background image
-img: assets/img/collectingJellies.jpeg
+img: assets/img/mnemiopsis.jpeg
 importance: 4
 category: past
 ---
 
 <div class="row">
     <div class="col-12 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/pdf/ctenofinal.pdf" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/ctenofinal.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">

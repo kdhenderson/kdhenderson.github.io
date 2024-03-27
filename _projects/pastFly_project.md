@@ -2,7 +2,7 @@
 layout: page
 title: Fruit Fly Work
 description: Investigating What Turns Experiences into Memories
-img: assets/img/fly01.jpg
+img: assets/img/fly01.jpeg
 importance: 5
 category: past
 ---

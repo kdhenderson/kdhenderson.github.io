@@ -1,9 +1,9 @@
 ---
 layout: page
 title: Undergrad Capstone
-description: My Senior Project: A Biochemical Study of Comb Jellies
+description: A Biochemical Study of Comb Jellies
 img: assets/img/mnemiopsis.jpeg 
-importance: 4
+importance: 6
 category: past
 ---
 

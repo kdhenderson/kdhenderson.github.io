@@ -1,8 +1,8 @@
 ---
-title: "my senior project: a biochemical study of comb jellies"
+title: "undergrad capstone"
 layout: page
-description: a project with a background image
-img: assets/img/mnemiopsis.jpeg
+description: my senior project: a biochemical study of comb jellies
+img: assets/img/mnemiopsis.jpeg 
 importance: 4
 category: past
 ---

@@ -13,5 +13,5 @@ category: past
     </div>
 </div>
 <div class="caption">
-    The poster describing my senior research project investigating the biochemical differences between comb jellies (a type of zooplankton) in Puget Sound, Hood Canal, Chesapeake Bay and deep-sea oxygen minimum layers. The project goal was to better understand the mechanisms that these animals use to live in low oxygen estuaries.
+    This poster describes my senior research project investigating the biochemical differences between comb jellies (a type of zooplankton) in Puget Sound, Hood Canal, Chesapeake Bay and deep-sea oxygen minimum layers. The project goal was to better understand the mechanisms that these animals use to live in low oxygen estuaries.
 </div>

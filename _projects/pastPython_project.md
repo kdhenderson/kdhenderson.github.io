@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Python Password Security Checker
-description: A Tool to Check if Passwords Have Been Leaked
+title: Python Password Checker
+description: A Python Tool to Check if Passwords Have Been Leaked
 img: assets/img/lockedGateEdit.jpeg
 importance: 4
 category: past

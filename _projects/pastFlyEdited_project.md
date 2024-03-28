@@ -38,13 +38,13 @@ category: past
 
 <div class="row figure-container">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/dans_nrmLum.jpg" title="Figure 1" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/nrmLum.png" title="Figure 1" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/dans_silTrn.jpg" title="Figure 2" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/silTrn.png" title="Figure 2" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/dans_silCns.jpg" title="Figure 3" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/silCns.png" title="Figure 3" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 

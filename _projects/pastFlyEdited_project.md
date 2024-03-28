@@ -13,6 +13,13 @@ category: past
         margin-bottom: 10px; /* Add margin bottom for paragraphs */
         font-family: Arial, Helvetica, sans-serif; /* Change font family */
     }
+    .figure-container {
+        margin-top: 20px; /* Add margin to the top of the figure container */
+    }
+    .acknowledgment {
+        font-size: 12px; /* Adjust font size for acknowledgment text */
+        margin-top: 20px; /* Add margin to the top of the acknowledgment */
+    }
 </style>
 
 <div class="row">
@@ -29,7 +36,7 @@ category: past
     </div>
 </div>
 
-<div class="row">
+<div class="row figure-container">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/dans_nrmLum.jpg" title="Figure 1" class="img-fluid rounded z-depth-1" %}
     </div>
@@ -54,6 +61,14 @@ category: past
         </p>
         <p class="paragraph">
             In the right figure, I silenced those two neurons in a time window after learning, and flies also could not form memories. All of this suggests that these two neurons are necessary both during and after an experience worth remembering in order for these memories to stick!
+        </p>
+    </div>
+</div>
+
+<div class="row acknowledgment">
+    <div class="col-12">
+        <p>
+            I would like to acknowledge and thank K. Keleman, U. Dag, Z. Lei, and I. Siwanowicz for their contributions to project conceptualization, experimental design, figure making, and the fruit fly photo.
         </p>
     </div>
 </div>

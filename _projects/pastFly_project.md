@@ -4,7 +4,7 @@ title: Fruit Fly Memories
 description: Investigating What Turns Experiences into Memories
 img: assets/img/fly01.jpeg
 importance: 5
-category: past
+category: fun
 ---
 
 <div class="row">

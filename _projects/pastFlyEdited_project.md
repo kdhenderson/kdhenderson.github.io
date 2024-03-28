@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Fruit Fly Memories
-description: Investigating What Turns Experiences into Memories
+title: Remembering in Fruit Flies
+description: Unraveling the Mysteries of Memory Formation
 img: assets/img/fly01.jpeg
 importance: 5
 category: past
@@ -31,13 +31,13 @@ category: past
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        <img src="assets/img/dans_nrmLum.jpg" alt="Figure 1" class="img-fluid rounded z-depth-1">
+        {% include figure.liquid loading="eager" path="assets/img/dans_nrmLum.jpg" title="Figure 1" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        <img src="assets/img/dans_silTrn.jpg" alt="Figure 2" class="img-fluid rounded z-depth-1">
+        {% include figure.liquid loading="eager" path="assets/img/dans_silTrn.jpg" title="Figure 2" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        <img src="assets/img/dans_silCns.jpg" alt="Figure 3" class="img-fluid rounded z-depth-1">
+        {% include figure.liquid loading="eager" path="assets/img/dans_silCns.jpg" title="Figure 3" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 

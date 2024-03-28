@@ -69,6 +69,6 @@ category: past
     <div class="col-12">
         <p>
             I would like to acknowledge and thank K. Keleman, U. Dag, Z. Lei, and I. Siwanowicz for their contributions to project conceptualization, to experimental design, to figure making, for the fruit fly photo, and for their help and support.
-        </p
+        </p>
     </div>
 </div>

@@ -29,6 +29,17 @@ category: past
     </div>
 </div>
 
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        <img src="assets/img/dans_nrmLum.jpg" alt="Figure 1" class="img-fluid rounded z-depth-1">
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        <img src="assets/img/dans_silTrn.jpg" alt="Figure 2" class="img-fluid rounded z-depth-1">
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        <img src="assets/img/dans_silCns.jpg" alt="Figure 3" class="img-fluid rounded z-depth-1">
+    </div>
+</div>
 
 <div class="row">
     <div class="col-12 mt-3 mt-md-0">

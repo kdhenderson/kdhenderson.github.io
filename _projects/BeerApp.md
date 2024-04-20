@@ -4,8 +4,8 @@ title: Craft Beer and Breweries App
 description: Interactive App Examining Craft Beer and Brewery Data
 img:
 redirect: https://kdhenderson.shinyapps.io/Craft_Beer_and_Breweries_App/
-importance: 2
-category: work
+importance: 4
+category: recent
 related_publications: false
 ---
 

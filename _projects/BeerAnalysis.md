@@ -7,6 +7,14 @@ importance: 3
 category: recent
 related_publications: false
 ---
+
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="author" content="Willis Jones &amp; Kristin Henderson" />
+
+<title>Statistical Analysis of Craft Beers and Breweries</title>
+
 <style>
     /* Custom CSS for formatting */
     .larger-font {
@@ -20,15 +28,6 @@ related_publications: false
         font-family: Arial, Helvetica, sans-serif; /* Change font family */
     }
 </style>
-
-<html>
-<head>
-<meta charset="utf-8" />
-<meta name="author" content="Willis Jones &amp; Kristin Henderson" />
-
-
-<title>Statistical Analysis of Craft Beers and Breweries</title>
-
 
 </head>
 

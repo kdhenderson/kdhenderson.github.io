@@ -4,12 +4,12 @@ title: Craft Beer Data Analysis
 description: Data Analysis of Craft Beers and Breweries in the US - A Case Study
 img: assets/img/map_plt.png
 importance: 1
-category: work
+category: recent
 related_publications: false
 ---
 <html>
 <head>
-<meta charset="utf-8" /
+<meta charset="utf-8" />
 <meta name="author" content="Willis Jones &amp; Kristin Henderson" />
 
 
@@ -3989,5 +3989,4 @@ that we believe could increase Budweiser’s profits. We hope Budweiser
 can use this information to grow its market share and combat the
 increased competition from the craft beer market.</p>
 
-</body>
-</html>
+

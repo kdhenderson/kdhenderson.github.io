@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Craft Beer and Breweries App
+title: Attrition and Income App
 description: Interactive App Examining Craft Beer and Brewery Data
 img:
 redirect: https://kdhenderson.shinyapps.io/Employee_Attrition_and_Income/

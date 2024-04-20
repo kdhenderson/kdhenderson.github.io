@@ -3,10 +3,24 @@ layout: page
 title: Craft Beer Data Analysis
 description: Data Analysis of Craft Beers and Breweries in the US - A Case Study
 img: assets/img/map_plt.png
-importance: 1
-category: recent
+importance: 3
+category: work
 related_publications: false
 ---
+<style>
+    /* Custom CSS for formatting */
+    .larger-font {
+        font-size: 1.2em;
+        line-height: 1.5; /* Increase line height for better readability */
+        font-family: Arial, Helvetica, sans-serif; /* Change font family */
+    }
+    
+    .paragraph {
+        margin-bottom: 10px; /* Add margin bottom for paragraphs */
+        font-family: Arial, Helvetica, sans-serif; /* Change font family */
+    }
+</style>
+
 <html>
 <head>
 <meta charset="utf-8" />

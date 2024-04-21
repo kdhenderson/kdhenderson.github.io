@@ -3,7 +3,7 @@ layout: page
 title: Craft Beer and Breweries App
 description: Interactive App Examining Craft Beer and Brewery Data
 img:
-redirect: https://kdhenderson.shinyapps.io/Craft_Beer_and_Breweries_App/
+redirect: https://kdhenderson.shinyapps.io/Craft_Beer_and_Breweries/
 importance: 3
 category: recent
 related_publications: false

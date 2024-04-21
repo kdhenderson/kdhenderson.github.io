@@ -4,7 +4,7 @@ title: Undergrad Capstone
 description: A Biochemical Study of Comb Jellies
 img: assets/img/mnemiopsisEdit.jpeg 
 importance: 9
-category: past
+category: fun
 ---
 
 <div class="row">

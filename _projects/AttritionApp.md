@@ -4,7 +4,7 @@ title: Attrition and Income App
 description: Interactive App Examining Employee Attrition, Monthly Income and Job Role Data
 img: assets/img/attritionApp_pic.png
 redirect: https://kdhenderson.shinyapps.io/Employee_Attrition_and_Income/
-importance: 2
+importance: 4
 category: recent
 related_publications: false
 ---

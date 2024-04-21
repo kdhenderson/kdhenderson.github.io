@@ -9,15 +9,16 @@ category: past
 
 <style>
     /* Custom CSS for formatting */
-    .larger-font {
-        font-size: 1.2em;
-        line-height: 1.5; /* Increase line height for better readability */
-        font-family: Arial, Helvetica, sans-serif; /* Change font family */
-    }
-    
     .paragraph {
         margin-bottom: 10px; /* Add margin bottom for paragraphs */
         font-family: Arial, Helvetica, sans-serif; /* Change font family */
+    }
+    .figure-container {
+        margin-top: 20px; /* Add margin to the top of the figure container */
+    }
+    .acknowledgment {
+        font-size: 12px; /* Adjust font size for acknowledgment text */
+        margin-top: 20px; /* Add margin to the top of the acknowledgment */
     }
 </style>
 
@@ -110,11 +111,71 @@ category: past
 
 <br>
 
-<h3>
+<h3>RESULTS</h3>
+<p>CS activity was greater than LDH activity in all species.
+<i>Charistephane fugiens</i> was the only species with detectable levels of ODH. This illustrates the aerobic nature of ctenophores. No relationship among all species was found between body size (g wet weight) and mass-specific enzyme activity (Fig. 4). However,
+mass-specific CS activity increased as a function of body size in <i>P. bachei</i>. Both CS and LDH activity increased in nearly all cydippid ctenophores sampled as a function of number of ctenes (Fig. 5).</p>
 
+<br>
 
+<h3>RELATIONSHIPS BETWEEN CTENE ROWS AND ENZYME ACTIVITIES</h3>
+<p>Ctenophore body diameter calculated from measured wet weight was used to find number of ctenes. A wet to dry weight conversion factor of 3.95% was used following Hoeger (1983) and Thuesen <i>et al.</i> (2005). Body diameter was calculated from an equation for the relationship between body dry weight and body diameter, W = 2.924D - 1.550, where W=log<sub>10</sub> (body dry weight in mg) and D=log<sub>10</sub> (body diameter in mm) from Hirota (1972). Based on photographs in Wrobel and Mills (1998) a proportion for number of ctenes to maximum body diameter was found, and the body diameter was calculated from measured wet weight was used to find number of ctenes. The degree of scaling of CS activity to body size in <i>P. bachei</i> (data not shown) was only slightly lower than that found in deep-sea copepods by Thuesen <i>et al.</i> (1998). A stronger relationship exists between number of ctenes and enzymatic activity than between mass and enzymatic activity indicating that amount of metabolic tissue is more important in determining enzymatic activity than body size. LDH activity increases as a function of metabolic tissue size, thus more ctenes could increase an organism's ability to survive hypoxic conditions.<p>
 
-</body>
-</html>
+<div class="row justify-content-center">
+  <div class="col-sm-6">
+    <figure>
+      <img src="assets/img/fig4_activityByWeight.png" alt="Activity by Weight" class="img-fluid rounded z-depth-1">
+      <figcaption>Figure 4. Wet weight (g) versus enzyme activity (unit g<sup>-1</sup> h<sup>-1</sup>).</figcaption>
+    </figure>
+    <p>No association was found between mass and either CS or LDH activity. Individual species are depicted by color. <i>Beroe cucumis</i>, <i>Beroe forskalii</i>, <i>Charistephane fugiens</i>, <i>Hormiphora californensis</i>, <i>Lampea pancerina</i>, <i>Nephalotena sp.</i>, <i>Pleurobrachia bachei</i>.</p>
+  </div>
+  <div class="col-sm-6">
+    <figure>
+      <img src="assets/img/fig5_activityByCtenes" alt="Activity by Ctenes" class="img-fluid rounded z-depth-1">
+      <figcaption>Figure 5. Ctenes (individual<sup>-1</sup>) versus enzyme activity (unit individual<sup>-1</sup> <sup>h-1</sup>) of cydippid ctenophores.</figcaption>
+    </figure>
+    <p>Individual species are depicted by color. <i>Hormiphora californensis</i>, <i>Lampea pancerina</i>, <i>Nephalotena sp.</i>, <i>Pleurobrachia bachei</i>. With its unusually low number of ctenes, <i>C. fugiens</i> did not seem to fit the same pattern of ctenes to enzyme activity and is not included. The equation of the CS activity regression line is y = 2.54 × 10<sup>-6</sup> x<sup>1.90</sup>, R<sup>2</sup> = 0.566, and the LDH activity regression line is y = 1.28 × 10<sup>-11</sup> x<sup>4.06</sup>, R<sup>2</sup> = 0.351.</p>
+  </div>
+</div>
 
+<br>
 
+<h3>CONCLUSIONS</h3>
+<ul>
+  <li>Ctenophores are mostly aerobic organisms.</li>
+  <li>Greater ctene capacity indicates higher CS and LDH.</li>
+  <li>Amount of metabolic tissue is more important than body size in determining both aerobic and anaerobic enzymatic activity.</li>
+  <li>Ctenophores with higher LDH levels may use anaerobic energy to cope with hypoxic conditions.</li>
+</ul>
+
+<br>
+
+<h3>PREDICTIONS</h3>
+<p>In hypoxic estuaries, animal populations are impacted by the lack of oxygen. Environmental hypoxia has been shown to decrease biodiversity and affect estuarine food webs. We predict that organisms with more anaerobic capacity will probably survive the best. Enzyme assays can be used to predict which species will outperform other species as environmental conditions worsen.</p>
+
+<br>
+
+<h3>LITERATURE CITED</h3>
+<ul>
+  <li>Childress, J. J. and Somero, G. N., 1979. Depth related enzyme activities in muscle, brain and heart of deep-living pelagic marine teleosts. <i>Marine Biology</i> 52:273-283.</li>
+  <li>Diaz, R. J. and Rosenburg, R., 1995. Marine benthic hypoxia - review of ecological effects and behavioral responses on macrofauna. <i>Ann. Rev. Oceanogr. Mar. Bio.</i> 33:245-303.</li>
+  <li>Hirota, J., 1972. Laboratory culture and metabolism of the planktonic ctenophore, Pleurobrachia bachei A. Agassiz. In <i>Biological Oceanography of the northern North Pacific Ocean</i> (ed. A. Y. Takenouti), pp. 465-484. Tokyo: Idemitsu Shoten.</li>
+  <li>Hoeger, U., 1983. Biochemical composition of ctenophores. <i>Journal of Experimental Marine Biology and Ecology</i> 72:251-261.</li>
+  <li>Keister J. E., Houde E. D., Breitburg D. L., 2000. Effects of bottom-layer hypoxia on abundances and depth distributions of organisms on Patuxent River, Chesapeake Bay. <i>Marine Ecology Progress Series</i> 205: 43-59.</li>
+  <li>Lowry, O. H., Roseborough, N. J., Farr, A. L., Randall, R. J., 1951. Protein measurement with the folin phenol reagent. <i>Journal of Biological Chemistry</i> 193:265-275.</li>
+  <li>Somero, G. N., Childress, J. J., 1980. A violation of the metabolism-scaling paradigm: activities of glycolytic enzymes in muscle increase in larger-size fish. <i>Physiological Zoology</i> 53:322-337.</li>
+  <li>Thuesen, E. V., Miller, C. B., Childress, J. J., 1998. Ecophysiological interpretation of oxygen consumption rates and enzymatic activities of deep-sea copepods. <i>Marine Ecology Progress Series</i> 168:95-107.</li>
+  <li>Thuesen, E. V., Rutherford Jr., L. D., Brommer, P. L. 2005. The role of aerobic metabolism and intragel oxygen in hypoxia tolerance of three ctenophores: Pleurobrachia bachei, Bolinopsis infundibulum and Mnemiopsis leidyi. <i>Journal of the Marine Biological Association of the United Kingdom</i> 85.</li>
+  <li>Wrobel, D. and Mills, C. E., 1998. Pacific Coast Pelagic Invertebrates: A Guide to the Common Gelatinous Animals. Sea Challengers, Monterey, Ca.</li>
+</ul>
+
+<br>
+
+<div class="row acknowledgment">
+    <div class="col-12">
+        <h3>ACKNOWLEDGEMENTS</h3>
+        <p>
+        We would like to thank Steven Haddock, Emily Vlahovich, Trisha Towanda, Mario Gadea, Ladd Rutherford, Shane Peterson and Aaron Barnes. This project was funded by an Evergreen Foundation student research award and a Friends of The Evergreen State College Library senior project award.
+        </p>
+    </div>
+</div>

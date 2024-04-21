@@ -137,8 +137,8 @@ mass-specific CS activity increased as a function of body size in <i>P. bachei</
   </div>
   <div class="col-sm-6">
     {% include figure.liquid path="assets/img/fig5_activityByCtenes.png" title="Activity by Ctenes" class="img-fluid rounded z-depth-1" %}
-    <figcaption>Figure 5. Ctenes (individual<sup>-1</sup>) versus enzyme activity (unit individual<sup>-1</sup> <sup>h-1</sup>) of cydippid ctenophores.</figcaption>
-    <p>Individual species are depicted by color. <i>Hormiphora californensis</i>, <i>Lampea pancerina</i>, <i>Nephalotena sp.</i>, <i>Pleurobrachia bachei</i>. With its unusually low number of ctenes, <i>C. fugiens</i> did not seem to fit the same pattern of ctenes to enzyme activity and is not included. The equation of the CS activity regression line is y = 2.54 × 10<sup>-6</sup> x<sup>1.90</sup>, R<sup>2</sup> = 0.566, and the LDH activity regression line is y = 1.28 × 10<sup>-11</sup> x<sup>4.06</sup>, R<sup>2</sup> = 0.351.</p>
+    <figcaption>Figure 5. Ctenes (individual<sup>-1</sup>) versus enzyme activity (unit individual<sup>-1</sup> h<sup>-1</sup>) of cydippid ctenophores.</figcaption>
+    <p>Individual species are depicted by color. <i>Hormiphora californensis</i>, <i>Lampea pancerina</i>, <i>Nephalotena sp.</i>, <i>Pleurobrachia bachei</i>. With its unusually low number of ctenes, <i>C. fugiens</i> did not seem to fit the same pattern of ctenes to enzyme activity and is not included. The equation of the CS activity regression line is y = y = 2.54e<sup>-6</sup> x 1.90, R<sup>2</sup> = 0.566, and the LDH activity regression line is y = 1.28e<sup>-11</sup> x 4.06, R<sup>2</sup> = 0.351.</p>
   </div>
 </div>
 

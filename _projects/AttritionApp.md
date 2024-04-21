@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Attrition and Income App
-description: Interactive App Examining Employee Attrition, Monthly Income and Job Role Data
+description: Interactive R Shiny App Examining Employee Attrition Data
 img: assets/img/attritionApp_pic.png
 redirect: https://kdhenderson.shinyapps.io/Employee_Attrition_and_Income/
 importance: 4

@@ -45,7 +45,7 @@ related_publications: false
 <h4 class="author">Analysis by Willis Jones &amp; Kristin Henderson</h4>
 <h4 class="date">Spring 2024</h4>
 <p><br></p>
-<h5><a href = " https://kdhenderson.shinyapps.io/Craft_Beer_and_Breweries/">Try the Craft Beer and Breweries App</a></h3>
+<h5><a href = " https://kdhenderson.shinyapps.io/Craft_Beer_and_Breweries/">Try the Craft Beer and Breweries App</a></h5>
 <p><br></p>
 
 </div>

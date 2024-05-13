@@ -2,7 +2,7 @@
 layout: page
 title: Visualizing Data
 description: Exploring Different Tools, Techniques and Design Principles For Data Visualization
-img: assets/img/leesburg_birds_770_462.png
+img: assets/img/leesburg_map_1748_1078.png
 importance: 5
 category: recent
 ---
@@ -20,6 +20,9 @@ category: recent
         font-size: 12px; /* Adjust font size for acknowledgment text */
         margin-top: 20px; /* Add margin to the top of the acknowledgment */
     }
+    .caption {
+        text-align: left;
+    }
 </style>
 
 <div class="row justify-content-center figure-container">
@@ -29,6 +32,6 @@ category: recent
 </div>
 
 <div class="caption">
-    Explore a visualization of the relative frequency of commonly photographed birds uploaded on iNaturalist in parks in the town of Leesburg, VA. This project investigates design principles such as hierarchy, balance, space, and color, while considering the key components of datasets: structures, attributes, and dimensionality. Created with Inkscape. Map source: <a href="https://openstreetmap.org/copyright">OpenStreetMap - openstreetmap.org/copyright</a>. Photo credits from iNaturalist: American Robin – Dimitris Salas, Eastern Bluebird – Michael Gallo, Turkey Vulture – Seig, White-breasted Nuthatch – SW, Mourning Dove – Donna Pomeroy, Chipping Sparrow - SW.
+    A visualization of the relative frequency of commonly photographed birds uploaded on iNaturalist in parks in the town of Leesburg, VA. This project explores design principles such as hierarchy, balance, space, and color, while considering the key components of datasets: structures, attributes, and dimensionality. Created with Inkscape. Map source: <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>. Photo credits from iNaturalist: American Robin – Dimitris Salas, Eastern Bluebird – Michael Gallo, Turkey Vulture – Seig, White-breasted Nuthatch – SW, Mourning Dove – Donna Pomeroy, Chipping Sparrow - SW.
 </div>
 

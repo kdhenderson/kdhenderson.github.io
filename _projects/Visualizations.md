@@ -2,7 +2,7 @@
 layout: page
 title: Visualizing Data
 description: Exploring Different Tools, Techniques and Design Principles For Data Visualization
-img: assets/img/leesburg_birds.png
+img: assets/img/leesburg_birds_770_462.png
 importance: 5
 category: recent
 ---

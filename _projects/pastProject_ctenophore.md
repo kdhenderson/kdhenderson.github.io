@@ -133,12 +133,12 @@ mass-specific CS activity increased as a function of body size in <i>P. bachei</
   <div class="col-sm-6">
     {% include figure.liquid path="assets/img/fig4_activityByWeight.png" title="Activity by Weight" class="img-fluid rounded z-depth-1" %}
     <figcaption>Figure 4. Wet weight (g) versus enzyme activity (unit g<sup>-1</sup> h<sup>-1</sup>).</figcaption>
-    <p>No association was found between mass and either CS or LDH activity. Individual species are depicted by color. <i>Beroe cucumis</i>, <i>Beroe forskalii</i>, <i>Charistephane fugiens</i>, <i>Hormiphora californensis</i>, <i>Lampea pancerina</i>, <i>Nephalotena sp.</i>, <i>Pleurobrachia bachei</i>.</p>
+    <p>No association was found between mass and either CS or LDH activity. Individual species are depicted by color. <i>Beroe cucumis (dark blue)</i>, <i>Beroe forskalii (green)</i>, <i>Charistephane fugiens (cyan)</i>, <i>Hormiphora californensis (pink)</i>, <i>Lampea pancerina (purple)</i>, <i>Nephalotena sp. (brown)</i>, <i>Pleurobrachia bachei (orange)</i>.</p>
   </div>
   <div class="col-sm-6">
     {% include figure.liquid path="assets/img/fig5_activityByCtenes.png" title="Activity by Ctenes" class="img-fluid rounded z-depth-1" %}
     <figcaption>Figure 5. Ctenes (individual<sup>-1</sup>) versus enzyme activity (unit individual<sup>-1</sup> h<sup>-1</sup>) of cydippid ctenophores.</figcaption>
-    <p>Individual species are depicted by color. <i>Hormiphora californensis</i>, <i>Lampea pancerina</i>, <i>Nephalotena sp.</i>, <i>Pleurobrachia bachei</i>. With its unusually low number of ctenes, <i>C. fugiens</i> did not seem to fit the same pattern of ctenes to enzyme activity and is not included. The equation of the CS activity regression line is y = 2.54e<sup>-6</sup> x 1.90, R<sup>2</sup> = 0.566, and the LDH activity regression line is y = 1.28e<sup>-11</sup> x 4.06, R<sup>2</sup> = 0.351.</p>
+    <p>Individual species are depicted by color. <i>Hormiphora californensis (purple)</i>, <i>Lampea pancerina (orange)</i>, <i>Nephalotena sp. (green)</i>, <i>Pleurobrachia bachei (dark blue)</i>. With its unusually low number of ctenes, <i>C. fugiens</i> did not seem to fit the same pattern of ctenes to enzyme activity and is not included. The equation of the CS activity regression line is y = 2.54e<sup>-6</sup> x 1.90, R<sup>2</sup> = 0.566, and the LDH activity regression line is y = 1.28e<sup>-11</sup> x 4.06, R<sup>2</sup> = 0.351.</p>
   </div>
 </div>
 

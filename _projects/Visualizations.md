@@ -44,5 +44,5 @@ category: recent
 </div>
 
 <div class="caption">
-    An image of an Excel dashboard that uses pivot tables, charts and slicers for workforce analysis and visualization and filtering of employee attrition data.
+    An image of an Excel dashboard that uses pivot tables, charts and slicers for workforce analysis and interactive visualization of employee attrition data.
 </div>

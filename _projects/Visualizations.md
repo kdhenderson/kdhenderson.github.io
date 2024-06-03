@@ -23,15 +23,6 @@ category: recent
     .caption {
         text-align: left;
     }
-    .negative-margin {
-        margin-left: -15px;
-        margin-right: -15px;
-    }
-    .wider-than-12 {
-        width: calc(100% + 60px);
-        margin-left: -15px;
-        margin-right: -15px;
-    }
 </style>
 
 <div class="row justify-content-center figure-container">
@@ -48,7 +39,7 @@ category: recent
 
 <div class="row justify-content-center figure-container">
     <div class="col-sm-12 mt-3">
-        {% include figure.liquid loading="eager" path="assets/img/excelDashboard1200.png" title="Excel Dashboard" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/excelDashboard600.png" title="Excel Dashboard" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -59,7 +50,7 @@ category: recent
 <br>
 
 <div class="row justify-content-center figure-container">
-    <div class="col-sm-12 mt-3 negative-margin">
+    <div class="col-sm-12 mt-3">
         {% include figure.liquid loading="eager" path="assets/img/tableauDashboard1200.png" title="Tableau Dashboard" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>

@@ -36,7 +36,7 @@ category: recent
 
 <div class="row justify-content-center figure-container">
     <div class="col-sm-7 mt-3">
-        {% include figure.liquid loading="eager" path="assets/img/leesburg_birds_600.png" title="Figure 1" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/leesburg_birds_600.png" title="Elements of Design Visualization" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -48,7 +48,7 @@ category: recent
 
 <div class="row justify-content-center figure-container">
     <div class="col-sm-12 mt-3 wider-than-12">
-        {% include figure.liquid loading="eager" path="assets/img/excelDashboard1200.png" title="Figure 2" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/excelDashboard1200.png" title="Excel Dashboard" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -60,7 +60,7 @@ category: recent
 
 <div class="row justify-content-center figure-container">
     <div class="col-sm-12 mt-3 wider-than-12">
-        {% include figure.liquid loading="eager" path="assets/img/tableauDashboard1200.png" title="Figure 3" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/tableauDashboard1200.png" title="Tableau Dashboard" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 

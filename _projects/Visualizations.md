@@ -26,7 +26,7 @@ category: recent
 </style>
 
 <div class="row justify-content-center figure-container">
-    <div class="col-sm-8 mt-3">
+    <div class="col-sm-6 mt-3">
         {% include figure.liquid loading="eager" path="assets/img/leesburg_birds_600.png" title="Figure 1" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
@@ -51,7 +51,7 @@ category: recent
 
 <div class="row justify-content-center figure-container">
     <div class="col-sm-16 mt-3">
-        {% include figure.liquid loading="eager" path="assets/img/tableauDashboard.png" title="Figure 1" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/tableauDashboard1200.png" title="Figure 1" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 

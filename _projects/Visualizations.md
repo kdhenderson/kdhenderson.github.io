@@ -28,7 +28,7 @@ category: recent
       margin-right: -15px;
     }
     .wider-than-12 {
-      width: calc(100% + 40px);
+      width: calc(100% + 60px);
       margin-left: -15px;
       margin-right: -15px;
     }

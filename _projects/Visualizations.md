@@ -26,8 +26,8 @@ category: recent
 </style>
 
 <div class="row justify-content-center figure-container">
-    <div class="col-sm-6 mt-3">
-        {% include figure.liquid loading="eager" path="assets/img/leesburg_birds.png" title="Figure 1" class="img-fluid rounded z-depth-1" %}
+    <div class="col-sm-12 mt-3">
+        {% include figure.liquid loading="eager" path="assets/img/leesburg_birds_600.png" title="Figure 1" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -38,11 +38,23 @@ category: recent
 <br>
 
 <div class="row justify-content-center figure-container">
-    <div class="col-sm-6 mt-3">
-        {% include figure.liquid loading="eager" path="assets/img/excelDashboard.png" title="Figure 1" class="img-fluid rounded z-depth-1" %}
+    <div class="col-sm-12 mt-3">
+        {% include figure.liquid loading="eager" path="assets/img/excelDashboard600.png" title="Figure 1" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
 <div class="caption">
     An image of an Excel dashboard that uses pivot tables, charts and slicers for workforce analysis and interactive visualization of employee attrition data.
+</div>
+
+<br>
+
+<div class="row justify-content-center figure-container">
+    <div class="col-sm-12 mt-3">
+        {% include figure.liquid loading="eager" path="assets/img/tableauDashboard.png" title="Figure 1" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+    An image of a unique self-portrait created with a Tableau dashboard, featuring creative data sources and various chart types. The interactive dashboard, complete with slicers, tells a personal story beyond the typical digital footprint.
 </div>

@@ -28,14 +28,14 @@ category: recent
       margin-right: -15px;
     }
     .wider-than-12 {
-      width: calc(100% + 30px);
+      width: calc(100% + 40px);
       margin-left: -15px;
       margin-right: -15px;
     }
 </style>
 
 <div class="row justify-content-center figure-container">
-    <div class="col-sm-7 mt-3">
+    <div class="col-sm-8 mt-3">
         {% include figure.liquid loading="eager" path="assets/img/leesburg_birds_600.png" title="Figure 1" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
@@ -59,7 +59,7 @@ category: recent
 <br>
 
 <div class="row justify-content-center figure-container">
-    <div class="col-md-4 wider-than-12">
+    <div class="col-sm-12 mt-3 wider-than-12">
         {% include figure.liquid loading="eager" path="assets/img/tableauDashboard1200.png" title="Figure 3" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>

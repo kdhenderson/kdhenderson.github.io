@@ -39,7 +39,7 @@ category: recent
 
 <div class="row justify-content-center figure-container">
     <div class="col-sm-12 mt-3">
-        {% include figure.liquid loading="eager" path="assets/img/excelDashboard600.png" title="Excel Dashboard" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/excelDashboardV2_600.png" title="Excel Dashboard" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 

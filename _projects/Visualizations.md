@@ -58,3 +58,15 @@ category: recent
 <div class="caption">
     An image of a unique self-portrait created with a Tableau dashboard, featuring creative data sources and various chart types. The interactive dashboard, complete with slicers, tells a personal story beyond the typical digital footprint.
 </div>
+
+<br>
+
+<div class="row justify-content-center figure-container">
+    <div class="col-sm-12 mt-3">
+        {% include figure.liquid loading="eager" path="assets/img/povertyTurningOffLights.png" title="World Poverty" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+    An image of an interactive visualization of poverty around the world made with the p5.js JavaScript library. This was a team project. Contributors: Adam E., Kristin H., Max P., and Kenya R.
+</div>

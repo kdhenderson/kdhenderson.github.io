@@ -72,13 +72,3 @@ category: recent
     <br>
     Visit the <a href="https://github.com/kdhenderson/povertyTurnsOffLights">GitHub repo</a> to run the code for the interactive experience.
 </div>
-
-<div class="row justify-content-center figure-container">
-    <div class="col-sm-12 mt-3">
-        {% include figure.liquid loading="eager" path="assets/html/d3_povertyTurnsOffLights.html" title="World Poverty" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-
-<div class="caption">
-    A modification of the above visualization of poverty around the world made with the d3.js JavaScript library.
-</div>

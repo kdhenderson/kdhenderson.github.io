@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>D3 Visualization</title>
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #000032; /* Dark background to complement the visualization */
+    }
+    .tooltip {
+      position: absolute;
+      text-align: left;
+      width: 200px;
+      height: auto;
+      padding: 8px;
+      background: rgba(25, 25, 50, 0.8);
+      border-radius: 4px;
+      pointer-events: none;
+      color: white;
+    }
+    .legend {
+      position: absolute;
+      width: 300px;
+      height: auto;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 5px;
+      background: rgba(0, 0, 50, 0.9);
+      border-radius: 10px;
+      color: white;
+      text-align: left;
+      display: none;
+      z-index: 10;
+      overflow: auto;
+    }
+    .legend p, .legend span {
+      margin: 2px 0; /* Reduce top and bottom margin */
+      line-height: 1.2; /* Adjust line height */
+    }
+    .legend-button {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 20px;
+      background: #483D8B; /* DarkSlateBlue color for the button */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 10;
+    }
+    svg {
+      display: block;
+      margin: 0 auto;
+      width: 100%;
+      height: auto;
+    }
+    .background-below {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 15%; /* Adjusted height to fit below cityscape */
+      background: rgb(0, 0, 50); /* Dark blue color */
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+  <div class="background-below"></div>
+  <svg viewBox="0 0 1535 600" preserveAspectRatio="xMidYMid meet"></svg>
+  <div class="tooltip" style="opacity:0;"></div>
+  <div class="legend" id="legend">
+    <p>Building Height: Population</p>
+    <p>Building Width: GDP per Capita</p>
+    <p>Building Color: 
+      <span style="color:#ff6347;">Africa</span>, 
+      <span style="color:#32cd32;">North America</span>, 
+      <span style="color:#8a2be2;">South America</span>, 
+      <span style="color:#daa520;">Asia</span>, 
+      <span style="color:#4682b4;">Europe</span>, 
+      <span style="color:#ff69b4;">Oceania</span>
+    </p>
+    <p>Star Size: Mean Income</p>
+    <p>Star Height: Poverty Line</p>
+    <p>Window Color: Proportion 
+      <span style="color:#ffff96;">Above</span> / 
+      <span style="color:#6e6e6e;">Below</span>
+      the Poverty Line
+    </p>
+  </div>
+  <button class="legend-button" onclick="toggleLegend()">Toggle Legend</button>
+  <script>
+    function toggleLegend() {
+      const legend = document.getElementById('legend');
+      legend.style.display = (legend.style.display === 'block') ? 'none' : 'block';
+    }
+
+    const svg = d3.select("svg");
+    const width = 1535;
+    const height = 600;
+
+    const canvasLeft = width / 2;
+    const canvasTop = height / 1.35;
+    const displayBoxWidth = 200;
+    const displayBoxHeight = 80;
+
+    let continentColors = {
+      "Africa": "#ff6347", // Tomato
+      "Europe": "#4682b4", // SteelBlue
+      "Asia": "#daa520", // GoldenRod
+      "North America": "#32cd32", // LimeGreen
+      "South America": "#8a2be2", // BlueViolet
+      "Oceania": "#ff69b4" // HotPink
+    };
+
+    const tooltip = d3.select(".tooltip");
+
+    d3.csv("world_poverty_geo.csv").then(data => {
+      data.forEach(d => {
+        d.gdp = +d['GDP per capita, PPP (constant 2017 international $)'];
+        d.population = +d.population_y;
+        d.povertyRatio = +d['Poverty headcount ratio at national poverty lines (% of population)'];
+        d.meanIncome = +d['Mean income or consumption'];
+        d.nationalPovertyLine = +d['Harmonized national poverty line_y'];
+      });
+
+      console.log("Data loaded successfully:", data);
+
+      // Background gradient
+      let twilightGradient = svg.append("defs")
+        .append("linearGradient")
+        .attr("id", "twilightGradient")
+        .attr("x1", "0%")
+        .attr("y1", "0%")
+        .attr("x2", "0%")
+        .attr("y2", "100%");
+
+      twilightGradient.append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", "rgb(25, 25, 50)"); // Dark color at the top
+
+      twilightGradient.append("stop")
+        .attr("offset", "50%")
+        .attr("stop-color", "rgb(25, 25, 50)"); // Dark color at 50% from the top
+
+      twilightGradient.append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "rgb(255, 77, 150)"); // Light color at the bottom
+
+      svg.append("rect")
+        .attr("x", 0)
+        .attr("y", 0)
+        .attr("width", width)
+        .attr("height", height)
+        .style("fill", "url(#twilightGradient)");
+
+      // Generate random colors for stars
+      const startColor = d3.color("rgb(255, 255, 215)"); // Very pale yellow
+      const midColor = d3.color("rgb(255, 255, 255)"); // White
+      const endColor = d3.color("rgb(215, 255, 255)"); // Very pale blue
+      const grayColor = d3.color("rgb(192, 192, 192)"); // Gray/silver
+      const starColors = data.map(() => {
+        const gradientPos = Math.random();
+        let starColor;
+        if (gradientPos < 0.5) {
+          starColor = d3.interpolateRgb(startColor, midColor)(gradientPos * 2);
+        } else {
+          starColor = d3.interpolateRgb(midColor, endColor)((gradientPos - 0.5) * 2);
+        }
+        return d3.interpolateRgb(starColor, grayColor)(0.1); // 10% gray/silver
+      });
+
+      // Function to draw a polygon with a given number of sides
+      function drawPolygon(sides, radius) {
+        let angle = (2 * Math.PI) / sides;
+        let points = [];
+        for (let i = 0; i < sides; i++) {
+          let x = Math.cos(i * angle) * radius;
+          let y = Math.sin(i * angle) * radius;
+          points.push([x, y]);
+        }
+        return points;
+      }
+
+      // Randomize the number of sides for each star
+      const sidesOptions = [15, 17, 19, 21];
+      const starSides = data.map(() => sidesOptions[Math.floor(Math.random() * sidesOptions.length)]);
+
+      // Draw stars behind buildings
+      const stars = svg.selectAll(".star")
+        .data(data)
+        .enter().append("polygon")
+        .attr("class", "star")
+        .attr("points", (d, i) => drawPolygon(starSides[i], d.meanIncome ? Math.sqrt(d.meanIncome) : 5)
+          .map(point => point.join(","))
+          .join(" "))
+        .attr("transform", (d, i) => `translate(${10 * i + 5},${canvasTop - d.nationalPovertyLine * 10})`)
+        .attr("fill", (d, i) => starColors[i]);
+
+      // Draw buildings
+      const buildings = svg.selectAll(".building")
+        .data(data)
+        .enter().append("g")
+        .attr("class", "building")
+        .attr("transform", (d, i) => `translate(${10 * i},${height - Math.sqrt((d.population / 1000000) * 100)})`);
+
+      buildings.append("rect")
+        .attr("width", d => Math.sqrt((d.gdp / 100) * 10))
+        .attr("height", d => Math.sqrt((d.population / 1000000) * 100))
+        .attr("fill", d => continentColors[d.Continent] || "white");
+
+      // Draw windows on buildings
+      buildings.each(function(d, i) {
+        const building = d3.select(this);
+        const buildingWidth = Math.sqrt((d.gdp / 100) * 10);
+        const buildingHeight = Math.sqrt((d.population / 1000000) * 100);
+        const windowSize = 4;
+        const windowSpacing = 1;
+        const numWindowsX = Math.floor(buildingWidth / (windowSize + windowSpacing));
+        const numWindowsY = Math.floor(buildingHeight / (windowSize + windowSpacing));
+        const totalWindows = numWindowsX * numWindowsY;
+        const povertyWindows = Math.floor(totalWindows * (d.povertyRatio / 100));
+        const nonPovertyWindows = totalWindows - povertyWindows;
+
+        let windows = [];
+        for (let j = 0; j < povertyWindows; j++) {
+          windows.push("#6e6e6e");
+        }
+        for (let j = 0; j < nonPovertyWindows; j++) {
+          windows.push("#ffff96");
+        }
+
+        // Calculate x offset to center the windows
+        const xOffset = (buildingWidth - numWindowsX * (windowSize + windowSpacing)) / 2;
+
+        // Append windows to the building
+        building.selectAll(".window")
+          .data(windows)
+          .enter().append("rect")
+          .attr("class", "window")
+          .attr("x", (w, j) => xOffset + (j % numWindowsX) * (windowSize + windowSpacing))
+          .attr("y", (w, j) => (Math.floor(j / numWindowsX) * (windowSize + windowSpacing)))
+          .attr("width", windowSize)
+          .attr("height", windowSize)
+          .attr("fill", w => w);
+      });
+
+      // Tooltip interaction and star highlighting
+      svg.selectAll(".building")
+        .on("mouseover", function(event, d, i) {
+          tooltip.transition().duration(200).style("opacity", .9);
+          tooltip.html(
+            `<b>Country:</b> ${d.Entity}<br>` +
+            `<b>GDP per Capita:</b> ${d.gdp.toLocaleString()}<br>` +
+            `<b>Population:</b> ${d.population.toLocaleString()}<br>` +
+            `<b>Poverty Ratio:</b> ${d.povertyRatio}%<br>` +
+            `<b>Hourly Poverty Line:</b> ${d.nationalPovertyLine.toFixed(2)}`
+          )
+          .style("left", (event.pageX > canvasLeft ? event.pageX - displayBoxWidth : event.pageX) + "px")
+          .style("top", (event.pageY - displayBoxHeight - 10) + "px");
+
+          // Add oscillation and color effect to the star
+          const index = data.findIndex(el => el.Entity === d.Entity);
+          stars.filter((_, starIndex) => starIndex === index)
+            .attr("fill", "white") // Change to bright white when hovered
+            .transition()
+            .duration(1000) // Slow down oscillation
+            .attr("transform", (d) => `translate(${10 * index + 5},${canvasTop - d.nationalPovertyLine * 10}) scale(1.5)`) // Increase size for oscillation
+            .transition()
+            .duration(1000) // Slow down oscillation
+            .attr("transform", (d) => `translate(${10 * index + 5},${canvasTop - d.nationalPovertyLine * 10}) scale(1)`)
+            .on("end", function repeat() {
+              d3.select(this)
+                .transition()
+                .duration(1000) // Slow down oscillation
+                .attr("transform", (d) => `translate(${10 * index + 5},${canvasTop - d.nationalPovertyLine * 10}) scale(1.5)`)
+                .transition()
+                .duration(1000) // Slow down oscillation
+                .attr("transform", (d) => `translate(${10 * index + 5},${canvasTop - d.nationalPovertyLine * 10}) scale(1)`)
+                .on("end", repeat);
+            });
+        })
+        .on("mouseout", function(event, d) {
+          tooltip.transition().duration(500).style("opacity", 0);
+
+          // Remove oscillation and color effect from the star
+          const index = data.findIndex(el => el.Entity === d.Entity);
+          stars.filter((_, starIndex) => starIndex === index)
+            .interrupt()
+            .attr("fill", (d, i) => starColors[index])
+            .attr("transform", (d) => `translate(${10 * index + 5},${canvasTop - d.nationalPovertyLine * 10}) scale(1)`);
+        });
+
+      // Title
+      svg.append("text")
+        .attr("x", width / 2)
+        .attr("y", 30) // Adjusted to be closer to the graphics
+        .attr("text-anchor", "middle")
+        .style("font-size", "32px")
+        .style("fill", "white")
+        .style("text-shadow", "4px 4px 8px rgba(255, 77, 150, 0.5)")
+        .text("Poverty Turning Off the Lights Around the World");
+
+    }).catch(error => {
+      console.error("Error loading the data file:", error);
+    });
+  </script>
+</body>
+</html>

@@ -78,7 +78,7 @@ category: recent
 <!-- Embed the D3.js Visualization -->
 <div class="row justify-content-center figure-container">
     <div class="col-sm-12 mt-3">
-        <iframe src="assets/html/d3_povertyTurnsOffLights.html" width="100%" height="600px" style="border:none;"></iframe>
+        <iframe src="{{ site.baseurl }}/assets/html/d3_visualization.html" width="100%" height="600px" style="border:none;"></iframe>
     </div>
 </div>
 

@@ -4,7 +4,7 @@ title: Visualizing Data
 description: Exploring Different Tools, Techniques and Design Principles For Data Visualization
 img: assets/img/leesburg_map_1748_1078.png
 importance: 3
-category: fun
+category: recent
 ---
 
 <style>
@@ -71,4 +71,17 @@ category: fun
     An image of an interactive visualization of poverty around the world made with the p5.js JavaScript library. It was heavily modified from an original design by 'ingriddoubleday'. This was a team project. Contributors: Adam E., Kristin H., Max P., and Kenya R.
     <br>
     Visit the <a href="https://github.com/kdhenderson/povertyTurnsOffLights">GitHub repo</a> to run the code for the interactive experience.
+</div>
+
+<br>
+
+<!-- Embed the D3.js Visualization -->
+<div class="row justify-content-center figure-container">
+    <div class="col-sm-12 mt-3">
+        <iframe src="assets/html/d3_povertyTurnsOffLights.html" width="100%" height="600px" style="border:none;"></iframe>
+    </div>
+</div>
+
+<div class="caption">
+    An interactive visualization created with D3.js. Click the frame to interact with the visualization directly.
 </div>

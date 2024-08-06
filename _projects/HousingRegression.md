@@ -25,8 +25,15 @@ category: recent
     }
 </style>
 
-<div class="row justify-content-center figure-container">
-    <div class="col-sm-12 mt-3">
-        {% include figure.liquid loading="eager" path="assets/pdf/HousingPricesLinearRegression.pdf" title="Housing Regression" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Biochemical Approach to Ctenophore Survival in Anoxia</title>
+</head>
+  <body>
+
+    <p>Open analysis document.<a href="assets/pdf/HousingPricesLinearRegression.pdf">Housing Prices Linear Regression</a>.</p>
+
+  </body>

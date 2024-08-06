@@ -30,7 +30,7 @@ category: recent
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Biochemical Approach to Ctenophore Survival in Anoxia</title>
+<title>Linear Regression Analysis, Interpretation and Prediction of Ames Housing Dataset</title>
 </head>
   <body>
 

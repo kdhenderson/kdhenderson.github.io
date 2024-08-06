@@ -3,7 +3,7 @@ layout: page
 title: Adapting to low oxygen
 description: A Biochemical Study of Comb Jellies
 img: assets/img/mnemiopsisEdit.jpeg 
-importance: 9
+importance: 12
 category: past
 ---
 

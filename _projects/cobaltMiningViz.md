@@ -2,7 +2,7 @@
 layout: page
 title: Mining Infographic
 description: An Infographic on Cobalt Mining in the Congo
-img: assets/img/cobaltMining.jpeg 
+img: assets/img/cobaltMiningBackground.png 
 importance: 7
 category: recent
 ---

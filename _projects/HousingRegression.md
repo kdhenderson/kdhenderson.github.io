@@ -2,7 +2,7 @@
 layout: page
 title: Housing Regression
 description: Linear Regression Analysis, Interpretation and Prediction of Ames Housing Dataset
-img: assets/img/housingRegression.png
+img: assets/img/housingRegressionD3.png
 importance: 1
 category: recent
 ---
@@ -34,6 +34,6 @@ category: recent
 </head>
   <body>
 
-    <p>Open analysis document.<a href="assets/pdf/HousingPricesLinearRegression.pdf">Housing Prices Linear Regression</a>.</p>
-
+<iframe src="/assets/pdf/HousingPricesLinearRegression.pdf" width="100%" height="600px"></iframe>
+  
   </body>

@@ -6,5 +6,6 @@ img: assets/img/cobaltMiningBackground.png
 importance: 7
 category: recent
 ---
-
-{% include assets/html/cobaltMiningInfographic.html %}
+<div>
+  {% include assets/html/cobaltMiningInfographic.html %}
+</div>

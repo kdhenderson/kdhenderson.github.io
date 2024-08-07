@@ -6,6 +6,10 @@ img: assets/img/cobaltMiningBackground.png
 importance: 7
 category: recent
 ---
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+</head>
 
 <style>
     body {

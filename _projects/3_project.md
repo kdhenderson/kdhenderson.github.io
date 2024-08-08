@@ -1,12 +1,11 @@
 ---
 layout: page
-title: Craft Beer and Breweries App
-description: Interactive App Examining Craft Beer and Brewery Data
-img:
-redirect: https://kdhenderson.shinyapps.io/Craft_Beer_and_Breweries_App/
-importance: 2
+title: project 3 with very long name
+description: a project that redirects to another website
+img: assets/img/7.jpg
+redirect: https://unsplash.com
+importance: 3
 category: work
-related_publications: false
 ---
 
 Every project has a beautiful feature showcase page.

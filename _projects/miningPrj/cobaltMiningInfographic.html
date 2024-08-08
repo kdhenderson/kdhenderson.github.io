@@ -1,0 +1,195 @@
+<script>
+    // Script created by Kristin Henderson, Spring 2024
+    // An Infographic on Cobalt Mining in Congo
+    // A Bar Chart on an AI Generated Image with Click-through to a Tableau Dashboard
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>D3 Bar Chart on Background Image with Click Events</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Staatliches', sans-serif;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+        #background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .title-container {
+            position: absolute;
+            top: 5%;
+            left: 10%;
+            width: 75%;
+            text-align: left;
+            z-index: 1;
+        }
+        .title {
+            font-family: 'Staatliches', sans-serif;
+            font-size: 32px;
+            color: #8B4513;
+        }
+        .subtitle {
+            font-family: 'Staatliches', sans-serif;
+            font-size: 18px;
+            color: #8B4513;
+            font-style: italic;
+            margin-top: 5px; /* Space between title and subtitle */
+        }
+        svg {
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            width: 75%;
+            height: 70%;
+        }
+        .bar {
+            fill: green;
+            opacity: 0.5;
+            cursor: pointer;
+        }
+        .axis text {
+            fill: #FDF5CA;
+            font-size: 18px;
+            font-family: 'Staatliches', sans-serif;
+        }
+        .bar-label {
+            fill: #FDF5CA; /* Slightly more yellow hue */
+            font-family: 'Staatliches', sans-serif;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img id="background" src="../img/cobaltMiningBackground.png" alt="Background Image">
+        <div class="title-container">
+            <div class="title">Daily Wages (USD) of Cobalt Miners in Congo</div>
+            <div class="subtitle">click bars for details</div>
+        </div>
+        <svg></svg>
+    </div>
+    <script>
+        const data = [
+            { category: '0-4', percentage: 40 },
+            { category: '4-10', percentage: 28 },
+            { category: '10-15', percentage: 11 },
+            { category: '15-20', percentage: 12 },
+            { category: '20-50', percentage: 9 }
+        ];
+
+        const tableauDashboardURL = 'https://public.tableau.com/app/profile/kristin.henderson/viz/miningDashboard/MiningDashboard';
+
+        // Set up the SVG and margin dimensions
+        const svg = d3.select("svg");
+        const margin = { top: 60, right: 20, bottom: 30, left: 60 };
+        const width = parseInt(svg.style("width")) - margin.left - margin.right;
+        const height = parseInt(svg.style("height")) - margin.top - margin.bottom;
+        const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+
+        // Set up the scales
+        const x = d3.scaleBand()
+            .domain(data.map(d => d.category))
+            .rangeRound([0, width])
+            .padding(0.4);  // Increased padding for narrower bars and wider gaps
+
+        const y = d3.scaleLinear()
+            .domain([0, d3.max(data, d => d.percentage)]).nice()
+            .rangeRound([height, 0]);
+
+        // Add the x-axis
+        g.append("g")
+            .attr("class", "axis axis--x")
+            .attr("transform", `translate(0,${height})`)
+            .call(d3.axisBottom(x).tickSize(0).tickPadding(10))
+            .selectAll("text")
+            .style("fill", "none");
+
+        // Add the y-axis
+        g.append("g")
+            .attr("class", "axis axis--y")
+            .call(d3.axisLeft(y).ticks(10).tickSize(-width).tickFormat(d => d + "%"))
+            .selectAll("text")
+            .style("fill", "#FDF5CA")
+            .style("font-size", "18px")
+            .style("font-family", 'Staatliches', 'sans-serif');
+
+        // Add the bars
+        g.selectAll(".bar")
+            .data(data)
+            .enter().append("rect")
+            .attr("class", "bar")
+            .attr("x", d => x(d.category))
+            .attr("y", d => y(d.percentage))
+            .attr("width", x.bandwidth())
+            .attr("height", d => height - y(d.percentage))
+            .on("click", function() {
+                window.open(tableauDashboardURL, '_blank');
+            });
+
+        // Add the labels inside the bars
+        g.selectAll(".bar-label")
+            .data(data)
+            .enter().append("text")
+            .attr("class", "bar-label")
+            .attr("x", d => x(d.category) + x.bandwidth() / 2)
+            .attr("y", d => y(d.percentage) + 20) // Adjusted position inside the bar
+            .attr("text-anchor", "middle")
+            .text(d => `${d.category}`);
+
+        // Add the "below minimum wage" text
+        g.append("text")
+            .attr("class", "bar-label")
+            .attr("x", x(data[0].category) + x.bandwidth() / 2)
+            .attr("y", y(data[0].percentage) + 40) // Positioned below the 0-4.2 label
+            .attr("text-anchor", "middle")
+            .text("below minimum wage");
+
+        // Add click event to the background image
+        d3.select("#background").on("click", function() {
+            window.open(tableauDashboardURL, '_blank');
+        });
+
+        // Resize the SVG on window resize
+        window.addEventListener("resize", () => {
+            const width = window.innerWidth * 0.75 - margin.left - margin.right;
+            const height = window.innerHeight * 0.75 - margin.top - margin.bottom;
+            svg.attr("width", window.innerWidth * 0.75).attr("height", window.innerHeight * 0.75);
+            g.attr("transform", `translate(${margin.left},${margin.top})`);
+            x.rangeRound([0, width]);
+            y.rangeRound([height, 0]);
+            g.selectAll(".bar")
+                .attr("x", d => x(d.category))
+                .attr("width", x.bandwidth())
+                .attr("height", d => height - y(d.percentage))
+                .attr("y", d => y(d.percentage));
+            g.selectAll(".bar-label")
+                .attr("x", d => x(d.category) + x.bandwidth() / 2)
+                .attr("y", d => y(d.percentage) + 20) // Adjusted position inside the bar
+                .text(d => `${d.category}`);
+            g.select(".axis--x").call(d3.axisBottom(x).tickSize(0).tickPadding(10));
+            g.select(".axis--y").call(d3.axisLeft(y).ticks(10).tickSize(-width).tickFormat(d => d + "%"));
+        });
+        
+        // Citations
+        // 1. BGR. (2019). Cobalt from the Congo – how to source it better. Retrieved from https://www.delvedatabase.org/uploads/resources/BGR_Cobalt_Congo_2019_en.pdf
+        // 2. Lithium News. Artisanal miners could help Congo become world's fourth-largest cobalt producer. Retrieved from https://lithium-news.com/artisanal-miners-could-help-congo-become-worlds-fourth-largest-cobalt-producer/
+        // 3. LifeGate. Cobalt mining in Congo: tech companies face a lawsuit. Retrieved from https://www.lifegate.com/cobalt-mining-congo-tech-lawsuit
+        // 4. OpenAI. (2024). ChatGPT. Retrieved from https://chat.openai.com
+    </script>
+</body>
+</html>

@@ -7,9 +7,6 @@ importance: 9
 category: recent
 ---
 
-<head>
-<meta charset="UTF-8">
-<title>Animated Scatter Plot with Regression Line</title>
 <style>
   body {
     background-color: #3b5999;
@@ -67,9 +64,7 @@ category: recent
     text-anchor: start.
   }
 </style>
-</head>
 
-<body>
 <script src="https://d3js.org/d3.v7.min.js"></script>
 
 <div id="chart"></div>
@@ -469,4 +464,4 @@ function linearRegression(x, y) {
 }
 
 </script>
-</body>
+

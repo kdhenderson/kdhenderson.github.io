@@ -3,10 +3,14 @@ layout: page
 title: Housing Regression
 description: Linear Regression Analysis, Interpretation and Prediction of Ames Housing Dataset
 img: assets/img/housingRegressionD3.png
-importance: 9
+importance: 8
 category: recent
 ---
 
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Animated Scatter Plot with Regression Line</title>
 <style>
   body {
     background-color: #3b5999;
@@ -64,7 +68,8 @@ category: recent
     text-anchor: start.
   }
 </style>
-
+</head>
+<body>
 <script src="https://d3js.org/d3.v7.min.js"></script>
 
 <div id="chart"></div>
@@ -464,4 +469,5 @@ function linearRegression(x, y) {
 }
 
 </script>
-
+</body>
+</html>

@@ -25,15 +25,14 @@ category: recent
     }
 </style>
 
-
-<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Linear Regression Analysis, Interpretation and Prediction of Ames Housing Dataset</title>
 </head>
-  <body>
+
+<body>
 
 <iframe src="/assets/pdf/HousingPricesLinearRegression.pdf" width="100%" height="600px"></iframe>
   
-  </body>
+</body>

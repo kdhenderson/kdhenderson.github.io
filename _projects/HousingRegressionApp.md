@@ -6,6 +6,7 @@ img: assets/img/housingRegressionD3.png
 importance: 8
 category: recent
 ---
+{% raw %}
 
 <html>
 <head>
@@ -85,7 +86,7 @@ category: recent
 <script>
 
 // Load the data from CSV file
-d3.csv("train.csv").then(data => {
+d3.csv("/assets/csv/train.csv").then(data => {
   // Ensure GrLivArea and SalePrice are numbers
   data.forEach(d => {
     d.GrLivArea = +d.GrLivArea;
@@ -109,7 +110,7 @@ d3.csv("train.csv").then(data => {
 
   // Add the background image
   svg.append('image')
-     .attr('xlink:href', 'processed_house_outline.png')
+     .attr('xlink:href', 'assets/img/processed_house_outline.png')
      .attr('x', -80)
      .attr('y', 0)
      .attr('width', width + margin.left + margin.right)
@@ -471,3 +472,5 @@ function linearRegression(x, y) {
 </script>
 </body>
 </html>
+
+{% endraw %}

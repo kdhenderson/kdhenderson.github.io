@@ -86,12 +86,12 @@ category: recent
 <script>
 
 // Load the data from CSV file
-d3.csv("train.csv").then(data => {
-  // Ensure GrLivArea and SalePrice are numbers
-  data.forEach(d => {
-    d.GrLivArea = +d.GrLivArea;
-    d.SalePrice = +d.SalePrice;
-  });
+d3.json("train.json").then(data => {
+//  // Ensure GrLivArea and SalePrice are numbers
+//  data.forEach(d => {
+//    d.GrLivArea = +d.GrLivArea;
+//    d.SalePrice = +d.SalePrice;
+//  });
 
   // Filter data for the neighborhoods of interest
   const neighborhoods = ["BrkSide", "Edwards", "NAmes"];

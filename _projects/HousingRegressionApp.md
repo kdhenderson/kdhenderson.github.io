@@ -4,7 +4,7 @@ title: Housing Regression
 description: Linear Regression Analysis, Interpretation and Prediction of Ames Housing Dataset
 img: assets/img/housingRegressionD3.png
 importance: 8
-category: fun
+category: recent
 ---
 {% raw %}
 
@@ -86,7 +86,7 @@ category: fun
 <script>
 
 // Load the data from CSV file
-d3.csv("/assets/csv/train.csv").then(data => {
+d3.csv("train.csv").then(data => {
   // Ensure GrLivArea and SalePrice are numbers
   data.forEach(d => {
     d.GrLivArea = +d.GrLivArea;

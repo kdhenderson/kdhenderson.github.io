@@ -3,11 +3,9 @@ layout: page
 title: Housing Regression
 description: Linear Regression Analysis, Interpretation and Prediction of Ames Housing Dataset
 img: assets/img/housingRegressionD3.png
-importance: 8
+importance: 9
 category: recent
 ---
-<div>
-</div>
 {% raw %}
 
 <html>

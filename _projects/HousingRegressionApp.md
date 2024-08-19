@@ -6,8 +6,9 @@ img: assets/img/housingRegressionD3.png
 importance: 8
 category: recent
 ---
-<div>
-</div>
+
+This is a test. 
+
 {% raw %}
 
 <html>

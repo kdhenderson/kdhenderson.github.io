@@ -3,7 +3,7 @@ layout: page
 title: Password Guardian
 description: A Python Tool to Securely Verify Password Integrity
 img: assets/img/lockedGateEdit.jpeg
-importance: 10
+importance: 7
 category: past
 ---
 

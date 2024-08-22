@@ -4,7 +4,7 @@ title: Craft Beer Data Analysis
 description: Data Analysis of Craft Beers and Breweries in the US - A Case Study
 img: assets/img/map_plt.png
 importance: 5
-category: recent
+category: fun
 related_publications: false
 ---
 

@@ -8,20 +8,6 @@ category: recent
 related_publications: false
 ---
 
-<style>
-    /* Custom CSS for formatting */
-    .larger-font {
-        font-size: 1.2em;
-        line-height: 1.5; /* Increase line height for better readability */
-        font-family: Arial, Helvetica, sans-serif; /* Change font family */
-    }
-    
-    .paragraph {
-        margin-bottom: 10px; /* Add margin bottom for paragraphs */
-        font-family: Arial, Helvetica, sans-serif; /* Change font family */
-    }
-</style>
-
 <div id="header">
 
 <h4 class="author">Analysis by Willis Jones &amp; Kristin Henderson</h4>
@@ -31,7 +17,6 @@ related_publications: false
 <p><br></p>
 
 </div>
-This is a test.
 
 ## Introduction
 

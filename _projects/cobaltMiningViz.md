@@ -7,6 +7,6 @@ importance: 7
 category: recent
 ---
 
-{% include test.html %}
+{% include cobaltMiningInfographic.html %}
 
 

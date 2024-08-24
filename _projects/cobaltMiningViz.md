@@ -8,7 +8,7 @@ category: recent
 ---
 
 <div>
-  {% include cobaltMiningInfographic.html %}
+  {% include test.html %}
 </div>
 
 

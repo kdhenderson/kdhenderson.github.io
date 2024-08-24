@@ -1,20 +1,3 @@
----
-layout: page
-title: Attrition Data Analysis
-description: Data Analysis of Employee Attrition and Income - A Case Study
-img: assets/img/top3_income_jobLevel_box.png
-importance: 2
-category: recent
-related_publications: false
----
-
-<div id="header">
-
-<h4 class="author">Analysis by Kristin Henderson</h4>
-<h4 class="date">Spring/Summer 2024</h4>
-<p><br></p>
-</div>
-
 ### Introduction
 
 To address the challenge of retaining talented employees, the leadership
@@ -53,6 +36,7 @@ View the video presentation of this analysis:
     library(pander) #pander() tables
     library(dplyr) #loading this after Hmisc because of conflict in summarize? can use summarise instead
     library(olsrr) #variable selection
+    library(car) #model evaluation
 
 ### Objective 1: Identify the top three factors that lead to attrition.
 
@@ -3137,105 +3121,105 @@ and internal validation results.**
       
     } # complete modelIdx loop
 
-    Threshold Loop Time: 5.004314 secs 
+    Threshold Loop Time: 5.592388 secs 
     ModelIdx: 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.1 - Threshold: 0.3 
-    Threshold Loop Time: 5.02329 secs 
+    Threshold Loop Time: 6.021531 secs 
     ModelIdx: 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.1 - Threshold: 0.35 
-    Threshold Loop Time: 5.019208 secs 
+    Threshold Loop Time: 5.547989 secs 
     ModelIdx: 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.1 - Threshold: 0.4 
-    Threshold Loop Time: 5.462223 secs 
+    Threshold Loop Time: 5.553841 secs 
     ModelIdx: 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.1 - Threshold: 0.45 
-    Threshold Loop Time: 4.700989 secs 
+    Threshold Loop Time: 6.12177 secs 
     ModelIdx: 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.1 - Threshold: 0.5 
-    Threshold Loop Time: 4.542984 secs 
+    Threshold Loop Time: 6.420382 secs 
     ModelIdx: 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.3 - Threshold: 0.3 
-    Threshold Loop Time: 4.579583 secs 
+    Threshold Loop Time: 5.520584 secs 
     ModelIdx: 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.3 - Threshold: 0.35 
-    Threshold Loop Time: 4.773919 secs 
+    Threshold Loop Time: 7.136181 secs 
     ModelIdx: 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.3 - Threshold: 0.4 
-    Threshold Loop Time: 4.874061 secs 
+    Threshold Loop Time: 6.214353 secs 
     ModelIdx: 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.3 - Threshold: 0.45 
-    Threshold Loop Time: 4.492582 secs 
+    Threshold Loop Time: 5.380049 secs 
     ModelIdx: 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.3 - Threshold: 0.5 
-    Threshold Loop Time: 4.552296 secs 
+    Threshold Loop Time: 6.685035 secs 
     ModelIdx: 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.5 - Threshold: 0.3 
-    Threshold Loop Time: 4.659975 secs 
+    Threshold Loop Time: 4.998083 secs 
     ModelIdx: 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.5 - Threshold: 0.35 
-    Threshold Loop Time: 4.742615 secs 
+    Threshold Loop Time: 4.644609 secs 
     ModelIdx: 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.5 - Threshold: 0.4 
-    Threshold Loop Time: 4.844503 secs 
+    Threshold Loop Time: 5.171444 secs 
     ModelIdx: 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.5 - Threshold: 0.45 
-    Threshold Loop Time: 4.555649 secs 
+    Threshold Loop Time: 4.761993 secs 
     ModelIdx: 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.5 - Threshold: 0.5 
-    Threshold Loop Time: 4.824698 secs 
+    Threshold Loop Time: 4.782534 secs 
     ModelIdx: 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.7 - Threshold: 0.3 
-    Threshold Loop Time: 4.593783 secs 
+    Threshold Loop Time: 5.089848 secs 
     ModelIdx: 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.7 - Threshold: 0.35 
-    Threshold Loop Time: 4.4952 secs 
+    Threshold Loop Time: 4.768193 secs 
     ModelIdx: 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.7 - Threshold: 0.4 
-    Threshold Loop Time: 4.736043 secs 
+    Threshold Loop Time: 4.86963 secs 
     ModelIdx: 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.7 - Threshold: 0.45 
-    Threshold Loop Time: 4.574208 secs 
+    Threshold Loop Time: 4.742829 secs 
     ModelIdx: 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.7 - Threshold: 0.5 
-    Threshold Loop Time: 4.5965 secs 
+    Threshold Loop Time: 4.720387 secs 
     ModelIdx: 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.9 - Threshold: 0.3 
-    Threshold Loop Time: 4.711283 secs 
+    Threshold Loop Time: 4.678431 secs 
     ModelIdx: 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.9 - Threshold: 0.35 
-    Threshold Loop Time: 5.212829 secs 
+    Threshold Loop Time: 5.60258 secs 
     ModelIdx: 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.9 - Threshold: 0.4 
-    Threshold Loop Time: 4.91936 secs 
+    Threshold Loop Time: 5.327845 secs 
     ModelIdx: 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.9 - Threshold: 0.45 
-    Threshold Loop Time: 4.493571 secs 
+    Threshold Loop Time: 4.64058 secs 
     ModelIdx: 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.9 - Threshold: 0.5 
-    Threshold Loop Time: 4.980346 secs 
+    Threshold Loop Time: 6.054231 secs 
     ModelIdx: 4, 7, 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.1 - Threshold: 0.3 
-    Threshold Loop Time: 5.059191 secs 
+    Threshold Loop Time: 5.122041 secs 
     ModelIdx: 4, 7, 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.1 - Threshold: 0.35 
-    Threshold Loop Time: 5.038476 secs 
+    Threshold Loop Time: 5.147665 secs 
     ModelIdx: 4, 7, 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.1 - Threshold: 0.4 
-    Threshold Loop Time: 5.268844 secs 
+    Threshold Loop Time: 5.249031 secs 
     ModelIdx: 4, 7, 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.1 - Threshold: 0.45 
-    Threshold Loop Time: 5.211687 secs 
+    Threshold Loop Time: 5.486604 secs 
     ModelIdx: 4, 7, 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.1 - Threshold: 0.5 
-    Threshold Loop Time: 5.58151 secs 
+    Threshold Loop Time: 5.605057 secs 
     ModelIdx: 4, 7, 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.3 - Threshold: 0.3 
-    Threshold Loop Time: 4.984291 secs 
+    Threshold Loop Time: 5.666585 secs 
     ModelIdx: 4, 7, 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.3 - Threshold: 0.35 
-    Threshold Loop Time: 5.176831 secs 
+    Threshold Loop Time: 5.104779 secs 
     ModelIdx: 4, 7, 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.3 - Threshold: 0.4 
-    Threshold Loop Time: 5.185894 secs 
+    Threshold Loop Time: 5.114549 secs 
     ModelIdx: 4, 7, 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.3 - Threshold: 0.45 
-    Threshold Loop Time: 5.408667 secs 
+    Threshold Loop Time: 5.132987 secs 
     ModelIdx: 4, 7, 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.3 - Threshold: 0.5 
-    Threshold Loop Time: 5.246091 secs 
+    Threshold Loop Time: 5.240235 secs 
     ModelIdx: 4, 7, 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.5 - Threshold: 0.3 
-    Threshold Loop Time: 5.073551 secs 
+    Threshold Loop Time: 5.867367 secs 
     ModelIdx: 4, 7, 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.5 - Threshold: 0.35 
-    Threshold Loop Time: 5.549338 secs 
+    Threshold Loop Time: 5.544347 secs 
     ModelIdx: 4, 7, 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.5 - Threshold: 0.4 
-    Threshold Loop Time: 5.061544 secs 
+    Threshold Loop Time: 4.961782 secs 
     ModelIdx: 4, 7, 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.5 - Threshold: 0.45 
-    Threshold Loop Time: 5.622115 secs 
+    Threshold Loop Time: 5.413003 secs 
     ModelIdx: 4, 7, 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.5 - Threshold: 0.5 
-    Threshold Loop Time: 5.569111 secs 
+    Threshold Loop Time: 5.472714 secs 
     ModelIdx: 4, 7, 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.7 - Threshold: 0.3 
-    Threshold Loop Time: 5.065022 secs 
+    Threshold Loop Time: 5.191352 secs 
     ModelIdx: 4, 7, 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.7 - Threshold: 0.35 
-    Threshold Loop Time: 5.208942 secs 
+    Threshold Loop Time: 5.131339 secs 
     ModelIdx: 4, 7, 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.7 - Threshold: 0.4 
-    Threshold Loop Time: 5.14224 secs 
+    Threshold Loop Time: 5.16242 secs 
     ModelIdx: 4, 7, 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.7 - Threshold: 0.45 
-    Threshold Loop Time: 5.689809 secs 
+    Threshold Loop Time: 5.0915 secs 
     ModelIdx: 4, 7, 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.7 - Threshold: 0.5 
-    Threshold Loop Time: 5.710204 secs 
+    Threshold Loop Time: 5.148092 secs 
     ModelIdx: 4, 7, 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.9 - Threshold: 0.3 
-    Threshold Loop Time: 5.48089 secs 
+    Threshold Loop Time: 5.51221 secs 
     ModelIdx: 4, 7, 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.9 - Threshold: 0.35 
-    Threshold Loop Time: 5.393044 secs 
+    Threshold Loop Time: 5.823147 secs 
     ModelIdx: 4, 7, 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.9 - Threshold: 0.4 
-    Threshold Loop Time: 4.907283 secs 
+    Threshold Loop Time: 5.233849 secs 
     ModelIdx: 4, 7, 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.9 - Threshold: 0.45 
-    Threshold Loop Time: 5.348809 secs 
+    Threshold Loop Time: 5.136843 secs 
     ModelIdx: 4, 7, 12, 15, 16, 17, 19, 20, 24, 29, 30, 32, 33, 34, 36 - Alpha: 0.9 - Threshold: 0.5 
 
     # loop time
@@ -3243,7 +3227,7 @@ and internal validation results.**
     time_taken_loop = difftime(loop_end, loop_start, units = "mins")
     cat("Total Loop Time:", time_taken_loop, "mins \n")
 
-    Total Loop Time: 4.183543 mins 
+    Total Loop Time: 4.477766 mins 
 
     # convert results_list to a data frame
     results_df = do.call(rbind, results_list)
@@ -3766,7 +3750,7 @@ probably a better, clearer way to tune k.**
     loop_start = Sys.time()
     cat("Start time:", loop_start, "\n")
 
-    Start time: 1724504376 
+    Start time: 1724516800 
 
     # loop through modelIdx combinations
     for (modelIdx in modelIdx_list) {
@@ -3917,9 +3901,9 @@ probably a better, clearer way to tune k.**
       
     } # complete modelIdx loop
 
-    Total Elapsed Time: 0.3823037 mins 
-    Total Elapsed Time: 0.7420035 mins 
-    Total Elapsed Time: 1.098805 mins 
+    Total Elapsed Time: 0.3571209 mins 
+    Total Elapsed Time: 0.7068673 mins 
+    Total Elapsed Time: 1.113254 mins 
 
     # loop time
     # loop_end = Sys.time()
@@ -5465,7 +5449,7 @@ in the labeled primary data set.**
     # save to file
     # write.csv(competitionLabels, file = "data/Case2PredictionsHenderson Salary.csv", row.names = FALSE)
 
-### **Recreate linear regression model with new knowledge of variable selection tools**
+#### **Update the model using improved variable selection methods**
 
 ### Objective 6: Create a linear regression model to predict monthly salaries (revised model).
 
@@ -5553,7 +5537,8 @@ stepwise variable selection. I evaluate each candidate model with cross
 validation and the following metrics, adjusted R-squared, AIC, BIC,
 RMSE\_Train (80/20), CVPRESS, and RMSE\_Test.**
 
-    library(car)
+    # library(car)
+    # library(kableExtra)
     #library(olsrr)
 
     # Fit the model will all variables
@@ -6097,6 +6082,247 @@ RMSE\_Train (80/20), CVPRESS, and RMSE\_Test.**
     fore3 = ols_step_forward_p(fit2, p_val = 0.2, details = FALSE)
     back3 = ols_step_backward_p(fit2, p_val = 0.2, details = FALSE)
     # step3 = ols_step_both_p(fit2, p_enter = 0.2, p_remove = 0.2, details = FALSE) # this gets an error
+    fore3
+
+
+                                               Stepwise Summary                                            
+    -----------------------------------------------------------------------------------------------------
+    Step    Variable                               AIC          SBC         SBIC         R2       Adj. R2 
+    -----------------------------------------------------------------------------------------------------
+     0      Base Model                          17145.913    17155.450    14673.060    0.00000    0.00000 
+     1      JobLevel                            14903.153    14931.764    12423.882    0.92476    0.92441 
+     2      JobRole                             14549.801    14616.560    12056.020    0.95079    0.95010 
+     3      TotalWorkingYears                   14516.912    14588.439    12021.959    0.95272    0.95200 
+     4      BusinessTravel                      14510.833    14591.897    12012.640    0.95327    0.95245 
+     5      DailyRate                           14508.366    14594.199    12008.918    0.95351    0.95263 
+     6      ID:TotalWorkingYears                14506.847    14597.449    12006.143    0.95369    0.95277 
+     7      Department                          14506.644    14606.782    12002.695    0.95392    0.95289 
+     8      Education                           14506.843    14626.055    11995.688    0.95433    0.95309 
+     9      JobLevel:TotalWorkingYears          14502.096    14640.382    11983.797    0.95499    0.95355 
+     10     JobRole:TotalWorkingYears           14481.506    14657.940    11948.342    0.95685    0.95504 
+     11     ID                                  14483.504    14664.707    11949.117    0.95685    0.95498 
+     12     BusinessTravel:TotalWorkingYears    14482.435    14673.175    11944.889    0.95710    0.95514 
+     13     ID:DailyRate                        14482.652    14678.161    11943.911    0.95719    0.95517 
+    -----------------------------------------------------------------------------------------------------
+
+    Final Model Output 
+    ------------------
+
+                               Model Summary                             
+    --------------------------------------------------------------------
+    R                         0.978       RMSE                  950.795 
+    R-Squared                 0.957       MSE                947577.972 
+    Adj. R-Squared            0.955       Coef. Var              15.233 
+    Pred R-Squared            0.953       AIC                 14482.652 
+    MAE                     719.332       SBC                 14678.161 
+    --------------------------------------------------------------------
+     RMSE: Root Mean Square Error 
+     MSE: Mean Square Error 
+     MAE: Mean Absolute Error 
+     AIC: Akaike Information Criteria 
+     SBC: Schwarz Bayesian Criteria 
+
+                                         ANOVA                                      
+    -------------------------------------------------------------------------------
+                           Sum of                                                  
+                          Squares         DF      Mean Square       F         Sig. 
+    -------------------------------------------------------------------------------
+    Regression    17583134670.495         39    450849606.936    475.792    0.0000 
+    Residual        786489716.700        830       947577.972                      
+    Total         18369624387.195        869                                       
+    -------------------------------------------------------------------------------
+
+                                                              Parameter Estimates                                                            
+    ----------------------------------------------------------------------------------------------------------------------------------------
+                                                 model         Beta    Std. Error    Std. Beta      t        Sig         lower        upper 
+    ----------------------------------------------------------------------------------------------------------------------------------------
+                                           (Intercept)     2096.372       550.478                  3.808    0.000     1015.879     3176.866 
+                                             JobLevel2     3454.874       375.618        0.361     9.198    0.000     2717.602     4192.146 
+                                             JobLevel3     5910.328       426.433        0.461    13.860    0.000     5073.315     6747.341 
+                                             JobLevel4    11466.881       803.739        0.632    14.267    0.000     9889.281    13044.482 
+                                             JobLevel5    13660.280      1129.838        0.600    12.090    0.000    11442.604    15877.956 
+                          JobRoleLaboratory Technician     -311.497       390.806       -0.026    -0.797    0.426    -1078.581      455.586 
+                                JobRoleHuman Resources       32.530       638.927        0.001     0.051    0.959    -1221.574     1286.633 
+                             JobRoleResearch Scientist     -436.485       388.177       -0.038    -1.124    0.261    -1198.409      325.440 
+                                JobRoleSales Executive     -582.624       437.934       -0.053    -1.330    0.184    -1442.212      276.965 
+                      JobRoleHealthcare Representative     -943.548       570.212       -0.058    -1.655    0.098    -2062.775      175.680 
+                         JobRoleManufacturing Director    -1146.193       559.029       -0.075    -2.050    0.041    -2243.470      -48.916 
+                              JobRoleResearch Director     2399.402       759.128        0.123     3.161    0.002      909.366     3889.438 
+                                        JobRoleManager     2377.394       858.594        0.122     2.769    0.006      692.123     4062.665 
+                                     TotalWorkingYears       86.402        33.537        0.141     2.576    0.010       20.574      152.230 
+                           BusinessTravelTravel_Rarely      540.376       189.316        0.053     2.854    0.004      168.781      911.970 
+                       BusinessTravelTravel_Frequently      579.880       222.998        0.049     2.600    0.009      142.174     1017.586 
+                                             DailyRate       -0.005         0.173        0.000    -0.026    0.979       -0.344        0.335 
+                      DepartmentResearch & Development      290.272       438.189        0.030     0.662    0.508     -569.816     1150.361 
+                                       DepartmentSales     -295.333       446.250       -0.030    -0.662    0.508    -1171.245      580.578 
+                                            Education2       32.039       125.270        0.003     0.256    0.798     -213.844      277.921 
+                                            Education3      -32.169       115.093       -0.003    -0.280    0.780     -258.077      193.739 
+                                            Education4       82.590       121.267        0.008     0.681    0.496     -155.435      320.616 
+                                            Education5     -478.152       224.810       -0.018    -2.127    0.034     -919.416      -36.889 
+                                                    ID       -0.343         0.362       -0.019    -0.948    0.343       -1.053        0.367 
+                                  TotalWorkingYears:ID       -0.021         0.018       -0.021    -1.182    0.238       -0.056        0.014 
+                           JobLevel2:TotalWorkingYears     -134.950        30.503       -0.162    -4.424    0.000     -194.823      -75.077 
+                           JobLevel3:TotalWorkingYears      -75.976        31.922       -0.094    -2.380    0.018     -138.634      -13.318 
+                           JobLevel4:TotalWorkingYears     -190.931        42.477       -0.275    -4.495    0.000     -274.306     -107.557 
+                           JobLevel5:TotalWorkingYears     -173.090        53.061       -0.203    -3.262    0.001     -277.240      -68.940 
+        JobRoleLaboratory Technician:TotalWorkingYears      -33.148        33.922       -0.027    -0.977    0.329      -99.731       33.435 
+              JobRoleHuman Resources:TotalWorkingYears      -33.149        67.192       -0.009    -0.493    0.622     -165.035       98.738 
+           JobRoleResearch Scientist:TotalWorkingYears       12.455        33.532        0.010     0.371    0.710      -53.362       78.272 
+              JobRoleSales Executive:TotalWorkingYears      138.103        42.634        0.160     3.239    0.001       54.420      221.786 
+    JobRoleHealthcare Representative:TotalWorkingYears      119.088        44.019        0.115     2.705    0.007       32.686      205.490 
+       JobRoleManufacturing Director:TotalWorkingYears      144.953        44.067        0.134     3.289    0.001       58.458      231.449 
+            JobRoleResearch Director:TotalWorkingYears      130.684        50.106        0.149     2.608    0.009       32.335      229.034 
+                      JobRoleManager:TotalWorkingYears      136.550        51.948        0.178     2.629    0.009       34.586      238.515 
+         TotalWorkingYears:BusinessTravelTravel_Rarely      -23.891        15.581       -0.042    -1.533    0.126      -54.475        6.692 
+     TotalWorkingYears:BusinessTravelTravel_Frequently      -39.701        17.497       -0.047    -2.269    0.024      -74.044       -5.359 
+                                          DailyRate:ID        0.000         0.000        0.027     1.305    0.192        0.000        0.001 
+    ----------------------------------------------------------------------------------------------------------------------------------------
+
+    back3
+
+
+                                             Stepwise Summary                                          
+    -------------------------------------------------------------------------------------------------
+    Step    Variable                           AIC          SBC         SBIC         R2       Adj. R2 
+    -------------------------------------------------------------------------------------------------
+     0      Full Model                      14731.980    15857.344    11825.552    0.96358    0.95345 
+     1      Department:TotalWorkingYears    14728.015    15843.843    11824.666    0.96358    0.95352 
+     2      BusinessTravel:JobRole          14699.356    15738.888    11826.964    0.96344    0.95435 
+     3      BusinessTravel:DailyRate        14695.645    15725.640    11826.326    0.96342    0.95446 
+     4      ID:Education                    14688.416    15699.336    11826.154    0.96339    0.95468 
+     5      DailyRate:TotalWorkingYears     14686.893    15693.045    11825.700    0.96337    0.95472 
+     6      DailyRate:Department            14683.908    15680.523    11825.768    0.96333    0.95480 
+     7      ID:Department                   14680.761    15667.839    11825.680    0.96329    0.95488 
+     8      Department:JobLevel             14665.621    15614.551    11825.602    0.96326    0.95503 
+     9      Department:Education            14653.709    15564.491    11828.657    0.96308    0.95519 
+     10     ID:BusinessTravel               14651.246    15552.491    11829.244    0.96302    0.95524 
+     11     ID:JobRole                      14643.335    15506.432    11836.209    0.96267    0.95532 
+     12     DailyRate:JobRole               14634.444    15459.393    11842.237    0.96237    0.95544 
+     13     Education:JobRole               14605.207    15277.565    11875.269    0.96083    0.95551 
+     14     DailyRate:JobLevel              14601.174    15254.458    11878.290    0.96065    0.95554 
+     15     BusinessTravel:Department       14597.511    15231.720    11881.682    0.96046    0.95555 
+     16     Education:JobLevel              14582.447    15140.361    11897.425    0.95968    0.95559 
+     17     DailyRate:Education             14577.808    15116.647    11899.891    0.95952    0.95564 
+     18     Department                      14577.808    15116.647    11899.891    0.95952    0.95564 
+     19     Department:JobRole              14544.171    14997.177    11901.383    0.95941    0.95563 
+     20     JobRole:TotalWorkingYears       14538.485    14953.344    11910.696    0.95893    0.95555 
+     21     ID:TotalWorkingYears            14537.830    14947.921    11911.203    0.95887    0.95554 
+     22     Education:TotalWorkingYears     14535.726    14926.742    11916.196    0.95859    0.95546 
+    -------------------------------------------------------------------------------------------------
+
+    Final Model Output 
+    ------------------
+
+                               Model Summary                             
+    --------------------------------------------------------------------
+    R                         0.979       RMSE                  935.119 
+    R-Squared                 0.959       MSE                941546.719 
+    Adj. R-Squared            0.955       Coef. Var              15.185 
+    Pred R-Squared             -Inf       AIC                 14535.726 
+    MAE                     700.747       SBC                 14926.742 
+    --------------------------------------------------------------------
+     RMSE: Root Mean Square Error 
+     MSE: Mean Square Error 
+     MAE: Mean Absolute Error 
+     AIC: Akaike Information Criteria 
+     SBC: Schwarz Bayesian Criteria 
+
+                                         ANOVA                                      
+    -------------------------------------------------------------------------------
+                           Sum of                                                  
+                          Squares         DF      Mean Square       F         Sig. 
+    -------------------------------------------------------------------------------
+    Regression    17608854637.839         61    288669748.161    306.591    0.0000 
+    Residual        760769749.356        808       941546.719                      
+    Total         18369624387.195        869                                       
+    -------------------------------------------------------------------------------
+
+                                                              Parameter Estimates                                                           
+    ---------------------------------------------------------------------------------------------------------------------------------------
+                                                model         Beta    Std. Error    Std. Beta      t        Sig         lower        upper 
+    ---------------------------------------------------------------------------------------------------------------------------------------
+                                          (Intercept)     1931.368       436.692                  4.423    0.000     1074.183     2788.552 
+                                                   ID       -0.169         0.352       -0.009    -0.481    0.631       -0.859        0.521 
+                          BusinessTravelTravel_Rarely      274.115       400.945        0.027     0.684    0.494     -512.901     1061.130 
+                      BusinessTravelTravel_Frequently      663.288       461.583        0.056     1.437    0.151     -242.756     1569.332 
+                                            DailyRate       -0.034         0.175       -0.003    -0.193    0.847       -0.378        0.310 
+                                           Education2      213.046       407.188        0.019     0.523    0.601     -586.225     1012.317 
+                                           Education3     -454.374       387.918       -0.048    -1.171    0.242    -1215.821      307.072 
+                                           Education4      407.244       412.011        0.040     0.988    0.323     -401.494     1215.981 
+                                           Education5     -278.193       801.607       -0.010    -0.347    0.729    -1851.669     1295.284 
+                                            JobLevel2     1710.172       683.493        0.178     2.502    0.013      368.540     3051.804 
+                                            JobLevel3     4372.304       975.583        0.341     4.482    0.000     2457.328     6287.279 
+                                            JobLevel4    10004.610      1361.182        0.552     7.350    0.000     7332.740    12676.480 
+                                            JobLevel5    10451.257      1774.960        0.459     5.888    0.000     6967.180    13935.333 
+                         JobRoleLaboratory Technician      174.118       169.872        0.014     1.025    0.306     -159.324      507.560 
+                               JobRoleHuman Resources       74.997       251.126        0.003     0.299    0.765     -417.940      567.934 
+                            JobRoleResearch Scientist      194.985       167.254        0.017     1.166    0.244     -133.318      523.288 
+                               JobRoleSales Executive      822.192       778.622        0.075     1.056    0.291     -706.169     2350.554 
+                     JobRoleHealthcare Representative      218.821       806.431        0.013     0.271    0.786    -1364.126     1801.767 
+                        JobRoleManufacturing Director     1129.165       580.726        0.074     1.944    0.052      -10.746     2269.075 
+                             JobRoleResearch Director     3896.783       796.474        0.199     4.893    0.000     2333.381     5460.186 
+                                       JobRoleManager     3947.259       718.521        0.202     5.494    0.000     2536.870     5357.648 
+                                    TotalWorkingYears      101.416        29.196        0.166     3.474    0.001       44.108      158.725 
+                                         ID:DailyRate        0.000         0.000        0.027     1.276    0.202        0.000        0.001 
+                                         ID:JobLevel2       -0.775         0.318       -0.043    -2.435    0.015       -1.399       -0.150 
+                                         ID:JobLevel3       -0.467         0.407       -0.020    -1.147    0.252       -1.267        0.332 
+                                         ID:JobLevel4       -0.174         0.586       -0.005    -0.296    0.767       -1.325        0.978 
+                                         ID:JobLevel5       -0.293         0.680       -0.006    -0.431    0.667       -1.629        1.043 
+               BusinessTravelTravel_Rarely:Education2      -75.294       433.711       -0.006    -0.174    0.862     -926.627      776.039 
+           BusinessTravelTravel_Frequently:Education2     -682.001       498.347       -0.028    -1.369    0.172    -1660.208      296.207 
+               BusinessTravelTravel_Rarely:Education3      507.250       410.350        0.049     1.236    0.217     -298.228     1312.727 
+           BusinessTravelTravel_Frequently:Education3      268.878       465.528        0.015     0.578    0.564     -644.908     1182.665 
+               BusinessTravelTravel_Rarely:Education4     -313.654       435.213       -0.027    -0.721    0.471    -1167.935      540.626 
+           BusinessTravelTravel_Frequently:Education4     -462.340       499.286       -0.020    -0.926    0.355    -1442.390      517.710 
+               BusinessTravelTravel_Rarely:Education5       -2.820       849.168        0.000    -0.003    0.997    -1669.655     1664.015 
+           BusinessTravelTravel_Frequently:Education5     -661.275       931.682       -0.013    -0.710    0.478    -2490.078     1167.528 
+                BusinessTravelTravel_Rarely:JobLevel2      814.678       325.847        0.076     2.500    0.013      175.072     1454.283 
+            BusinessTravelTravel_Frequently:JobLevel2      670.612       370.711        0.036     1.809    0.071      -57.058     1398.281 
+                BusinessTravelTravel_Rarely:JobLevel3      528.060       428.411        0.035     1.233    0.218     -312.870     1368.991 
+            BusinessTravelTravel_Frequently:JobLevel3      967.560       496.072        0.036     1.950    0.051       -6.182     1941.301 
+                BusinessTravelTravel_Rarely:JobLevel4      451.852       906.659        0.021     0.498    0.618    -1327.832     2231.537 
+            BusinessTravelTravel_Frequently:JobLevel4      903.738       977.555        0.024     0.924    0.356    -1015.109     2822.585 
+                BusinessTravelTravel_Rarely:JobLevel5     2219.553      1284.285        0.092     1.728    0.084     -301.376     4740.482 
+            BusinessTravelTravel_Frequently:JobLevel5     1716.209      1425.501        0.022     1.204    0.229    -1081.912     4514.330 
+        BusinessTravelTravel_Rarely:TotalWorkingYears      -50.722        27.893       -0.089    -1.818    0.069     -105.474        4.029 
+    BusinessTravelTravel_Frequently:TotalWorkingYears      -77.352        31.161       -0.091    -2.482    0.013     -138.517      -16.187 
+               JobLevel2:JobRoleLaboratory Technician     -198.715       615.421       -0.008    -0.323    0.747    -1406.727     1009.297 
+               JobLevel3:JobRoleLaboratory Technician    -4066.656      1057.198       -0.052    -3.847    0.000    -6141.834    -1991.478 
+               JobLevel4:JobRoleLaboratory Technician           NA       945.287        0.000     0.359    0.720           NA           NA 
+               JobLevel5:JobRoleLaboratory Technician           NA      1117.711        0.000     0.321    0.748           NA           NA 
+                     JobLevel2:JobRoleHuman Resources      339.550       615.763        0.003     0.426    0.670    -1515.958     2195.057 
+                     JobLevel3:JobRoleHuman Resources      359.095      1321.708       -0.004    -0.290    0.772    -1834.864     2553.054 
+                     JobLevel4:JobRoleHuman Resources           NA       543.627        0.000     0.475    0.635           NA           NA 
+                     JobLevel5:JobRoleHuman Resources           NA       628.512        0.000    -0.321    0.748           NA           NA 
+                  JobLevel2:JobRoleResearch Scientist      262.454       594.335        0.039     1.640    0.101     -946.230     1471.137 
+                  JobLevel3:JobRoleResearch Scientist     -382.783       669.702        0.002     0.354    0.724    -2977.169     2211.604 
+                  JobLevel4:JobRoleResearch Scientist           NA       649.737        0.000    -0.596    0.551           NA           NA 
+                  JobLevel5:JobRoleResearch Scientist           NA       604.821        0.000     0.392    0.695           NA           NA 
+                     JobLevel2:JobRoleSales Executive      258.330       474.939        0.022     0.585    0.559     -808.758     1325.418 
+                     JobLevel3:JobRoleSales Executive     -201.852        20.084       -0.001    -1.391    0.165    -1435.561     1031.857 
+                     JobLevel4:JobRoleSales Executive           NA        21.342        0.001     2.920    0.004           NA           NA 
+                     JobLevel5:JobRoleSales Executive           NA        27.605        0.000    -2.265    0.024           NA           NA 
+           JobLevel2:JobRoleHealthcare Representative      974.696        36.601       -0.002    -0.857    0.392     -191.926     2141.318 
+           JobLevel3:JobRoleHealthcare Representative      236.949            NA        0.000        NA       NA    -1077.611     1551.510 
+           JobLevel4:JobRoleHealthcare Representative           NA            NA        0.005        NA       NA           NA           NA 
+           JobLevel5:JobRoleHealthcare Representative           NA            NA        0.000        NA       NA           NA           NA 
+              JobLevel2:JobRoleManufacturing Director           NA            NA        0.000        NA       NA           NA           NA 
+              JobLevel3:JobRoleManufacturing Director     -387.127            NA        0.008        NA       NA    -1662.499      888.244 
+              JobLevel4:JobRoleManufacturing Director           NA            NA       -0.009        NA       NA           NA           NA 
+              JobLevel5:JobRoleManufacturing Director           NA            NA        0.000        NA       NA           NA           NA 
+                   JobLevel2:JobRoleResearch Director           NA            NA        0.000        NA       NA           NA           NA 
+                   JobLevel3:JobRoleResearch Director      237.018            NA        0.057        NA       NA     -950.188     1424.224 
+                   JobLevel4:JobRoleResearch Director      277.747            NA        0.124        NA       NA     -654.512     1210.007 
+                   JobLevel5:JobRoleResearch Director           NA            NA        0.283        NA       NA           NA           NA 
+                             JobLevel2:JobRoleManager           NA            NA        0.000        NA       NA           NA           NA 
+                             JobLevel3:JobRoleManager           NA            NA        0.003        NA       NA           NA           NA 
+                             JobLevel4:JobRoleManager           NA            NA        0.003        NA       NA           NA           NA 
+                             JobLevel5:JobRoleManager           NA            NA        0.007        NA       NA           NA           NA 
+                          JobLevel2:TotalWorkingYears      -27.935            NA        0.990        NA       NA      -67.358       11.488 
+                          JobLevel3:TotalWorkingYears       62.326            NA        0.271        NA       NA       20.434      104.218 
+                          JobLevel4:TotalWorkingYears      -62.527            NA        1.627        NA       NA     -116.713       -8.341 
+                          JobLevel5:TotalWorkingYears      -31.349            NA        4.575        NA       NA     -103.193       40.494 
+    ---------------------------------------------------------------------------------------------------------------------------------------
 
     # With Interaction Terms:
     # Forward: JobLevel + JobRole + TotalWorkingYears + BusinessTravel + DailyRate + ID:TotalWorkingYears + Department + Education + JobLevel:TotalWorkingYears + JobRole:TotalWorkingYears + ID + BusinessTravel:TotalWorkingYears + ID:DailyRate 
@@ -7655,43 +7881,21 @@ RMSE\_Train (80/20), CVPRESS, and RMSE\_Test.**
     Multiple R-squared:  0.9016,    Adjusted R-squared:  0.8992 
     F-statistic:   370 on 21 and 848 DF,  p-value: < 2.2e-16
 
-    # AIC of candidate models
-    AIC(model8)
+    # # AIC of candidate models
+    # AIC(model8)
+    # AIC(model7a)
+    # AIC(model6)
+    # AIC(model8intFull)
+    # AIC(model8int1)
+    # AIC(model8int2)
+    # AIC(modelTrans1)
+    # AIC(modelTrans2)
 
-    [1] 14508.35
-
-    AIC(model7a)
-
-    [1] 14508.08
-
-    AIC(model6)
-
-    [1] 14507.88
-
-    AIC(model8intFull)
-
-    [1] 14507.81
-
-    AIC(model8int1)
-
-    [1] 14485.2
-
-    AIC(model8int2)
-
-    [1] 14477.93
-
-    AIC(modelTrans1)
-
-    [1] 14494.7
-
-    AIC(modelTrans2)
-
-    [1] -222.3909
 
     # Evaluation of candidate models and comparison with Version1 model
     # Load necessary packages
-    library(car)
-    library(caret)
+    # library(car)
+    # library(caret)
 
     # List of models
     old_model = lm(MonthlyIncome ~ JobLevel + TotalWorkingYears + YearsWithCurrManager + YearsWithCurrManager^2 + DistanceFromHome + JobInvolvement + EnvironmentSatisfaction, data = cs2_regres2)
@@ -7819,6 +8023,10 @@ R-squared of 0.9258, AIC of 14896, BIC of 14967, RMSE\_Train of 1242.12,
 CVPRESS of 1.390087e+09 and RMSE\_Test of 1306.78. The previous model
 was:
 Estimated Mean MonthlyIncome = *β*<sub>0</sub> + *β*<sub>1</sub>JobLevel + *β*<sub>2</sub>TotalWorkingYears + *β*<sub>3</sub>YearsWithCurrManager + *β*<sub>4</sub>(YearsWithCurrManager<sup>2</sup>) + *β*<sub>5</sub>DistanceFromHome + *β*<sub>6</sub>JobInvolvement + *β*<sub>7</sub>EnvironmentSatisfaction
+
+*In the future, it would be worth conducting extra-sum-of-squares tests
+on some variables included in these models as a further check on their
+importance.*
 
 **To measure separate RMSEs for a training and a validation set, I use
 external cross validation for a linear regression model of
@@ -8279,6 +8487,7 @@ and development of high-value talent.
      rlang          1.1.3      2024-01-10 [1] CRAN (R 4.3.0)
      rmarkdown      2.25       2023-09-18 [1] CRAN (R 4.3.0)
      rpart          4.1.21     2023-10-09 [1] CRAN (R 4.3.2)
+     rsconnect      1.2.1      2024-01-31 [1] CRAN (R 4.3.2)
      rstudioapi     0.15.0     2023-07-07 [1] CRAN (R 4.3.0)
      scales         1.3.0      2023-11-28 [1] CRAN (R 4.3.0)
      sessioninfo    1.2.2      2021-12-06 [1] CRAN (R 4.3.0)

@@ -12,7 +12,7 @@ related_publications: false
 
 <h4 class="author">Analysis by Kristin Henderson</h4>
 <h4 class="date">Spring/Summer 2024</h4>
-
+<p><br></p>
 </div>
 
 ### Introduction

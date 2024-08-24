@@ -1,3 +1,20 @@
+---
+layout: page
+title: Attrition Data Analysis
+description: Data Analysis of Employee Attrition and Income - A Case Study
+img: assets/img/top3_income_jobLevel_box.png
+importance: 2
+category: recent
+related_publications: false
+---
+
+<div id="header">
+
+<h4 class="author">Analysis by Kristin Henderson</h4>
+<h4 class="date">Spring/Summer 2024</h4>
+<p><br></p>
+</div>
+
 ### Introduction
 
 To address the challenge of retaining talented employees, the leadership

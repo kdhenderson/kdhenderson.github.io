@@ -27,7 +27,7 @@ investigate statistical relationships between these metrics. We aim to
 provide useful insight into the craft beer industry of value to
 executives of Budweiser.
 
-#### This loads many of the libraries we will need for the analysis.
+**This loads many of the libraries we will need for the analysis.**
 
     #load libraries
     library(tidyverse)
@@ -46,52 +46,56 @@ executives of Budweiser.
     library(webshot2) #saves gt tables as images
     library(covidcast) #state populations over 18 and abbv
 
-#### This imports the data sets and allows us to quickly look over them.
+**This imports the data sets and allows us to quickly look over them.**
 
     #import the data
 
-    beers = read.csv("data/Beers.csv", header = TRUE, stringsAsFactors = TRUE)
+    beers = read.csv("../assets/csv/Beers.csv", header = TRUE, stringsAsFactors = TRUE)
     str(beers)
 
-    ## 'data.frame':    2410 obs. of  7 variables:
-    ##  $ Name      : Factor w/ 2305 levels "#001 Golden Amber Lager",..: 1638 577 1704 1842 1819 268 1160 758 1093 486 ...
-    ##  $ Beer_ID   : int  1436 2265 2264 2263 2262 2261 2260 2259 2258 2131 ...
-    ##  $ ABV       : num  0.05 0.066 0.071 0.09 0.075 0.077 0.045 0.065 0.055 0.086 ...
-    ##  $ IBU       : int  NA NA NA NA NA NA NA NA NA NA ...
-    ##  $ Brewery_id: int  409 178 178 178 178 178 178 178 178 178 ...
-    ##  $ Style     : Factor w/ 100 levels "","Abbey Single Ale",..: 19 18 16 12 16 80 18 22 18 12 ...
-    ##  $ Ounces    : num  12 12 12 12 12 12 12 12 12 12 ...
+    'data.frame':   2410 obs. of  7 variables:
+     $ Name      : Factor w/ 2305 levels "#001 Golden Amber Lager",..: 1638 577 1704 1842 1819 268 1160 758 1093 486 ...
+     $ Beer_ID   : int  1436 2265 2264 2263 2262 2261 2260 2259 2258 2131 ...
+     $ ABV       : num  0.05 0.066 0.071 0.09 0.075 0.077 0.045 0.065 0.055 0.086 ...
+     $ IBU       : int  NA NA NA NA NA NA NA NA NA NA ...
+     $ Brewery_id: int  409 178 178 178 178 178 178 178 178 178 ...
+     $ Style     : Factor w/ 100 levels "","Abbey Single Ale",..: 19 18 16 12 16 80 18 22 18 12 ...
+     $ Ounces    : num  12 12 12 12 12 12 12 12 12 12 ...
 
     head(beers)
 
-    ##                  Name Beer_ID   ABV IBU Brewery_id                          Style Ounces
-    ## 1            Pub Beer    1436 0.050  NA        409            American Pale Lager     12
-    ## 2         Devil's Cup    2265 0.066  NA        178        American Pale Ale (APA)     12
-    ## 3 Rise of the Phoenix    2264 0.071  NA        178                   American IPA     12
-    ## 4            Sinister    2263 0.090  NA        178 American Double / Imperial IPA     12
-    ## 5       Sex and Candy    2262 0.075  NA        178                   American IPA     12
-    ## 6        Black Exodus    2261 0.077  NA        178                  Oatmeal Stout     12
+                     Name Beer_ID   ABV IBU Brewery_id                          Style Ounces
+    1            Pub Beer    1436 0.050  NA        409            American Pale Lager     12
+    2         Devil's Cup    2265 0.066  NA        178        American Pale Ale (APA)     12
+    3 Rise of the Phoenix    2264 0.071  NA        178                   American IPA     12
+    4            Sinister    2263 0.090  NA        178 American Double / Imperial IPA     12
+    5       Sex and Candy    2262 0.075  NA        178                   American IPA     12
+    6        Black Exodus    2261 0.077  NA        178                  Oatmeal Stout     12
 
-    breweries = read.csv("data/Breweries.csv", header = TRUE, stringsAsFactors = TRUE)
+    breweries = read.csv("../assets/csv/Breweries.csv", header = TRUE, stringsAsFactors = TRUE)
     str(breweries)
 
-    ## 'data.frame':    558 obs. of  4 variables:
-    ##  $ Brew_ID: int  1 2 3 4 5 6 7 8 9 10 ...
-    ##  $ Name   : Factor w/ 551 levels "10 Barrel Brewing Company",..: 355 12 266 319 201 136 227 477 59 491 ...
-    ##  $ City   : Factor w/ 384 levels "Abingdon","Abita Springs",..: 228 200 122 299 300 62 91 48 152 136 ...
-    ##  $ State  : Factor w/ 51 levels " AK"," AL"," AR",..: 24 18 20 5 5 41 6 23 23 23 ...
+    'data.frame':   558 obs. of  4 variables:
+     $ Brew_ID: int  1 2 3 4 5 6 7 8 9 10 ...
+     $ Name   : Factor w/ 551 levels "10 Barrel Brewing Company",..: 355 12 266 319 201 136 227 477 59 491 ...
+     $ City   : Factor w/ 384 levels "Abingdon","Abita Springs",..: 228 200 122 299 300 62 91 48 152 136 ...
+     $ State  : Factor w/ 51 levels " AK"," AL"," AR",..: 24 18 20 5 5 41 6 23 23 23 ...
 
     head(breweries)
 
-    ##   Brew_ID                      Name          City State
-    ## 1       1        NorthGate Brewing    Minneapolis    MN
-    ## 2       2 Against the Grain Brewery    Louisville    KY
-    ## 3       3  Jack's Abby Craft Lagers    Framingham    MA
-    ## 4       4 Mike Hess Brewing Company     San Diego    CA
-    ## 5       5   Fort Point Beer Company San Francisco    CA
-    ## 6       6     COAST Brewing Company    Charleston    SC
+      Brew_ID                      Name          City State
+    1       1        NorthGate Brewing    Minneapolis    MN
+    2       2 Against the Grain Brewery    Louisville    KY
+    3       3  Jack's Abby Craft Lagers    Framingham    MA
+    4       4 Mike Hess Brewing Company     San Diego    CA
+    5       5   Fort Point Beer Company San Francisco    CA
+    6       6     COAST Brewing Company    Charleston    SC
 
-#### Question 1: Here we present how many breweries are in each state with two plots. One is a dot plot that ranks states in order from fewest to the most breweries. The second is a map of the U.S. with the number of breweries labeled on each state to make it easier to see regions with more breweries.
+**Question 1: Here we present how many breweries are in each state with
+two plots. One is a dot plot that ranks states in order from fewest to
+the most breweries. The second is a map of the U.S. with the number of
+breweries labeled on each state to make it easier to see regions with
+more breweries.**
 
     #1. How many breweries are in each state?
     breweries$count = 1
@@ -101,20 +105,20 @@ executives of Budweiser.
       summarize(Total_Breweries = sum(count))
     breweries_summary
 
-    ## # A tibble: 51 × 2
-    ##    State Total_Breweries
-    ##    <fct>           <dbl>
-    ##  1 " AK"               7
-    ##  2 " AL"               3
-    ##  3 " AR"               2
-    ##  4 " AZ"              11
-    ##  5 " CA"              39
-    ##  6 " CO"              47
-    ##  7 " CT"               8
-    ##  8 " DC"               1
-    ##  9 " DE"               2
-    ## 10 " FL"              15
-    ## # ℹ 41 more rows
+    # A tibble: 51 × 2
+       State Total_Breweries
+       <fct>           <dbl>
+     1 " AK"               7
+     2 " AL"               3
+     3 " AR"               2
+     4 " AZ"              11
+     5 " CA"              39
+     6 " CO"              47
+     7 " CT"               8
+     8 " DC"               1
+     9 " DE"               2
+    10 " FL"              15
+    # ℹ 41 more rows
 
     #arrange states by number of breweries
     sort_states = breweries_summary[order(-breweries_summary$Total_Breweries), ]
@@ -127,27 +131,27 @@ executives of Budweiser.
 
     tail(bottom_states) #get the n for the lowest ranked states
 
-    ## # A tibble: 6 × 2
-    ##   State Total_Breweries
-    ##   <fct>           <dbl>
-    ## 1 " MS"               2
-    ## 2 " NV"               2
-    ## 3 " DC"               1
-    ## 4 " ND"               1
-    ## 5 " SD"               1
-    ## 6 " WV"               1
+    # A tibble: 6 × 2
+      State Total_Breweries
+      <fct>           <dbl>
+    1 " MS"               2
+    2 " NV"               2
+    3 " DC"               1
+    4 " ND"               1
+    5 " SD"               1
+    6 " WV"               1
 
     head(top_states) #and for the highest ranked states
 
-    ## # A tibble: 6 × 3
-    ##   State Total_Breweries top_ten
-    ##   <fct>           <dbl>   <dbl>
-    ## 1 " CO"              47       1
-    ## 2 " CA"              39       1
-    ## 3 " MI"              32       1
-    ## 4 " OR"              29       1
-    ## 5 " TX"              28       1
-    ## 6 " PA"              25       1
+    # A tibble: 6 × 3
+      State Total_Breweries top_ten
+      <fct>           <dbl>   <dbl>
+    1 " CO"              47       1
+    2 " CA"              39       1
+    3 " MI"              32       1
+    4 " OR"              29       1
+    5 " TX"              28       1
+    6 " PA"              25       1
 
     #dot plot chart with states ranked by # of breweries
     dt_plt1 = ggplot(top_states, aes(x = reorder(State, Total_Breweries), y = Total_Breweries)) + 
@@ -170,12 +174,6 @@ executives of Budweiser.
             legend.direction = "vertical",
             legend.title = element_text(size = 10),
             legend.text = element_text(size = 9))
-
-    ## Warning: A numeric `legend.position` argument in `theme()` was deprecated in ggplot2 3.5.0.
-    ## ℹ Please use the `legend.position.inside` argument of `theme()` instead.
-    ## This warning is displayed once every 8 hours.
-    ## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
-
     dt_plt2 = ggplot(bottom_states, aes(x = reorder(State, Total_Breweries), y = Total_Breweries)) + 
       geom_point(col="blue4", size=3) +
       geom_segment(aes(x=State, 
@@ -193,7 +191,7 @@ executives of Budweiser.
     overall_dtplt = dt_plt2 + dt_plt1
     overall_dtplt
 
-![](Analysis_BeersAndBreweries_files/figure-markdown_strict/question1-1.png)
+![](assets/img/question1-1.png)
 
     #ggsave(overall_dtplt, filename = "plots/breweriesByState_dotPlt.png")
 
@@ -210,44 +208,44 @@ executives of Budweiser.
     #check CRS
     st_crs(map_data)
 
-    ## Coordinate Reference System:
-    ##   User input: EPSG:2163 
-    ##   wkt:
-    ## PROJCRS["NAD27 / US National Atlas Equal Area",
-    ##     BASEGEOGCRS["NAD27",
-    ##         DATUM["North American Datum 1927",
-    ##             ELLIPSOID["Clarke 1866",6378206.4,294.978698213898,
-    ##                 LENGTHUNIT["metre",1]]],
-    ##         PRIMEM["Greenwich",0,
-    ##             ANGLEUNIT["degree",0.0174532925199433]],
-    ##         ID["EPSG",4267]],
-    ##     CONVERSION["US National Atlas Equal Area",
-    ##         METHOD["Lambert Azimuthal Equal Area (Spherical)",
-    ##             ID["EPSG",1027]],
-    ##         PARAMETER["Latitude of natural origin",45,
-    ##             ANGLEUNIT["degree",0.0174532925199433],
-    ##             ID["EPSG",8801]],
-    ##         PARAMETER["Longitude of natural origin",-100,
-    ##             ANGLEUNIT["degree",0.0174532925199433],
-    ##             ID["EPSG",8802]],
-    ##         PARAMETER["False easting",0,
-    ##             LENGTHUNIT["metre",1],
-    ##             ID["EPSG",8806]],
-    ##         PARAMETER["False northing",0,
-    ##             LENGTHUNIT["metre",1],
-    ##             ID["EPSG",8807]]],
-    ##     CS[Cartesian,2],
-    ##         AXIS["easting (X)",east,
-    ##             ORDER[1],
-    ##             LENGTHUNIT["metre",1]],
-    ##         AXIS["northing (Y)",north,
-    ##             ORDER[2],
-    ##             LENGTHUNIT["metre",1]],
-    ##     USAGE[
-    ##         SCOPE["Statistical analysis."],
-    ##         AREA["United States (USA) - onshore and offshore."],
-    ##         BBOX[15.56,167.65,74.71,-65.69]],
-    ##     ID["EPSG",9311]]
+    Coordinate Reference System:
+      User input: EPSG:2163 
+      wkt:
+    PROJCRS["NAD27 / US National Atlas Equal Area",
+        BASEGEOGCRS["NAD27",
+            DATUM["North American Datum 1927",
+                ELLIPSOID["Clarke 1866",6378206.4,294.978698213898,
+                    LENGTHUNIT["metre",1]]],
+            PRIMEM["Greenwich",0,
+                ANGLEUNIT["degree",0.0174532925199433]],
+            ID["EPSG",4267]],
+        CONVERSION["US National Atlas Equal Area",
+            METHOD["Lambert Azimuthal Equal Area (Spherical)",
+                ID["EPSG",1027]],
+            PARAMETER["Latitude of natural origin",45,
+                ANGLEUNIT["degree",0.0174532925199433],
+                ID["EPSG",8801]],
+            PARAMETER["Longitude of natural origin",-100,
+                ANGLEUNIT["degree",0.0174532925199433],
+                ID["EPSG",8802]],
+            PARAMETER["False easting",0,
+                LENGTHUNIT["metre",1],
+                ID["EPSG",8806]],
+            PARAMETER["False northing",0,
+                LENGTHUNIT["metre",1],
+                ID["EPSG",8807]]],
+        CS[Cartesian,2],
+            AXIS["easting (X)",east,
+                ORDER[1],
+                LENGTHUNIT["metre",1]],
+            AXIS["northing (Y)",north,
+                ORDER[2],
+                LENGTHUNIT["metre",1]],
+        USAGE[
+            SCOPE["Statistical analysis."],
+            AREA["United States (USA) - onshore and offshore."],
+            BBOX[15.56,167.65,74.71,-65.69]],
+        ID["EPSG",9311]]
 
     #plot the number of breweries on a map
     map_plt = ggplot() +
@@ -266,7 +264,7 @@ executives of Budweiser.
             axis.ticks = element_blank())
     map_plt
 
-![](Analysis_BeersAndBreweries_files/figure-markdown_strict/question1-2.png)
+![](assets/img/question1-2.png)
 
     #ggsave(map_plt, filename = "plots/map_plt.png")
 
@@ -276,7 +274,9 @@ executives of Budweiser.
 -   Washington, DC, North and South Dakota, and West Virginia each have
     only one brewery.
 
-#### Question 2: Here we merge the two data sets, breweries and beers, by the unique number associated with each brewery. The output of this prints the first and last 6 observations in the merged data frame.
+**Question 2: Here we merge the two data sets, breweries and beers, by
+the unique number associated with each brewery. The output of this
+prints the first and last 6 observations in the merged data frame.**
 
     #2. Merge beer data with the breweries data. Print the first 6 observations and the last six observations to check the merged file.  (RMD only, this does not need to be included in the presentation or the deck.)
 
@@ -286,32 +286,35 @@ executives of Budweiser.
 
     head(bbDF)
 
-    ##   Brew_ID            Brewery        City State count          Beer Beer_ID   ABV IBU                               Style Ounces
-    ## 1       1 NorthGate Brewing  Minneapolis    MN     1  Get Together    2692 0.045  50                        American IPA     16
-    ## 2       1 NorthGate Brewing  Minneapolis    MN     1 Maggie's Leap    2691 0.049  26                  Milk / Sweet Stout     16
-    ## 3       1 NorthGate Brewing  Minneapolis    MN     1    Wall's End    2690 0.048  19                   English Brown Ale     16
-    ## 4       1 NorthGate Brewing  Minneapolis    MN     1       Pumpion    2689 0.060  38                         Pumpkin Ale     16
-    ## 5       1 NorthGate Brewing  Minneapolis    MN     1    Stronghold    2688 0.060  25                     American Porter     16
-    ## 6       1 NorthGate Brewing  Minneapolis    MN     1   Parapet ESB    2687 0.056  47 Extra Special / Strong Bitter (ESB)     16
+      Brew_ID            Brewery        City State count          Beer Beer_ID   ABV IBU                               Style Ounces
+    1       1 NorthGate Brewing  Minneapolis    MN     1  Get Together    2692 0.045  50                        American IPA     16
+    2       1 NorthGate Brewing  Minneapolis    MN     1 Maggie's Leap    2691 0.049  26                  Milk / Sweet Stout     16
+    3       1 NorthGate Brewing  Minneapolis    MN     1    Wall's End    2690 0.048  19                   English Brown Ale     16
+    4       1 NorthGate Brewing  Minneapolis    MN     1       Pumpion    2689 0.060  38                         Pumpkin Ale     16
+    5       1 NorthGate Brewing  Minneapolis    MN     1    Stronghold    2688 0.060  25                     American Porter     16
+    6       1 NorthGate Brewing  Minneapolis    MN     1   Parapet ESB    2687 0.056  47 Extra Special / Strong Bitter (ESB)     16
 
     tail(bbDF)
 
-    ##      Brew_ID                       Brewery          City State count                      Beer Beer_ID   ABV IBU
-    ## 2405     556         Ukiah Brewing Company         Ukiah    CA     1             Pilsner Ukiah      98 0.055  NA
-    ## 2406     557       Butternuts Beer and Ale Garrattsville    NY     1  Heinnieweisse Weissebier      52 0.049  NA
-    ## 2407     557       Butternuts Beer and Ale Garrattsville    NY     1           Snapperhead IPA      51 0.068  NA
-    ## 2408     557       Butternuts Beer and Ale Garrattsville    NY     1         Moo Thunder Stout      50 0.049  NA
-    ## 2409     557       Butternuts Beer and Ale Garrattsville    NY     1         Porkslap Pale Ale      49 0.043  NA
-    ## 2410     558 Sleeping Lady Brewing Company     Anchorage    AK     1 Urban Wilderness Pale Ale      30 0.049  NA
-    ##                        Style Ounces
-    ## 2405         German Pilsener     12
-    ## 2406              Hefeweizen     12
-    ## 2407            American IPA     12
-    ## 2408      Milk / Sweet Stout     12
-    ## 2409 American Pale Ale (APA)     12
-    ## 2410        English Pale Ale     12
+         Brew_ID                       Brewery          City State count                      Beer Beer_ID   ABV IBU                   Style
+    2405     556         Ukiah Brewing Company         Ukiah    CA     1             Pilsner Ukiah      98 0.055  NA         German Pilsener
+    2406     557       Butternuts Beer and Ale Garrattsville    NY     1  Heinnieweisse Weissebier      52 0.049  NA              Hefeweizen
+    2407     557       Butternuts Beer and Ale Garrattsville    NY     1           Snapperhead IPA      51 0.068  NA            American IPA
+    2408     557       Butternuts Beer and Ale Garrattsville    NY     1         Moo Thunder Stout      50 0.049  NA      Milk / Sweet Stout
+    2409     557       Butternuts Beer and Ale Garrattsville    NY     1         Porkslap Pale Ale      49 0.043  NA American Pale Ale (APA)
+    2410     558 Sleeping Lady Brewing Company     Anchorage    AK     1 Urban Wilderness Pale Ale      30 0.049  NA        English Pale Ale
+         Ounces
+    2405     12
+    2406     12
+    2407     12
+    2408     12
+    2409     12
+    2410     12
 
-#### Question 3: Here we find the missing values in the dataset, investigate the reason they may be missing, and categorize them into missing completely at random, missing at random or not missing at random.
+**Question 3: Here we find the missing values in the dataset,
+investigate the reason they may be missing, and categorize them into
+missing completely at random, missing at random or not missing at
+random.**
 
     #3. Address the missing values in each column.
 
@@ -336,23 +339,23 @@ executives of Budweiser.
     #this makes it into a table
     miss_data %>% gt()
 
-<div id="ettxxahdoj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ettxxahdoj table {
+<div id="vdzejcwevz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vdzejcwevz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ettxxahdoj thead, #ettxxahdoj tbody, #ettxxahdoj tfoot, #ettxxahdoj tr, #ettxxahdoj td, #ettxxahdoj th {
+#vdzejcwevz thead, #vdzejcwevz tbody, #vdzejcwevz tfoot, #vdzejcwevz tr, #vdzejcwevz td, #vdzejcwevz th {
   border-style: none;
 }
 
-#ettxxahdoj p {
+#vdzejcwevz p {
   margin: 0;
   padding: 0;
 }
 
-#ettxxahdoj .gt_table {
+#vdzejcwevz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -378,12 +381,12 @@ executives of Budweiser.
   border-left-color: #D3D3D3;
 }
 
-#ettxxahdoj .gt_caption {
+#vdzejcwevz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ettxxahdoj .gt_title {
+#vdzejcwevz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -395,7 +398,7 @@ executives of Budweiser.
   border-bottom-width: 0;
 }
 
-#ettxxahdoj .gt_subtitle {
+#vdzejcwevz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -407,7 +410,7 @@ executives of Budweiser.
   border-top-width: 0;
 }
 
-#ettxxahdoj .gt_heading {
+#vdzejcwevz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -419,13 +422,13 @@ executives of Budweiser.
   border-right-color: #D3D3D3;
 }
 
-#ettxxahdoj .gt_bottom_border {
+#vdzejcwevz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ettxxahdoj .gt_col_headings {
+#vdzejcwevz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -440,7 +443,7 @@ executives of Budweiser.
   border-right-color: #D3D3D3;
 }
 
-#ettxxahdoj .gt_col_heading {
+#vdzejcwevz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -460,7 +463,7 @@ executives of Budweiser.
   overflow-x: hidden;
 }
 
-#ettxxahdoj .gt_column_spanner_outer {
+#vdzejcwevz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -472,15 +475,15 @@ executives of Budweiser.
   padding-right: 4px;
 }
 
-#ettxxahdoj .gt_column_spanner_outer:first-child {
+#vdzejcwevz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ettxxahdoj .gt_column_spanner_outer:last-child {
+#vdzejcwevz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ettxxahdoj .gt_column_spanner {
+#vdzejcwevz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -492,11 +495,11 @@ executives of Budweiser.
   width: 100%;
 }
 
-#ettxxahdoj .gt_spanner_row {
+#vdzejcwevz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ettxxahdoj .gt_group_heading {
+#vdzejcwevz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -522,7 +525,7 @@ executives of Budweiser.
   text-align: left;
 }
 
-#ettxxahdoj .gt_empty_group_heading {
+#vdzejcwevz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -537,15 +540,15 @@ executives of Budweiser.
   vertical-align: middle;
 }
 
-#ettxxahdoj .gt_from_md > :first-child {
+#vdzejcwevz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ettxxahdoj .gt_from_md > :last-child {
+#vdzejcwevz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ettxxahdoj .gt_row {
+#vdzejcwevz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -564,7 +567,7 @@ executives of Budweiser.
   overflow-x: hidden;
 }
 
-#ettxxahdoj .gt_stub {
+#vdzejcwevz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -577,7 +580,7 @@ executives of Budweiser.
   padding-right: 5px;
 }
 
-#ettxxahdoj .gt_stub_row_group {
+#vdzejcwevz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -591,15 +594,15 @@ executives of Budweiser.
   vertical-align: top;
 }
 
-#ettxxahdoj .gt_row_group_first td {
+#vdzejcwevz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ettxxahdoj .gt_row_group_first th {
+#vdzejcwevz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ettxxahdoj .gt_summary_row {
+#vdzejcwevz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -609,16 +612,16 @@ executives of Budweiser.
   padding-right: 5px;
 }
 
-#ettxxahdoj .gt_first_summary_row {
+#vdzejcwevz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ettxxahdoj .gt_first_summary_row.thick {
+#vdzejcwevz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ettxxahdoj .gt_last_summary_row {
+#vdzejcwevz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -628,7 +631,7 @@ executives of Budweiser.
   border-bottom-color: #D3D3D3;
 }
 
-#ettxxahdoj .gt_grand_summary_row {
+#vdzejcwevz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -638,7 +641,7 @@ executives of Budweiser.
   padding-right: 5px;
 }
 
-#ettxxahdoj .gt_first_grand_summary_row {
+#vdzejcwevz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -648,7 +651,7 @@ executives of Budweiser.
   border-top-color: #D3D3D3;
 }
 
-#ettxxahdoj .gt_last_grand_summary_row_top {
+#vdzejcwevz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -658,11 +661,11 @@ executives of Budweiser.
   border-bottom-color: #D3D3D3;
 }
 
-#ettxxahdoj .gt_striped {
+#vdzejcwevz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ettxxahdoj .gt_table_body {
+#vdzejcwevz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -671,7 +674,7 @@ executives of Budweiser.
   border-bottom-color: #D3D3D3;
 }
 
-#ettxxahdoj .gt_footnotes {
+#vdzejcwevz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -685,7 +688,7 @@ executives of Budweiser.
   border-right-color: #D3D3D3;
 }
 
-#ettxxahdoj .gt_footnote {
+#vdzejcwevz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -694,7 +697,7 @@ executives of Budweiser.
   padding-right: 5px;
 }
 
-#ettxxahdoj .gt_sourcenotes {
+#vdzejcwevz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -708,7 +711,7 @@ executives of Budweiser.
   border-right-color: #D3D3D3;
 }
 
-#ettxxahdoj .gt_sourcenote {
+#vdzejcwevz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -716,63 +719,63 @@ executives of Budweiser.
   padding-right: 5px;
 }
 
-#ettxxahdoj .gt_left {
+#vdzejcwevz .gt_left {
   text-align: left;
 }
 
-#ettxxahdoj .gt_center {
+#vdzejcwevz .gt_center {
   text-align: center;
 }
 
-#ettxxahdoj .gt_right {
+#vdzejcwevz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ettxxahdoj .gt_font_normal {
+#vdzejcwevz .gt_font_normal {
   font-weight: normal;
 }
 
-#ettxxahdoj .gt_font_bold {
+#vdzejcwevz .gt_font_bold {
   font-weight: bold;
 }
 
-#ettxxahdoj .gt_font_italic {
+#vdzejcwevz .gt_font_italic {
   font-style: italic;
 }
 
-#ettxxahdoj .gt_super {
+#vdzejcwevz .gt_super {
   font-size: 65%;
 }
 
-#ettxxahdoj .gt_footnote_marks {
+#vdzejcwevz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ettxxahdoj .gt_asterisk {
+#vdzejcwevz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ettxxahdoj .gt_indent_1 {
+#vdzejcwevz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ettxxahdoj .gt_indent_2 {
+#vdzejcwevz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ettxxahdoj .gt_indent_3 {
+#vdzejcwevz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ettxxahdoj .gt_indent_4 {
+#vdzejcwevz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ettxxahdoj .gt_indent_5 {
+#vdzejcwevz .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -839,26 +842,26 @@ executives of Budweiser.
     #plot the percent missing for PPT
     miss_plot = plot_missing(bbDF)
 
-![](Analysis_BeersAndBreweries_files/figure-markdown_strict/question3a-1.png)
+![](assets/img/question3a-1.png)
 
     #visualize what rows have missing values
     vis_miss(bbDF) + theme(axis.text.x = element_text(angle=80))
 
-![](Analysis_BeersAndBreweries_files/figure-markdown_strict/question3a-2.png)
+![](assets/img/question3a-2.png)
 
     #which combinations of variables occur to be missing together
     gg_miss_upset(bbDF)
 
-![](Analysis_BeersAndBreweries_files/figure-markdown_strict/question3a-3.png)
+![](assets/img/question3a-3.png)
 
     #Little's MCAR test
     #statistical test that test the null hypothesis that missing are MCAR
     mcar_test(bbDF %>% select(!count))
 
-    ## # A tibble: 1 × 4
-    ##   statistic    df       p.value missing.patterns
-    ##       <dbl> <dbl>         <dbl>            <int>
-    ## 1      105.    33 0.00000000171                5
+    # A tibble: 1 × 4
+      statistic    df       p.value missing.patterns
+          <dbl> <dbl>         <dbl>            <int>
+    1      105.    33 0.00000000171                5
 
     #what styles don't have any IBU values (all missing)
     prop_missing_style = bbDF %>%
@@ -867,23 +870,23 @@ executives of Budweiser.
     missing_styles = prop_missing_style %>% filter(prop_missing == 1)
     missing_styles %>% gt()
 
-<div id="ylsqqorptk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ylsqqorptk table {
+<div id="mqjptoerxy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mqjptoerxy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ylsqqorptk thead, #ylsqqorptk tbody, #ylsqqorptk tfoot, #ylsqqorptk tr, #ylsqqorptk td, #ylsqqorptk th {
+#mqjptoerxy thead, #mqjptoerxy tbody, #mqjptoerxy tfoot, #mqjptoerxy tr, #mqjptoerxy td, #mqjptoerxy th {
   border-style: none;
 }
 
-#ylsqqorptk p {
+#mqjptoerxy p {
   margin: 0;
   padding: 0;
 }
 
-#ylsqqorptk .gt_table {
+#mqjptoerxy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -909,12 +912,12 @@ executives of Budweiser.
   border-left-color: #D3D3D3;
 }
 
-#ylsqqorptk .gt_caption {
+#mqjptoerxy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ylsqqorptk .gt_title {
+#mqjptoerxy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -926,7 +929,7 @@ executives of Budweiser.
   border-bottom-width: 0;
 }
 
-#ylsqqorptk .gt_subtitle {
+#mqjptoerxy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -938,7 +941,7 @@ executives of Budweiser.
   border-top-width: 0;
 }
 
-#ylsqqorptk .gt_heading {
+#mqjptoerxy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -950,13 +953,13 @@ executives of Budweiser.
   border-right-color: #D3D3D3;
 }
 
-#ylsqqorptk .gt_bottom_border {
+#mqjptoerxy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ylsqqorptk .gt_col_headings {
+#mqjptoerxy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -971,7 +974,7 @@ executives of Budweiser.
   border-right-color: #D3D3D3;
 }
 
-#ylsqqorptk .gt_col_heading {
+#mqjptoerxy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -991,7 +994,7 @@ executives of Budweiser.
   overflow-x: hidden;
 }
 
-#ylsqqorptk .gt_column_spanner_outer {
+#mqjptoerxy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1003,15 +1006,15 @@ executives of Budweiser.
   padding-right: 4px;
 }
 
-#ylsqqorptk .gt_column_spanner_outer:first-child {
+#mqjptoerxy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ylsqqorptk .gt_column_spanner_outer:last-child {
+#mqjptoerxy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ylsqqorptk .gt_column_spanner {
+#mqjptoerxy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1023,11 +1026,11 @@ executives of Budweiser.
   width: 100%;
 }
 
-#ylsqqorptk .gt_spanner_row {
+#mqjptoerxy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ylsqqorptk .gt_group_heading {
+#mqjptoerxy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1053,7 +1056,7 @@ executives of Budweiser.
   text-align: left;
 }
 
-#ylsqqorptk .gt_empty_group_heading {
+#mqjptoerxy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1068,15 +1071,15 @@ executives of Budweiser.
   vertical-align: middle;
 }
 
-#ylsqqorptk .gt_from_md > :first-child {
+#mqjptoerxy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ylsqqorptk .gt_from_md > :last-child {
+#mqjptoerxy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ylsqqorptk .gt_row {
+#mqjptoerxy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1095,7 +1098,7 @@ executives of Budweiser.
   overflow-x: hidden;
 }
 
-#ylsqqorptk .gt_stub {
+#mqjptoerxy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1108,7 +1111,7 @@ executives of Budweiser.
   padding-right: 5px;
 }
 
-#ylsqqorptk .gt_stub_row_group {
+#mqjptoerxy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1122,15 +1125,15 @@ executives of Budweiser.
   vertical-align: top;
 }
 
-#ylsqqorptk .gt_row_group_first td {
+#mqjptoerxy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ylsqqorptk .gt_row_group_first th {
+#mqjptoerxy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ylsqqorptk .gt_summary_row {
+#mqjptoerxy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1140,16 +1143,16 @@ executives of Budweiser.
   padding-right: 5px;
 }
 
-#ylsqqorptk .gt_first_summary_row {
+#mqjptoerxy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ylsqqorptk .gt_first_summary_row.thick {
+#mqjptoerxy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ylsqqorptk .gt_last_summary_row {
+#mqjptoerxy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1159,7 +1162,7 @@ executives of Budweiser.
   border-bottom-color: #D3D3D3;
 }
 
-#ylsqqorptk .gt_grand_summary_row {
+#mqjptoerxy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1169,7 +1172,7 @@ executives of Budweiser.
   padding-right: 5px;
 }
 
-#ylsqqorptk .gt_first_grand_summary_row {
+#mqjptoerxy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1179,7 +1182,7 @@ executives of Budweiser.
   border-top-color: #D3D3D3;
 }
 
-#ylsqqorptk .gt_last_grand_summary_row_top {
+#mqjptoerxy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1189,11 +1192,11 @@ executives of Budweiser.
   border-bottom-color: #D3D3D3;
 }
 
-#ylsqqorptk .gt_striped {
+#mqjptoerxy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ylsqqorptk .gt_table_body {
+#mqjptoerxy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1202,7 +1205,7 @@ executives of Budweiser.
   border-bottom-color: #D3D3D3;
 }
 
-#ylsqqorptk .gt_footnotes {
+#mqjptoerxy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1216,7 +1219,7 @@ executives of Budweiser.
   border-right-color: #D3D3D3;
 }
 
-#ylsqqorptk .gt_footnote {
+#mqjptoerxy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1225,7 +1228,7 @@ executives of Budweiser.
   padding-right: 5px;
 }
 
-#ylsqqorptk .gt_sourcenotes {
+#mqjptoerxy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1239,7 +1242,7 @@ executives of Budweiser.
   border-right-color: #D3D3D3;
 }
 
-#ylsqqorptk .gt_sourcenote {
+#mqjptoerxy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1247,63 +1250,63 @@ executives of Budweiser.
   padding-right: 5px;
 }
 
-#ylsqqorptk .gt_left {
+#mqjptoerxy .gt_left {
   text-align: left;
 }
 
-#ylsqqorptk .gt_center {
+#mqjptoerxy .gt_center {
   text-align: center;
 }
 
-#ylsqqorptk .gt_right {
+#mqjptoerxy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ylsqqorptk .gt_font_normal {
+#mqjptoerxy .gt_font_normal {
   font-weight: normal;
 }
 
-#ylsqqorptk .gt_font_bold {
+#mqjptoerxy .gt_font_bold {
   font-weight: bold;
 }
 
-#ylsqqorptk .gt_font_italic {
+#mqjptoerxy .gt_font_italic {
   font-style: italic;
 }
 
-#ylsqqorptk .gt_super {
+#mqjptoerxy .gt_super {
   font-size: 65%;
 }
 
-#ylsqqorptk .gt_footnote_marks {
+#mqjptoerxy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ylsqqorptk .gt_asterisk {
+#mqjptoerxy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ylsqqorptk .gt_indent_1 {
+#mqjptoerxy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ylsqqorptk .gt_indent_2 {
+#mqjptoerxy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ylsqqorptk .gt_indent_3 {
+#mqjptoerxy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ylsqqorptk .gt_indent_4 {
+#mqjptoerxy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ylsqqorptk .gt_indent_5 {
+#mqjptoerxy .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1351,7 +1354,7 @@ executives of Budweiser.
 
     sum(missing_styles$count) #number of observations from styles with no IBU data
 
-    ## [1] 52
+    [1] 52
 
     #filter rows from bbDF where Style does not have IBU value
     filtered_bbDF = bbDF %>% 
@@ -1385,7 +1388,7 @@ executives of Budweiser.
       theme_bw()
     prop_missing_4groups
 
-![](Analysis_BeersAndBreweries_files/figure-markdown_strict/question3a-4.png)
+![](assets/img/question3a-4.png)
 
     #ggsave(prop_missing_4groups, filename = "plots/prop_missing_4groups.png")
 
@@ -1407,7 +1410,7 @@ executives of Budweiser.
       theme_bw()
     prop_missing_2groups
 
-![](Analysis_BeersAndBreweries_files/figure-markdown_strict/question3a-5.png)
+![](assets/img/question3a-5.png)
 
     #ggsave(prop_missing_2groups, filename = "plots/prop_missing_2groups.png")
 
@@ -1436,7 +1439,17 @@ reasons, we decided to the best way to deal with the missing IBU and ABV
 values would be imputing them with the median value of the categorical
 predictor Style.
 
-#### Question 3b: Given our determination that IBU values are missing at random (MAR), here we impute missing IBU values with the median IBU for each beer style, resulting in 953 imputed values. There were nine beer styles with all IBUs missing, representing 52 instances of mostly ciders or &lt; 2.2% of the data. We chose not to impute values to avoid introducing bias, restricting our findings instead to the 91 remaining styles with available data. Regarding missing ABV values, all 62 instances coincided with missing IBU values. Since this represented &lt; 2.6% of the dataset, we opted to delete these entries rather than impute values, leaving us with 2296 beers for analysis, retaining over 95% of the original dataset.
+**Question 3b: Given our determination that IBU values are missing at
+random (MAR), here we impute missing IBU values with the median IBU for
+each beer style, resulting in 953 imputed values. There were nine beer
+styles with all IBUs missing, representing 52 instances of mostly ciders
+or &lt; 2.2% of the data. We chose not to impute values to avoid
+introducing bias, restricting our findings instead to the 91 remaining
+styles with available data. Regarding missing ABV values, all 62
+instances coincided with missing IBU values. Since this represented &lt;
+2.6% of the dataset, we opted to delete these entries rather than impute
+values, leaving us with 2296 beers for analysis, retaining over 95% of
+the original dataset.**
 
     #deal with the missing values by imputation of the median by style 
     #IBU is right skewed so median maybe better than mean
@@ -1462,36 +1475,40 @@ predictor Style.
     na_idx = which(is.na(imputedDF$IBU))
     length(na_idx) #num missing before imputation
 
-    ## [1] 1005
+    [1] 1005
 
     imputedDF[na_idx,"IBU"] = imputedDF[na_idx,"medianIBU"]
     na_idx = which(is.na(imputedDF$IBU))
     length(na_idx) #num 100% IBU missing - for deletion
 
-    ## [1] 52
+    [1] 52
 
     #replot the percent missing for PPT
     imputedDF_rmMedianIBU = subset(imputedDF, select = -medianIBU)
     miss_plot2 = plot_missing(imputedDF_rmMedianIBU)
 
-![](Analysis_BeersAndBreweries_files/figure-markdown_strict/question3b-1.png)
+![](assets/img/question3b-1.png)
 
     #delete obs for styles with no IBU data, and missing ABV, leave style for scatterplot
     cleanDF = imputedDF[!is.na(imputedDF$IBU), ]
 
     length(which(is.na(imputedDF$ABV)))
 
-    ## [1] 62
+    [1] 62
 
     length(which(is.na(imputedDF$ABV) & is.na(imputedDF$IBU)))
 
-    ## [1] 0
+    [1] 0
 
     #this above confirms that if we impute ABV, it will be on 62 obs with imputed IBU
 
     cleanDF = cleanDF[!is.na(cleanDF$ABV), ]
 
-#### Question 4: This computes the median alcohol by volume (ABV) and international bitterness unit (IBU) for each state. We output the sorted state medians to view the numbers. Then we generated a bar chart with IBU on the left Y axis in blue and ABV on the right Y axis in red. Each state has the bars overlaid for each metric.
+**Question 4: This computes the median alcohol by volume (ABV) and
+international bitterness unit (IBU) for each state. We output the sorted
+state medians to view the numbers. Then we generated a bar chart with
+IBU on the left Y axis in blue and ABV on the right Y axis in red. Each
+state has the bars overlaid for each metric.**
 
     #4. Compute the median alcohol content and international bitterness unit for each state. Plot a bar chart to compare.
 
@@ -1501,51 +1518,51 @@ predictor Style.
 
     head(medians %>% arrange(desc(medianABV)))
 
-    ## # A tibble: 6 × 3
-    ##   State medianABV medianIBU
-    ##   <fct>     <dbl>     <dbl>
-    ## 1 " DC"    0.0625      47.5
-    ## 2 " KY"    0.0625      31.5
-    ## 3 " MI"    0.062       35  
-    ## 4 " NM"    0.062       51  
-    ## 5 " WV"    0.062       57.5
-    ## 6 " CO"    0.0605      40
+    # A tibble: 6 × 3
+      State medianABV medianIBU
+      <fct>     <dbl>     <dbl>
+    1 " DC"    0.0625      47.5
+    2 " KY"    0.0625      31.5
+    3 " MI"    0.062       35  
+    4 " NM"    0.062       51  
+    5 " WV"    0.062       57.5
+    6 " CO"    0.0605      40  
 
     head(medians %>% arrange(medianABV))
 
-    ## # A tibble: 6 × 3
-    ##   State medianABV medianIBU
-    ##   <fct>     <dbl>     <dbl>
-    ## 1 " UT"     0.04       34  
-    ## 2 " NJ"     0.046      34.5
-    ## 3 " KS"     0.05       20  
-    ## 4 " ND"     0.05       32  
-    ## 5 " WY"     0.05       21  
-    ## 6 " ME"     0.051      61
+    # A tibble: 6 × 3
+      State medianABV medianIBU
+      <fct>     <dbl>     <dbl>
+    1 " UT"     0.04       34  
+    2 " NJ"     0.046      34.5
+    3 " KS"     0.05       20  
+    4 " ND"     0.05       32  
+    5 " WY"     0.05       21  
+    6 " ME"     0.051      61  
 
     head(medians %>% arrange(desc(medianIBU)))
 
-    ## # A tibble: 6 × 3
-    ##   State medianABV medianIBU
-    ##   <fct>     <dbl>     <dbl>
-    ## 1 " ME"     0.051      61  
-    ## 2 " WV"     0.062      57.5
-    ## 3 " FL"     0.057      55  
-    ## 4 " GA"     0.055      55  
-    ## 5 " DE"     0.055      52  
-    ## 6 " NM"     0.062      51
+    # A tibble: 6 × 3
+      State medianABV medianIBU
+      <fct>     <dbl>     <dbl>
+    1 " ME"     0.051      61  
+    2 " WV"     0.062      57.5
+    3 " FL"     0.057      55  
+    4 " GA"     0.055      55  
+    5 " DE"     0.055      52  
+    6 " NM"     0.062      51  
 
     head(medians %>% arrange(medianIBU))
 
-    ## # A tibble: 6 × 3
-    ##   State medianABV medianIBU
-    ##   <fct>     <dbl>     <dbl>
-    ## 1 " WI"     0.052      19  
-    ## 2 " KS"     0.05       20  
-    ## 3 " AZ"     0.055      20.5
-    ## 4 " WY"     0.05       21  
-    ## 5 " HI"     0.054      22.5
-    ## 6 " MO"     0.052      24
+    # A tibble: 6 × 3
+      State medianABV medianIBU
+      <fct>     <dbl>     <dbl>
+    1 " WI"     0.052      19  
+    2 " KS"     0.05       20  
+    3 " AZ"     0.055      20.5
+    4 " WY"     0.05       21  
+    5 " HI"     0.054      22.5
+    6 " MO"     0.052      24  
 
     #plot a bar chart with 2 y-axes
     # Value used to transform the data (ABV*10 = IBU)
@@ -1583,7 +1600,7 @@ predictor Style.
       labs(caption = "with missing values removed")
     overlaidMediansOrig_plt
 
-![](Analysis_BeersAndBreweries_files/figure-markdown_strict/question4-1.png)
+![](assets/img/question4-1.png)
 
     #ggsave(overlaidMediansOrig_plt, filename = "plots/overlaidMediansOrig_plt.png")
 
@@ -1594,51 +1611,51 @@ predictor Style.
 
     head(medians %>% arrange(desc(medianABV)))
 
-    ## # A tibble: 6 × 3
-    ##   State medianABV medianIBU
-    ##   <fct>     <dbl>     <dbl>
-    ## 1 " DC"    0.0625      27  
-    ## 2 " KY"    0.0625      29  
-    ## 3 " NM"    0.062       35  
-    ## 4 " WV"    0.062       57.5
-    ## 5 " AL"    0.06        39.5
-    ## 6 " CO"    0.06        35
+    # A tibble: 6 × 3
+      State medianABV medianIBU
+      <fct>     <dbl>     <dbl>
+    1 " DC"    0.0625      27  
+    2 " KY"    0.0625      29  
+    3 " NM"    0.062       35  
+    4 " WV"    0.062       57.5
+    5 " AL"    0.06        39.5
+    6 " CO"    0.06        35  
 
     head(medians %>% arrange(medianABV))
 
-    ## # A tibble: 6 × 3
-    ##   State medianABV medianIBU
-    ##   <fct>     <dbl>     <dbl>
-    ## 1 " UT"     0.04       33.5
-    ## 2 " NJ"     0.046      34.5
-    ## 3 " KS"     0.05       22  
-    ## 4 " ND"     0.05       32  
-    ## 5 " WY"     0.05       21.5
-    ## 6 " ME"     0.051      36
+    # A tibble: 6 × 3
+      State medianABV medianIBU
+      <fct>     <dbl>     <dbl>
+    1 " UT"     0.04       33.5
+    2 " NJ"     0.046      34.5
+    3 " KS"     0.05       22  
+    4 " ND"     0.05       32  
+    5 " WY"     0.05       21.5
+    6 " ME"     0.051      36  
 
     head(medians %>% arrange(desc(medianIBU)))
 
-    ## # A tibble: 6 × 3
-    ##   State medianABV medianIBU
-    ##   <fct>     <dbl>     <dbl>
-    ## 1 " WV"     0.062      57.5
-    ## 2 " DE"     0.055      52  
-    ## 3 " MS"     0.058      45  
-    ## 4 " VT"     0.055      45  
-    ## 5 " MN"     0.056      44.5
-    ## 6 " NV"     0.06       41
+    # A tibble: 6 × 3
+      State medianABV medianIBU
+      <fct>     <dbl>     <dbl>
+    1 " WV"     0.062      57.5
+    2 " DE"     0.055      52  
+    3 " MS"     0.058      45  
+    4 " VT"     0.055      45  
+    5 " MN"     0.056      44.5
+    6 " NV"     0.06       41  
 
     head(medians %>% arrange(medianIBU))
 
-    ## # A tibble: 6 × 3
-    ##   State medianABV medianIBU
-    ##   <fct>     <dbl>     <dbl>
-    ## 1 " NH"     0.055      17.8
-    ## 2 " WI"     0.052      20  
-    ## 3 " AZ"     0.055      21  
-    ## 4 " WY"     0.05       21.5
-    ## 5 " KS"     0.05       22  
-    ## 6 " RI"     0.055      24
+    # A tibble: 6 × 3
+      State medianABV medianIBU
+      <fct>     <dbl>     <dbl>
+    1 " NH"     0.055      17.8
+    2 " WI"     0.052      20  
+    3 " AZ"     0.055      21  
+    4 " WY"     0.05       21.5
+    5 " KS"     0.05       22  
+    6 " RI"     0.055      24  
 
     #plot a bar chart with 2 y-axes
     # Value used to transform the data (ABV*10 = IBU)
@@ -1676,7 +1693,7 @@ predictor Style.
       labs(caption = "for 2296 beers (after data imputation)")
     overlaidMediansImp_plt
 
-![](Analysis_BeersAndBreweries_files/figure-markdown_strict/question4-2.png)
+![](assets/img/question4-2.png)
 
     #ggsave(overlaidMediansImp_plt, filename = "plots/overlaidMediansImp_plt.png")
 
@@ -1688,44 +1705,45 @@ predictor Style.
     KS the lowest.)
 -   WV is high in both categories.
 
-#### Question 5: This finds the beer with the highest ABV and the beer with the highest IBU.
+**Question 5: This finds the beer with the highest ABV and the beer with
+the highest IBU.**
 
     #5. Which state has the maximum alcoholic (ABV) beer? Which state has the most bitter (IBU) beer?
 
     #finding the overall most ABV and IBU and find the state it is in
     head(bbDF %>% arrange(desc(ABV), State, Brew_ID))
 
-    ##   Brew_ID                    Brewery       City State count                                                 Beer Beer_ID   ABV IBU
-    ## 1      52    Upslope Brewing Company    Boulder    CO     1 Lee Hill Series Vol. 5 - Belgian Style Quadrupel Ale    2565 0.128  NA
-    ## 2       2  Against the Grain Brewery Louisville    KY     1                                       London Balling    2685 0.125  80
-    ## 3      18    Tin Man Brewing Company Evansville    IN     1                                                 Csar    2621 0.120  90
-    ## 4      52    Upslope Brewing Company    Boulder    CO     1     Lee Hill Series Vol. 4 - Manhattan Style Rye Ale    2564 0.104  NA
-    ## 5      47        Sixpoint Craft Ales   Brooklyn    NY     1                                               4Beans    2574 0.100  52
-    ## 6      34 The Dudes' Brewing Company   Torrance    CA     1                                         Double Trunk    1561 0.099 101
-    ##                            Style Ounces
-    ## 1               Quadrupel (Quad)   19.2
-    ## 2             English Barleywine   16.0
-    ## 3         Russian Imperial Stout   16.0
-    ## 4                       Rye Beer   19.2
-    ## 5                  Baltic Porter   12.0
-    ## 6 American Double / Imperial IPA   16.0
+      Brew_ID                    Brewery       City State count                                                 Beer Beer_ID   ABV IBU
+    1      52    Upslope Brewing Company    Boulder    CO     1 Lee Hill Series Vol. 5 - Belgian Style Quadrupel Ale    2565 0.128  NA
+    2       2  Against the Grain Brewery Louisville    KY     1                                       London Balling    2685 0.125  80
+    3      18    Tin Man Brewing Company Evansville    IN     1                                                 Csar    2621 0.120  90
+    4      52    Upslope Brewing Company    Boulder    CO     1     Lee Hill Series Vol. 4 - Manhattan Style Rye Ale    2564 0.104  NA
+    5      47        Sixpoint Craft Ales   Brooklyn    NY     1                                               4Beans    2574 0.100  52
+    6      34 The Dudes' Brewing Company   Torrance    CA     1                                         Double Trunk    1561 0.099 101
+                               Style Ounces
+    1               Quadrupel (Quad)   19.2
+    2             English Barleywine   16.0
+    3         Russian Imperial Stout   16.0
+    4                       Rye Beer   19.2
+    5                  Baltic Porter   12.0
+    6 American Double / Imperial IPA   16.0
 
     head(bbDF %>% arrange(desc(IBU), State, Brew_ID))
 
-    ##   Brew_ID                            Brewery            City State count                            Beer Beer_ID   ABV IBU
-    ## 1     375            Astoria Brewing Company         Astoria    OR     1       Bitter Bitch Imperial IPA     980 0.082 138
-    ## 2     345         Wolf Hills Brewing Company        Abingdon    VA     1              Troopers Alley IPA    1676 0.059 135
-    ## 3     231           Cape Ann Brewing Company      Gloucester    MA     1                   Dead-Eye DIPA    2067 0.090 130
-    ## 4     100 Christian Moerlein Brewing Company      Cincinnati    OH     1 Bay of Bengal Double IPA (2014)    2440 0.089 126
-    ## 5      62              Surly Brewing Company Brooklyn Center    MN     1                    Abrasive Ale      15 0.097 120
-    ## 6     273                      The Alchemist       Waterbury    VT     1                    Heady Topper    1111 0.080 120
-    ##                            Style Ounces
-    ## 1 American Double / Imperial IPA     12
-    ## 2                   American IPA     12
-    ## 3 American Double / Imperial IPA     16
-    ## 4 American Double / Imperial IPA     12
-    ## 5 American Double / Imperial IPA     16
-    ## 6 American Double / Imperial IPA     16
+      Brew_ID                            Brewery            City State count                            Beer Beer_ID   ABV IBU
+    1     375            Astoria Brewing Company         Astoria    OR     1       Bitter Bitch Imperial IPA     980 0.082 138
+    2     345         Wolf Hills Brewing Company        Abingdon    VA     1              Troopers Alley IPA    1676 0.059 135
+    3     231           Cape Ann Brewing Company      Gloucester    MA     1                   Dead-Eye DIPA    2067 0.090 130
+    4     100 Christian Moerlein Brewing Company      Cincinnati    OH     1 Bay of Bengal Double IPA (2014)    2440 0.089 126
+    5      62              Surly Brewing Company Brooklyn Center    MN     1                    Abrasive Ale      15 0.097 120
+    6     273                      The Alchemist       Waterbury    VT     1                    Heady Topper    1111 0.080 120
+                               Style Ounces
+    1 American Double / Imperial IPA     12
+    2                   American IPA     12
+    3 American Double / Imperial IPA     16
+    4 American Double / Imperial IPA     12
+    5 American Double / Imperial IPA     16
+    6 American Double / Imperial IPA     16
 
 -   The highest percent alcohol beer overall is in Colorado. It is
     Upslope Brewing Company’s Lee Hill Series Vol. 5 - Belgian Style
@@ -1733,7 +1751,10 @@ predictor Style.
 -   The most bitter beer overall is in Oregon. It is Astoria Brewing
     Company’s Bitter Bitch Imperial IPA with a IBU of 138.
 
-#### Question 6: This finds summary statistics (values of the minimum, 25th percentile, median, 75th percentile, the maximum, plus the mean) for ABV. We also plot a histogram and boxplot to visualize the distribution.
+**Question 6: This finds summary statistics (values of the minimum, 25th
+percentile, median, 75th percentile, the maximum, plus the mean) for
+ABV. We also plot a histogram and boxplot to visualize the
+distribution.**
 
     #6. Comment on the summary statistics and distribution of the ABV variable.
 
@@ -1764,23 +1785,23 @@ predictor Style.
     summaryStats[4,1] = "IBU_NArm"
     summaryStats %>% gt()
 
-<div id="iqyeruncqa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#iqyeruncqa table {
+<div id="pbasirreqv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pbasirreqv table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#iqyeruncqa thead, #iqyeruncqa tbody, #iqyeruncqa tfoot, #iqyeruncqa tr, #iqyeruncqa td, #iqyeruncqa th {
+#pbasirreqv thead, #pbasirreqv tbody, #pbasirreqv tfoot, #pbasirreqv tr, #pbasirreqv td, #pbasirreqv th {
   border-style: none;
 }
 
-#iqyeruncqa p {
+#pbasirreqv p {
   margin: 0;
   padding: 0;
 }
 
-#iqyeruncqa .gt_table {
+#pbasirreqv .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1806,12 +1827,12 @@ predictor Style.
   border-left-color: #D3D3D3;
 }
 
-#iqyeruncqa .gt_caption {
+#pbasirreqv .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#iqyeruncqa .gt_title {
+#pbasirreqv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1823,7 +1844,7 @@ predictor Style.
   border-bottom-width: 0;
 }
 
-#iqyeruncqa .gt_subtitle {
+#pbasirreqv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1835,7 +1856,7 @@ predictor Style.
   border-top-width: 0;
 }
 
-#iqyeruncqa .gt_heading {
+#pbasirreqv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1847,13 +1868,13 @@ predictor Style.
   border-right-color: #D3D3D3;
 }
 
-#iqyeruncqa .gt_bottom_border {
+#pbasirreqv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#iqyeruncqa .gt_col_headings {
+#pbasirreqv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1868,7 +1889,7 @@ predictor Style.
   border-right-color: #D3D3D3;
 }
 
-#iqyeruncqa .gt_col_heading {
+#pbasirreqv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1888,7 +1909,7 @@ predictor Style.
   overflow-x: hidden;
 }
 
-#iqyeruncqa .gt_column_spanner_outer {
+#pbasirreqv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1900,15 +1921,15 @@ predictor Style.
   padding-right: 4px;
 }
 
-#iqyeruncqa .gt_column_spanner_outer:first-child {
+#pbasirreqv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#iqyeruncqa .gt_column_spanner_outer:last-child {
+#pbasirreqv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#iqyeruncqa .gt_column_spanner {
+#pbasirreqv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1920,11 +1941,11 @@ predictor Style.
   width: 100%;
 }
 
-#iqyeruncqa .gt_spanner_row {
+#pbasirreqv .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#iqyeruncqa .gt_group_heading {
+#pbasirreqv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1950,7 +1971,7 @@ predictor Style.
   text-align: left;
 }
 
-#iqyeruncqa .gt_empty_group_heading {
+#pbasirreqv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1965,15 +1986,15 @@ predictor Style.
   vertical-align: middle;
 }
 
-#iqyeruncqa .gt_from_md > :first-child {
+#pbasirreqv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#iqyeruncqa .gt_from_md > :last-child {
+#pbasirreqv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#iqyeruncqa .gt_row {
+#pbasirreqv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1992,7 +2013,7 @@ predictor Style.
   overflow-x: hidden;
 }
 
-#iqyeruncqa .gt_stub {
+#pbasirreqv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2005,7 +2026,7 @@ predictor Style.
   padding-right: 5px;
 }
 
-#iqyeruncqa .gt_stub_row_group {
+#pbasirreqv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2019,15 +2040,15 @@ predictor Style.
   vertical-align: top;
 }
 
-#iqyeruncqa .gt_row_group_first td {
+#pbasirreqv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#iqyeruncqa .gt_row_group_first th {
+#pbasirreqv .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#iqyeruncqa .gt_summary_row {
+#pbasirreqv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2037,16 +2058,16 @@ predictor Style.
   padding-right: 5px;
 }
 
-#iqyeruncqa .gt_first_summary_row {
+#pbasirreqv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#iqyeruncqa .gt_first_summary_row.thick {
+#pbasirreqv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#iqyeruncqa .gt_last_summary_row {
+#pbasirreqv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2056,7 +2077,7 @@ predictor Style.
   border-bottom-color: #D3D3D3;
 }
 
-#iqyeruncqa .gt_grand_summary_row {
+#pbasirreqv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2066,7 +2087,7 @@ predictor Style.
   padding-right: 5px;
 }
 
-#iqyeruncqa .gt_first_grand_summary_row {
+#pbasirreqv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2076,7 +2097,7 @@ predictor Style.
   border-top-color: #D3D3D3;
 }
 
-#iqyeruncqa .gt_last_grand_summary_row_top {
+#pbasirreqv .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2086,11 +2107,11 @@ predictor Style.
   border-bottom-color: #D3D3D3;
 }
 
-#iqyeruncqa .gt_striped {
+#pbasirreqv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#iqyeruncqa .gt_table_body {
+#pbasirreqv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2099,7 +2120,7 @@ predictor Style.
   border-bottom-color: #D3D3D3;
 }
 
-#iqyeruncqa .gt_footnotes {
+#pbasirreqv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2113,7 +2134,7 @@ predictor Style.
   border-right-color: #D3D3D3;
 }
 
-#iqyeruncqa .gt_footnote {
+#pbasirreqv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2122,7 +2143,7 @@ predictor Style.
   padding-right: 5px;
 }
 
-#iqyeruncqa .gt_sourcenotes {
+#pbasirreqv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2136,7 +2157,7 @@ predictor Style.
   border-right-color: #D3D3D3;
 }
 
-#iqyeruncqa .gt_sourcenote {
+#pbasirreqv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2144,63 +2165,63 @@ predictor Style.
   padding-right: 5px;
 }
 
-#iqyeruncqa .gt_left {
+#pbasirreqv .gt_left {
   text-align: left;
 }
 
-#iqyeruncqa .gt_center {
+#pbasirreqv .gt_center {
   text-align: center;
 }
 
-#iqyeruncqa .gt_right {
+#pbasirreqv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#iqyeruncqa .gt_font_normal {
+#pbasirreqv .gt_font_normal {
   font-weight: normal;
 }
 
-#iqyeruncqa .gt_font_bold {
+#pbasirreqv .gt_font_bold {
   font-weight: bold;
 }
 
-#iqyeruncqa .gt_font_italic {
+#pbasirreqv .gt_font_italic {
   font-style: italic;
 }
 
-#iqyeruncqa .gt_super {
+#pbasirreqv .gt_super {
   font-size: 65%;
 }
 
-#iqyeruncqa .gt_footnote_marks {
+#pbasirreqv .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#iqyeruncqa .gt_asterisk {
+#pbasirreqv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#iqyeruncqa .gt_indent_1 {
+#pbasirreqv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#iqyeruncqa .gt_indent_2 {
+#pbasirreqv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#iqyeruncqa .gt_indent_3 {
+#pbasirreqv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#iqyeruncqa .gt_indent_4 {
+#pbasirreqv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#iqyeruncqa .gt_indent_5 {
+#pbasirreqv .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2285,7 +2306,7 @@ predictor Style.
     ABV_dist = missing_hist / ABV_bxplt
     ABV_dist
 
-![](Analysis_BeersAndBreweries_files/figure-markdown_strict/question6-1.png)
+![](assets/img/question6-1.png)
 
     #ggsave(ABV_dist, filename = "plots/ABV_distCombo.png")
 
@@ -2296,7 +2317,11 @@ predictor Style.
     values, it is slightly more right shifted at 6.0%.
 -   Half of the beers fall in the 5.0 - 6.7 percent alcohol range.
 
-#### Question 7: Here we generate a scatterplot of ABV and IBU with a linear regression line. Because we do not know which metric might be the independent versus the dependent variable, we chose to find the Pearson’s correlation coefficient instead of running a linear regression.
+**Question 7: Here we generate a scatterplot of ABV and IBU with a
+linear regression line. Because we do not know which metric might be the
+independent versus the dependent variable, we chose to find the
+Pearson’s correlation coefficient instead of running a linear
+regression.**
 
     #7. Is there an apparent relationship between the bitterness of the beer and its alcoholic content? Draw a scatter plot. Make your best judgment of a relationship and EXPLAIN your answer.
 
@@ -2313,7 +2338,7 @@ predictor Style.
       theme_bw()
     regres_NArm_plt
 
-![](Analysis_BeersAndBreweries_files/figure-markdown_strict/question7-1.png)
+![](assets/img/question7-1.png)
 
     #ggsave(regres_NArm_plt, filename = "plots/IBU_ABV_NArmScatterPlt.png")
 
@@ -2330,15 +2355,15 @@ predictor Style.
     #output
     cat("Correlation Coefficient with missing values removed:", correlation_coefficient_NArm, "\n")
 
-    ## Correlation Coefficient with missing values removed: 0.6706215
+    Correlation Coefficient with missing values removed: 0.6706215 
 
     cat("Confidence Interval", conf_interval_NArm, "\n")
 
-    ## Confidence Interval 0.6407982 0.6984238
+    Confidence Interval 0.6407982 0.6984238 
 
     cat("Number of Complete Cases:", sum(complete.cases(bbDF)), "\n")
 
-    ## Number of Complete Cases: 1403
+    Number of Complete Cases: 1403 
 
     #then do it with the imputed values (cleanDF)
     #create a scatterplot with a linear line and the correlation coefficent embedded
@@ -2353,7 +2378,7 @@ predictor Style.
       theme_bw()
     regres_imputed_plt
 
-![](Analysis_BeersAndBreweries_files/figure-markdown_strict/question7-2.png)
+![](assets/img/question7-2.png)
 
     #ggsave(regres_imputed_plt, filename = "plots/IBU_ABV_imputedScatterPlt.png")
 
@@ -2370,15 +2395,15 @@ predictor Style.
     #output for PPT
     cat("Correlation Coefficient (with imputed values):", correlation_coefficient, "\n")
 
-    ## Correlation Coefficient (with imputed values): 0.5908138
+    Correlation Coefficient (with imputed values): 0.5908138 
 
     cat("Confidence Interval:", conf_interval, "\n")
 
-    ## Confidence Interval: 0.5635259 0.6168137
+    Confidence Interval: 0.5635259 0.6168137 
 
     cat("Number of Complete Cases:", sum(complete.cases(cleanDF)), "\n") #two are complete for ABV/IBU but missing style
 
-    ## Number of Complete Cases: 2294
+    Number of Complete Cases: 2294 
 
 After imputation of IBU by style, of the 2410 beers, 2296 had ABV and
 IBU data. In these complete cases, there is evidence of a positive
@@ -2389,7 +2414,10 @@ higher, 0.67. However, we feel the imputed data is likely a more
 accurate reflection of the data and still shows evidence of a positive
 relationship between ABV and IBU values.
 
-#### Question 8: Here we filter the dataset to examine only IPAs and Ales. Then, we use KNN classification to provide statistical evidence assessing if beers can be classified into Style, IPA or Ale, based on their ABV and IBU values.
+**Question 8: Here we filter the dataset to examine only IPAs and Ales.
+Then, we use KNN classification to provide statistical evidence
+assessing if beers can be classified into Style, IPA or Ale, based on
+their ABV and IBU values.**
 
     #8 (part 1).    Budweiser would also like to investigate the difference with respect to IBU and ABV between IPAs (India Pale Ales) and other types of Ale (any beer with “Ale” in its name other than IPA).
 
@@ -2441,7 +2469,7 @@ relationship between ABV and IBU values.
          main = paste("Mean accuracy for values of k", "\nfrom 100 iterations"),
          xlab = "k parameter", ylab = "Mean accuracy")
 
-![](Analysis_BeersAndBreweries_files/figure-markdown_strict/question8a-1.png)
+![](assets/img/question8a-1.png)
 
     #dev.off()
     #optimal k = ~16
@@ -2460,33 +2488,33 @@ relationship between ABV and IBU values.
     cmE_std = confusionMatrix(table(classifications, test$IBU_Profile))
     cmE_std
 
-    ## Confusion Matrix and Statistics
-    ## 
-    ##                
-    ## classifications Ale IPA
-    ##             Ale 237  23
-    ##             IPA  28 159
-    ##                                           
-    ##                Accuracy : 0.8859          
-    ##                  95% CI : (0.8527, 0.9139)
-    ##     No Information Rate : 0.5928          
-    ##     P-Value [Acc > NIR] : <2e-16          
-    ##                                           
-    ##                   Kappa : 0.7647          
-    ##                                           
-    ##  Mcnemar's Test P-Value : 0.5754          
-    ##                                           
-    ##             Sensitivity : 0.8943          
-    ##             Specificity : 0.8736          
-    ##          Pos Pred Value : 0.9115          
-    ##          Neg Pred Value : 0.8503          
-    ##              Prevalence : 0.5928          
-    ##          Detection Rate : 0.5302          
-    ##    Detection Prevalence : 0.5817          
-    ##       Balanced Accuracy : 0.8840          
-    ##                                           
-    ##        'Positive' Class : Ale             
-    ## 
+    Confusion Matrix and Statistics
+
+                   
+    classifications Ale IPA
+                Ale 237  23
+                IPA  28 159
+                                              
+                   Accuracy : 0.8859          
+                     95% CI : (0.8527, 0.9139)
+        No Information Rate : 0.5928          
+        P-Value [Acc > NIR] : <2e-16          
+                                              
+                      Kappa : 0.7647          
+                                              
+     Mcnemar's Test P-Value : 0.5754          
+                                              
+                Sensitivity : 0.8943          
+                Specificity : 0.8736          
+             Pos Pred Value : 0.9115          
+             Neg Pred Value : 0.8503          
+                 Prevalence : 0.5928          
+             Detection Rate : 0.5302          
+       Detection Prevalence : 0.5817          
+          Balanced Accuracy : 0.8840          
+                                              
+           'Positive' Class : Ale             
+                                              
 
     #Standardized Internal CV
     classifications = knn.cv(IPAvAle_clean[,c("Z_ABV", "Z_IBU")], IPAvAle_clean$IBU_Profile,
@@ -2494,66 +2522,66 @@ relationship between ABV and IBU values.
     cmI_std = confusionMatrix(table(classifications, IPAvAle_clean$IBU_Profile))
     cmI_std
 
-    ## Confusion Matrix and Statistics
-    ## 
-    ##                
-    ## classifications Ale IPA
-    ##             Ale 852  87
-    ##             IPA  79 473
-    ##                                           
-    ##                Accuracy : 0.8887          
-    ##                  95% CI : (0.8716, 0.9042)
-    ##     No Information Rate : 0.6244          
-    ##     P-Value [Acc > NIR] : <2e-16          
-    ##                                           
-    ##                   Kappa : 0.762           
-    ##                                           
-    ##  Mcnemar's Test P-Value : 0.5869          
-    ##                                           
-    ##             Sensitivity : 0.9151          
-    ##             Specificity : 0.8446          
-    ##          Pos Pred Value : 0.9073          
-    ##          Neg Pred Value : 0.8569          
-    ##              Prevalence : 0.6244          
-    ##          Detection Rate : 0.5714          
-    ##    Detection Prevalence : 0.6298          
-    ##       Balanced Accuracy : 0.8799          
-    ##                                           
-    ##        'Positive' Class : Ale             
-    ## 
+    Confusion Matrix and Statistics
+
+                   
+    classifications Ale IPA
+                Ale 852  87
+                IPA  79 473
+                                              
+                   Accuracy : 0.8887          
+                     95% CI : (0.8716, 0.9042)
+        No Information Rate : 0.6244          
+        P-Value [Acc > NIR] : <2e-16          
+                                              
+                      Kappa : 0.762           
+                                              
+     Mcnemar's Test P-Value : 0.5869          
+                                              
+                Sensitivity : 0.9151          
+                Specificity : 0.8446          
+             Pos Pred Value : 0.9073          
+             Neg Pred Value : 0.8569          
+                 Prevalence : 0.6244          
+             Detection Rate : 0.5714          
+       Detection Prevalence : 0.6298          
+          Balanced Accuracy : 0.8799          
+                                              
+           'Positive' Class : Ale             
+                                              
 
     #output the metrics of the kNN models
     cat("kNN with External Cross-Validation \n")
 
-    ## kNN with External Cross-Validation
+    kNN with External Cross-Validation 
 
     cat("Accuracy:", sprintf("%.1f%%", cmE_std$overall[1]*100), "\n")
 
-    ## Accuracy: 88.6%
+    Accuracy: 88.6% 
 
     cat("Sensitivity:", sprintf("%.1f%%", cmE_std$byClass[1]*100), "\n")
 
-    ## Sensitivity: 89.4%
+    Sensitivity: 89.4% 
 
     cat("Specificity:", sprintf("%.1f%%", cmE_std$byClass[2]*100), "\n\n")
 
-    ## Specificity: 87.4%
+    Specificity: 87.4% 
 
     cat("kNN with Internal Cross-Validation \n")
 
-    ## kNN with Internal Cross-Validation
+    kNN with Internal Cross-Validation 
 
     cat("Accuracy:", sprintf("%.1f%%", cmI_std$overall[1]*100), "\n")
 
-    ## Accuracy: 88.9%
+    Accuracy: 88.9% 
 
     cat("Sensitivity:", sprintf("%.1f%%", cmI_std$byClass[1]*100), "\n")
 
-    ## Sensitivity: 91.5%
+    Sensitivity: 91.5% 
 
     cat("Specificity:", sprintf("%.1f%%", cmI_std$byClass[2]*100), "\n")
 
-    ## Specificity: 84.5%
+    Specificity: 84.5% 
 
     #plot to illustrate the method
     cls_exPlt = ggplot() +
@@ -2568,7 +2596,7 @@ relationship between ABV and IBU values.
       theme_bw()
     cls_exPlt
 
-![](Analysis_BeersAndBreweries_files/figure-markdown_strict/question8a-2.png)
+![](assets/img/question8a-2.png)
 
     #ggsave(cls_exPlt, filename = "plots/classifierExamplePlt.png")
 
@@ -2586,7 +2614,8 @@ specificity, we correctly classify 89.4% of Ales and 87.4% of IPAs. In
 short, the model was very accurate and predicted both true positives and
 true negatives with a high probability.
 
-#### Question 8b. Next, we generate a Naive Bayes classifier and compare its performance with that of the k-NN model.
+**Question 8b. Next, we generate a Naive Bayes classifier and compare
+its performance with that of the k-NN model.**
 
     #part 2: compare a naive bayes classifier
 
@@ -2653,23 +2682,23 @@ true negatives with a high probability.
     #output the metrics of the naive bayes model
     cat("Naive Bayes \n")
 
-    ## Naive Bayes
+    Naive Bayes 
 
     cat("Accuracy:", NB_stats[1,2], "\n")
 
-    ## Accuracy: 87.4%
+    Accuracy: 87.4% 
 
     cat("Accuracy P-Value:", NB_stats[2,2], "\n")
 
-    ## Accuracy P-Value: 6.70e-23
+    Accuracy P-Value: 6.70e-23 
 
     cat("Sensitivity:", NB_stats[3,2], "\n")
 
-    ## Sensitivity: 89.3%
+    Sensitivity: 89.3% 
 
     cat("Specificity:", NB_stats[4,2], "\n")
 
-    ## Specificity: 84.2%
+    Specificity: 84.2% 
 
     KNN_ECV_stats = data.frame(
       Metric = c("Accuracy", "Sensitivity", "Specificity"),
@@ -3164,7 +3193,12 @@ performed slightly worse than either of the k-NN models. It only
 achieved an accuracy of 87.4%, sensitivity of 89.3% and specificity of
 84.2%.
 
-#### Question 9: Here we look at clusters of states based on their breweries per capita where the market might have room for expansion. Then we find the top 10 styles of craft beers in the U.S. overall. We examined if those states were missing popular beer styles and what most produced 2 styles each one of those states might want to introduce. We did utilize generative AI for help with the coding on this one.
+**Question 9: Here we look at clusters of states based on their
+breweries per capita where the market might have room for expansion.
+Then we find the top 10 styles of craft beers in the U.S. overall. We
+examined if those states were missing popular beer styles and what most
+produced 2 styles each one of those states might want to introduce. We
+did utilize generative AI for help with the coding on this one.**
 
     #Find one other useful inference from the data and back it up with statistical evidence.
 
@@ -3172,41 +3206,41 @@ achieved an accuracy of 87.4%, sensitivity of 89.3% and specificity of
     #Source: https://www2.census.gov/programs-surveys/popest/datasets/2010-2019/counties/totals/co-est2019-alldata.pdf, library(covidcast)
     str(state_census)
 
-    ## 'data.frame':    57 obs. of  9 variables:
-    ##  $ SUMLEV           : num  10 40 40 40 40 40 40 40 40 40 ...
-    ##  $ REGION           : chr  "0" "3" "4" "4" ...
-    ##  $ DIVISION         : chr  "0" "6" "9" "8" ...
-    ##  $ STATE            : num  0 1 2 4 5 6 8 9 10 11 ...
-    ##  $ NAME             : chr  "United States" "Alabama" "Alaska" "Arizona" ...
-    ##  $ POPESTIMATE2019  : num  3.28e+08 4.90e+06 7.32e+05 7.28e+06 3.02e+06 ...
-    ##  $ POPEST18PLUS2019 : int  255200373 3814879 551562 5638481 2317649 30617582 4499217 2837847 770192 577581 ...
-    ##  $ PCNT_POPEST18PLUS: num  77.7 77.8 75.4 77.5 76.8 77.5 78.1 79.6 79.1 81.8 ...
-    ##  $ ABBR             : chr  "US" "AL" "AK" "AZ" ...
+    'data.frame':   57 obs. of  9 variables:
+     $ SUMLEV           : num  10 40 40 40 40 40 40 40 40 40 ...
+     $ REGION           : chr  "0" "3" "4" "4" ...
+     $ DIVISION         : chr  "0" "6" "9" "8" ...
+     $ STATE            : num  0 1 2 4 5 6 8 9 10 11 ...
+     $ NAME             : chr  "United States" "Alabama" "Alaska" "Arizona" ...
+     $ POPESTIMATE2019  : num  3.28e+08 4.90e+06 7.32e+05 7.28e+06 3.02e+06 ...
+     $ POPEST18PLUS2019 : int  255200373 3814879 551562 5638481 2317649 30617582 4499217 2837847 770192 577581 ...
+     $ PCNT_POPEST18PLUS: num  77.7 77.8 75.4 77.5 76.8 77.5 78.1 79.6 79.1 81.8 ...
+     $ ABBR             : chr  "US" "AL" "AK" "AZ" ...
 
     populations = state_census %>% select(ABBR, POPEST18PLUS2019)
     str(populations)
 
-    ## 'data.frame':    57 obs. of  2 variables:
-    ##  $ ABBR            : chr  "US" "AL" "AK" "AZ" ...
-    ##  $ POPEST18PLUS2019: int  255200373 3814879 551562 5638481 2317649 30617582 4499217 2837847 770192 577581 ...
+    'data.frame':   57 obs. of  2 variables:
+     $ ABBR            : chr  "US" "AL" "AK" "AZ" ...
+     $ POPEST18PLUS2019: int  255200373 3814879 551562 5638481 2317649 30617582 4499217 2837847 770192 577581 ...
 
     head(populations)
 
-    ##   ABBR POPEST18PLUS2019
-    ## 1   US        255200373
-    ## 2   AL          3814879
-    ## 3   AK           551562
-    ## 4   AZ          5638481
-    ## 5   AR          2317649
-    ## 6   CA         30617582
+      ABBR POPEST18PLUS2019
+    1   US        255200373
+    2   AL          3814879
+    3   AK           551562
+    4   AZ          5638481
+    5   AR          2317649
+    6   CA         30617582
 
     colnames(populations) = c("State", "Population") #rename columns
 
     str(breweries_summary) #from question 1
 
-    ## tibble [51 × 2] (S3: tbl_df/tbl/data.frame)
-    ##  $ Total_Breweries: num [1:51] 7 3 2 11 39 47 8 1 2 15 ...
-    ##  $ state_abbv     : chr [1:51] "AK" "AL" "AR" "AZ" ...
+    tibble [51 × 2] (S3: tbl_df/tbl/data.frame)
+     $ Total_Breweries: num [1:51] 7 3 2 11 39 47 8 1 2 15 ...
+     $ state_abbv     : chr [1:51] "AK" "AL" "AR" "AZ" ...
 
     colnames(breweries_summary) = c("Total_Breweries", "State") #rename State
 
@@ -3220,8 +3254,8 @@ achieved an accuracy of 87.4%, sensitivity of 89.3% and specificity of
     #five number summary
     summary(breweries_byCap$BreweriesPerCap)
 
-    ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##  0.4321  1.2852  1.9969  3.3739  3.7994 19.6085
+       Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+     0.4321  1.2852  1.9969  3.3739  3.7994 19.6085 
 
     breweries_byCap %>%
       ggplot(aes(x = reorder(State, -BreweriesPerCap), y = BreweriesPerCap)) +
@@ -3232,7 +3266,7 @@ achieved an accuracy of 87.4%, sensitivity of 89.3% and specificity of
       theme_bw() +
       theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
-![](Analysis_BeersAndBreweries_files/figure-markdown_strict/question9-1.png)
+![](assets/img/question9-1.png)
 
     #create quartile groups
     breweries_byCap$percentile = cut(breweries_byCap$BreweriesPerCap,
@@ -3250,7 +3284,7 @@ achieved an accuracy of 87.4%, sensitivity of 89.3% and specificity of
       theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
       facet_wrap(~ percentile, scales = "free")
 
-![](Analysis_BeersAndBreweries_files/figure-markdown_strict/question9-2.png)
+![](assets/img/question9-2.png)
 
     breweries_byCap %>% filter(BreweriesPerCap >= 1.0 & BreweriesPerCap <= 5.0) %>% 
       ggplot(aes(x = reorder(State, -BreweriesPerCap), y = BreweriesPerCap)) +
@@ -3261,7 +3295,7 @@ achieved an accuracy of 87.4%, sensitivity of 89.3% and specificity of
       theme_bw() +
       theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
-![](Analysis_BeersAndBreweries_files/figure-markdown_strict/question9-3.png)
+![](assets/img/question9-3.png)
 
     #There appears to be a group of states above 5 breweries per million, a grouping from ~3-5
     #a group from ~2-3, and then lower groups
@@ -4325,7 +4359,7 @@ achieved an accuracy of 87.4%, sensitivity of 89.3% and specificity of
       #coord_cartesian(ylim = c(0, 7))
     breweriesPerCap_plt
 
-![](Analysis_BeersAndBreweries_files/figure-markdown_strict/question9-4.png)
+![](assets/img/question9-4.png)
 
     #ggsave(breweriesPerCap_plt, filename = "plots/breweriesPerCap_plt.png", width = 11, height = 6.75, units = "in")
 
@@ -4365,3 +4399,157 @@ beer markets, there is an opportunity to introduce popular beer styles
 that we believe could increase Budweiser’s profits. We hope Budweiser
 can use this information to grow its market share and combat the
 increased competition from the craft beer market.
+
+### Appendix
+
+**R and package versions used**
+
+    devtools::session_info()
+
+    ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     setting  value
+     version  R version 4.3.2 (2023-10-31)
+     os       macOS Monterey 12.7.5
+     system   x86_64, darwin20
+     ui       RStudio
+     language (EN)
+     collate  en_US.UTF-8
+     ctype    en_US.UTF-8
+     tz       America/New_York
+     date     2024-08-29
+     rstudio  2023.12.1+402 Ocean Storm (desktop)
+     pandoc   3.1.1 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/ (via rmarkdown)
+
+    ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     package      * version    date (UTC) lib source
+     cachem         1.1.0      2024-05-16 [1] CRAN (R 4.3.3)
+     caret        * 6.0-94     2023-03-21 [1] CRAN (R 4.3.0)
+     chromote       0.2.0      2024-02-12 [1] CRAN (R 4.3.2)
+     class        * 7.3-22     2023-05-03 [1] CRAN (R 4.3.2)
+     classInt       0.4-10     2023-09-05 [1] CRAN (R 4.3.0)
+     cli            3.6.2      2023-12-11 [1] CRAN (R 4.3.0)
+     codetools      0.2-19     2023-02-01 [1] CRAN (R 4.3.2)
+     colorspace     2.1-0      2023-01-23 [1] CRAN (R 4.3.0)
+     covidcast    * 0.5.2      2023-07-12 [1] CRAN (R 4.3.0)
+     crayon         1.5.2      2022-09-29 [1] CRAN (R 4.3.0)
+     data.table     1.14.10    2023-12-08 [1] CRAN (R 4.3.0)
+     DataExplorer * 0.8.3      2024-01-24 [1] CRAN (R 4.3.2)
+     DBI            1.2.2      2024-02-16 [1] CRAN (R 4.3.2)
+     devtools       2.4.5      2022-10-11 [1] CRAN (R 4.3.0)
+     digest         0.6.33     2023-07-07 [1] CRAN (R 4.3.0)
+     dplyr        * 1.1.4      2023-11-17 [1] CRAN (R 4.3.0)
+     e1071        * 1.7-14     2023-12-06 [1] CRAN (R 4.3.0)
+     ellipsis       0.3.2      2021-04-29 [1] CRAN (R 4.3.0)
+     evaluate       0.23       2023-11-01 [1] CRAN (R 4.3.0)
+     fansi          1.0.6      2023-12-08 [1] CRAN (R 4.3.0)
+     farver         2.1.1      2022-07-06 [1] CRAN (R 4.3.0)
+     fastmap        1.2.0      2024-05-15 [1] CRAN (R 4.3.3)
+     forcats      * 1.0.0      2023-01-29 [1] CRAN (R 4.3.0)
+     foreach        1.5.2      2022-02-02 [1] CRAN (R 4.3.0)
+     fs             1.6.3      2023-07-20 [1] CRAN (R 4.3.0)
+     future         1.33.1     2023-12-22 [1] CRAN (R 4.3.0)
+     future.apply   1.11.1     2023-12-21 [1] CRAN (R 4.3.0)
+     generics       0.1.3      2022-07-05 [1] CRAN (R 4.3.0)
+     ggplot2      * 3.5.1      2024-04-23 [1] CRAN (R 4.3.2)
+     globals        0.16.2     2022-11-21 [1] CRAN (R 4.3.0)
+     glue           1.7.0      2024-01-09 [1] CRAN (R 4.3.0)
+     gower          1.0.1      2022-12-22 [1] CRAN (R 4.3.0)
+     gridExtra      2.3        2017-09-09 [1] CRAN (R 4.3.0)
+     gt           * 0.10.1     2024-01-17 [1] CRAN (R 4.3.0)
+     gtable         0.3.4      2023-08-21 [1] CRAN (R 4.3.0)
+     hardhat        1.3.1      2024-02-02 [1] CRAN (R 4.3.2)
+     highr          0.10       2022-12-22 [1] CRAN (R 4.3.0)
+     hms            1.1.3      2023-03-21 [1] CRAN (R 4.3.0)
+     htmltools      0.5.7      2023-11-03 [1] CRAN (R 4.3.0)
+     htmlwidgets    1.6.4      2023-12-06 [1] CRAN (R 4.3.0)
+     httpuv         1.6.13     2023-12-06 [1] CRAN (R 4.3.0)
+     igraph         1.6.0      2023-12-11 [1] CRAN (R 4.3.0)
+     ipred          0.9-14     2023-03-09 [1] CRAN (R 4.3.0)
+     iterators      1.0.14     2022-02-05 [1] CRAN (R 4.3.0)
+     jsonlite       1.8.8      2023-12-04 [1] CRAN (R 4.3.0)
+     KernSmooth     2.23-22    2023-07-10 [1] CRAN (R 4.3.2)
+     knitr          1.45       2023-10-30 [1] CRAN (R 4.3.0)
+     labeling       0.4.3      2023-08-29 [1] CRAN (R 4.3.0)
+     later          1.3.2      2023-12-06 [1] CRAN (R 4.3.0)
+     lattice      * 0.21-9     2023-10-01 [1] CRAN (R 4.3.2)
+     lava           1.7.3      2023-11-04 [1] CRAN (R 4.3.0)
+     lifecycle      1.0.4      2023-11-07 [1] CRAN (R 4.3.0)
+     listenv        0.9.0      2022-12-16 [1] CRAN (R 4.3.0)
+     lubridate    * 1.9.3      2023-09-27 [1] CRAN (R 4.3.0)
+     magrittr       2.0.3      2022-03-30 [1] CRAN (R 4.3.0)
+     MASS           7.3-60     2023-05-04 [1] CRAN (R 4.3.2)
+     Matrix         1.6-1.1    2023-09-18 [1] CRAN (R 4.3.2)
+     memoise        2.0.1      2021-11-26 [1] CRAN (R 4.3.0)
+     mgcv           1.9-0      2023-07-11 [1] CRAN (R 4.3.2)
+     mime           0.12       2021-09-28 [1] CRAN (R 4.3.0)
+     miniUI         0.1.1.1    2018-05-18 [1] CRAN (R 4.3.0)
+     MMWRweek       0.1.3      2020-04-22 [1] CRAN (R 4.3.0)
+     ModelMetrics   1.2.2.2    2020-03-17 [1] CRAN (R 4.3.0)
+     munsell        0.5.0      2018-06-12 [1] CRAN (R 4.3.0)
+     naniar       * 1.0.0      2023-02-02 [1] CRAN (R 4.3.0)
+     networkD3      0.4        2017-03-18 [1] CRAN (R 4.3.0)
+     nlme           3.1-163    2023-08-09 [1] CRAN (R 4.3.2)
+     nnet           7.3-19     2023-05-03 [1] CRAN (R 4.3.2)
+     norm           1.0-11.1   2023-06-18 [1] CRAN (R 4.3.0)
+     parallelly     1.36.0     2023-05-26 [1] CRAN (R 4.3.0)
+     patchwork    * 1.2.0      2024-01-08 [1] CRAN (R 4.3.0)
+     pillar         1.9.0      2023-03-22 [1] CRAN (R 4.3.0)
+     pkgbuild       1.4.3      2023-12-10 [1] CRAN (R 4.3.0)
+     pkgconfig      2.0.3      2019-09-22 [1] CRAN (R 4.3.0)
+     pkgload        1.3.3      2023-09-22 [1] CRAN (R 4.3.0)
+     plyr           1.8.9      2023-10-02 [1] CRAN (R 4.3.0)
+     pROC           1.18.5     2023-11-01 [1] CRAN (R 4.3.0)
+     processx       3.8.3      2023-12-10 [1] CRAN (R 4.3.0)
+     prodlim        2023.08.28 2023-08-28 [1] CRAN (R 4.3.0)
+     profvis        0.3.8      2023-05-02 [1] CRAN (R 4.3.0)
+     promises       1.2.1      2023-08-10 [1] CRAN (R 4.3.0)
+     proxy          0.4-27     2022-06-09 [1] CRAN (R 4.3.0)
+     ps             1.7.5      2023-04-18 [1] CRAN (R 4.3.0)
+     purrr        * 1.0.2      2023-08-10 [1] CRAN (R 4.3.0)
+     R6             2.5.1      2021-08-19 [1] CRAN (R 4.3.0)
+     RColorBrewer * 1.1-3      2022-04-03 [1] CRAN (R 4.3.0)
+     Rcpp           1.0.12     2024-01-09 [1] CRAN (R 4.3.0)
+     readr        * 2.1.4      2023-02-10 [1] CRAN (R 4.3.0)
+     recipes        1.0.9      2023-12-13 [1] CRAN (R 4.3.0)
+     remotes        2.4.2.1    2023-07-18 [1] CRAN (R 4.3.0)
+     reshape2       1.4.4      2020-04-09 [1] CRAN (R 4.3.0)
+     rlang          1.1.3      2024-01-10 [1] CRAN (R 4.3.0)
+     rmarkdown      2.25       2023-09-18 [1] CRAN (R 4.3.0)
+     rpart          4.1.21     2023-10-09 [1] CRAN (R 4.3.2)
+     rstudioapi     0.15.0     2023-07-07 [1] CRAN (R 4.3.0)
+     sass           0.4.8      2023-12-06 [1] CRAN (R 4.3.0)
+     scales       * 1.3.0      2023-11-28 [1] CRAN (R 4.3.0)
+     sessioninfo    1.2.2      2021-12-06 [1] CRAN (R 4.3.0)
+     sf           * 1.0-15     2023-12-18 [1] CRAN (R 4.3.0)
+     shiny          1.9.1      2024-08-01 [1] CRAN (R 4.3.3)
+     stringi        1.8.3      2023-12-11 [1] CRAN (R 4.3.0)
+     stringr      * 1.5.1      2023-11-14 [1] CRAN (R 4.3.0)
+     survival       3.5-7      2023-08-14 [1] CRAN (R 4.3.2)
+     tibble       * 3.2.1      2023-03-20 [1] CRAN (R 4.3.0)
+     tidyr        * 1.3.0      2023-01-24 [1] CRAN (R 4.3.0)
+     tidyselect     1.2.0      2022-10-10 [1] CRAN (R 4.3.0)
+     tidyverse    * 2.0.0      2023-02-22 [1] CRAN (R 4.3.0)
+     timechange     0.2.0      2023-01-11 [1] CRAN (R 4.3.0)
+     timeDate       4032.109   2023-12-14 [1] CRAN (R 4.3.0)
+     tzdb           0.4.0      2023-05-12 [1] CRAN (R 4.3.0)
+     units          0.8-5      2023-11-28 [1] CRAN (R 4.3.0)
+     UpSetR         1.4.0      2019-05-22 [1] CRAN (R 4.3.0)
+     urbnmapr     * 0.0.0.9002 2024-02-27 [1] Github (UrbanInstitute/urbnmapr@ef9f448)
+     urlchecker     1.0.1      2021-11-30 [1] CRAN (R 4.3.0)
+     usethis        2.2.2      2023-07-06 [1] CRAN (R 4.3.0)
+     utf8           1.2.4      2023-10-22 [1] CRAN (R 4.3.0)
+     vctrs          0.6.5      2023-12-01 [1] CRAN (R 4.3.0)
+     visdat         0.6.0      2023-02-02 [1] CRAN (R 4.3.0)
+     webshot2     * 0.1.1      2023-08-11 [1] CRAN (R 4.3.0)
+     websocket      1.4.1      2021-08-18 [1] CRAN (R 4.3.0)
+     withr          2.5.2      2023-10-30 [1] CRAN (R 4.3.0)
+     xfun           0.41       2023-11-01 [1] CRAN (R 4.3.0)
+     xml2           1.3.6      2023-12-04 [1] CRAN (R 4.3.0)
+     xtable         1.8-4      2019-04-21 [1] CRAN (R 4.3.0)
+     yaml           2.3.8      2023-12-11 [1] CRAN (R 4.3.0)
+
+     [1] /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/library
+
+    ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+    # rmarkdown::render("_projects/Analysis_BeersAndBreweries.Rmd", "md_document")

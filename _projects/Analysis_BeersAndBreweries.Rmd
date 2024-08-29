@@ -916,6 +916,6 @@ The goal of this analysis was to identify salient characteristics of the craft b
 
 devtools::session_info()
 
-# rmarkdown::render("Analysis_BeersAndBreweries.Rmd", "md_document")
+rmarkdown::render("Analysis_BeersAndBreweries.Rmd", "md_document")
 
 ```

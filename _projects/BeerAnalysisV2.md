@@ -4,14 +4,13 @@ title: Craft Beer Data Analysis
 description: Data Analysis of Craft Beers and Breweries in the US - A Case Study
 img: assets/img/map_plt.png
 importance: 5
-category: recent
+category: fun
 related_publications: false
 ---
 
 <div id="header">
 
 <h4 class="author">Analysis by Willis Jones &amp; Kristin Henderson</h4>
-<h4 class="date">Spring 2024</h4>
 <p><br></p>
 <h5><a href = " https://kdhenderson.shinyapps.io/Craft_Beer_and_Breweries/">Try the Craft Beer and Breweries App</a></h5>
 <p><br></p>

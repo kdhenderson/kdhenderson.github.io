@@ -191,7 +191,7 @@ more breweries.**
     overall_dtplt = dt_plt2 + dt_plt1
     overall_dtplt
 
-![](assets/img/question1-1.png)
+![](/assets/img/question1-1.png)
 
     #ggsave(overall_dtplt, filename = "plots/breweriesByState_dotPlt.png")
 
@@ -264,7 +264,7 @@ more breweries.**
             axis.ticks = element_blank())
     map_plt
 
-![](assets/img/question1-2.png)
+![](/assets/img/question1-2.png)
 
     #ggsave(map_plt, filename = "plots/map_plt.png")
 
@@ -849,17 +849,17 @@ random.**
     #plot the percent missing for PPT
     miss_plot = plot_missing(bbDF)
 
-![](assets/img/question3a-1.png)
+![](/assets/img/question3a-1.png)
 
     #visualize what rows have missing values
     vis_miss(bbDF) + theme(axis.text.x = element_text(angle=80))
 
-![](assets/img/question3a-2.png)
+![](/assets/img/question3a-2.png)
 
     #which combinations of variables occur to be missing together
     gg_miss_upset(bbDF)
 
-![](assets/img/question3a-3.png)
+![](/assets/img/question3a-3.png)
 
     #Little's MCAR test
     #statistical test that test the null hypothesis that missing are MCAR
@@ -1395,7 +1395,7 @@ random.**
       theme_bw()
     prop_missing_4groups
 
-![](assets/img/question3a-4.png)
+![](/assets/img/question3a-4.png)
 
     #ggsave(prop_missing_4groups, filename = "plots/prop_missing_4groups.png")
 
@@ -1417,7 +1417,7 @@ random.**
       theme_bw()
     prop_missing_2groups
 
-![](assets/img/question3a-5.png)
+![](/assets/img/question3a-5.png)
 
     #ggsave(prop_missing_2groups, filename = "plots/prop_missing_2groups.png")
 
@@ -1494,7 +1494,7 @@ the original dataset.**
     imputedDF_rmMedianIBU = subset(imputedDF, select = -medianIBU)
     miss_plot2 = plot_missing(imputedDF_rmMedianIBU)
 
-![](assets/img/question3b-1.png)
+![](/assets/img/question3b-1.png)
 
     #delete obs for styles with no IBU data, and missing ABV, leave style for scatterplot
     cleanDF = imputedDF[!is.na(imputedDF$IBU), ]
@@ -1607,7 +1607,7 @@ state has the bars overlaid for each metric.**
       labs(caption = "with missing values removed")
     overlaidMediansOrig_plt
 
-![](assets/img/question4-1.png)
+![](/assets/img/question4-1.png)
 
     #ggsave(overlaidMediansOrig_plt, filename = "plots/overlaidMediansOrig_plt.png")
 
@@ -1700,7 +1700,7 @@ state has the bars overlaid for each metric.**
       labs(caption = "for 2296 beers (after data imputation)")
     overlaidMediansImp_plt
 
-![](assets/img/question4-2.png)
+![](/assets/img/question4-2.png)
 
     #ggsave(overlaidMediansImp_plt, filename = "plots/overlaidMediansImp_plt.png")
 
@@ -2313,7 +2313,7 @@ distribution.**
     ABV_dist = missing_hist / ABV_bxplt
     ABV_dist
 
-![](assets/img/question6-1.png)
+![](/assets/img/question6-1.png)
 
     #ggsave(ABV_dist, filename = "plots/ABV_distCombo.png")
 
@@ -2345,7 +2345,7 @@ regression.**
       theme_bw()
     regres_NArm_plt
 
-![](assets/img/question7-1.png)
+![](/assets/img/question7-1.png)
 
     #ggsave(regres_NArm_plt, filename = "plots/IBU_ABV_NArmScatterPlt.png")
 
@@ -2385,7 +2385,7 @@ regression.**
       theme_bw()
     regres_imputed_plt
 
-![](assets/img/question7-2.png)
+![](/assets/img/question7-2.png)
 
     #ggsave(regres_imputed_plt, filename = "plots/IBU_ABV_imputedScatterPlt.png")
 
@@ -2476,7 +2476,7 @@ their ABV and IBU values.**
          main = paste("Mean accuracy for values of k", "\nfrom 100 iterations"),
          xlab = "k parameter", ylab = "Mean accuracy")
 
-![](assets/img/question8a-1.png)
+![](/assets/img/question8a-1.png)
 
     #dev.off()
     #optimal k = ~16
@@ -2603,7 +2603,7 @@ their ABV and IBU values.**
       theme_bw()
     cls_exPlt
 
-![](assets/img/question8a-2.png)
+![](/assets/img/question8a-2.png)
 
     #ggsave(cls_exPlt, filename = "plots/classifierExamplePlt.png")
 
@@ -3273,7 +3273,7 @@ did utilize generative AI for help with the coding on this one.**
       theme_bw() +
       theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
-![](assets/img/question9-1.png)
+![](/assets/img/question9-1.png)
 
     #create quartile groups
     breweries_byCap$percentile = cut(breweries_byCap$BreweriesPerCap,
@@ -3291,7 +3291,7 @@ did utilize generative AI for help with the coding on this one.**
       theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
       facet_wrap(~ percentile, scales = "free")
 
-![](assets/img/question9-2.png)
+![](/assets/img/question9-2.png)
 
     breweries_byCap %>% filter(BreweriesPerCap >= 1.0 & BreweriesPerCap <= 5.0) %>% 
       ggplot(aes(x = reorder(State, -BreweriesPerCap), y = BreweriesPerCap)) +
@@ -3302,7 +3302,7 @@ did utilize generative AI for help with the coding on this one.**
       theme_bw() +
       theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
-![](assets/img/question9-3.png)
+![](/assets/img/question9-3.png)
 
     #There appears to be a group of states above 5 breweries per million, a grouping from ~3-5
     #a group from ~2-3, and then lower groups
@@ -4366,7 +4366,7 @@ did utilize generative AI for help with the coding on this one.**
       #coord_cartesian(ylim = c(0, 7))
     breweriesPerCap_plt
 
-![](assets/img/question9-4.png)
+![](/assets/img/question9-4.png)
 
     #ggsave(breweriesPerCap_plt, filename = "plots/breweriesPerCap_plt.png", width = 11, height = 6.75, units = "in")
 

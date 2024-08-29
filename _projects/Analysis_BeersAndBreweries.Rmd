@@ -39,11 +39,11 @@ library(covidcast) #state populations over 18 and abbv
 ```{r dataImport, comment = ""}
 #import the data
 
-beers = read.csv("assets/csv/Beers.csv", header = TRUE, stringsAsFactors = TRUE)
+beers = read.csv("../assets/csv/Beers.csv", header = TRUE, stringsAsFactors = TRUE)
 str(beers)
 head(beers)
 
-breweries = read.csv("assets/csv/Breweries.csv", header = TRUE, stringsAsFactors = TRUE)
+breweries = read.csv("../assets/csv/Breweries.csv", header = TRUE, stringsAsFactors = TRUE)
 str(breweries)
 head(breweries)
 ```

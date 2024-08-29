@@ -4,13 +4,14 @@ title: Craft Beer Data Analysis
 description: Data Analysis of Craft Beers and Breweries in the US - A Case Study
 img: assets/img/map_plt.png
 importance: 5
-category: fun
+category: recent
 related_publications: false
 ---
 
 <div id="header">
 
 <h4 class="author">Analysis by Willis Jones &amp; Kristin Henderson</h4>
+<h4 class="date">Spring 2024</h4>
 <p><br></p>
 <h5><a href = " https://kdhenderson.shinyapps.io/Craft_Beer_and_Breweries/">Try the Craft Beer and Breweries App</a></h5>
 <p><br></p>
@@ -173,12 +174,6 @@ more breweries.**
             legend.direction = "vertical",
             legend.title = element_text(size = 10),
             legend.text = element_text(size = 9))
-
-    Warning: A numeric `legend.position` argument in `theme()` was deprecated in ggplot2 3.5.0.
-    ℹ Please use the `legend.position.inside` argument of `theme()` instead.
-    This warning is displayed once every 8 hours.
-    Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
-
     dt_plt2 = ggplot(bottom_states, aes(x = reorder(State, Total_Breweries), y = Total_Breweries)) + 
       geom_point(col="blue4", size=3) +
       geom_segment(aes(x=State, 
@@ -291,30 +286,37 @@ prints the first and last 6 observations in the merged data frame.**
 
     head(bbDF)
 
-      Brew_ID            Brewery        City State count          Beer Beer_ID   ABV IBU                               Style Ounces
-    1       1 NorthGate Brewing  Minneapolis    MN     1  Get Together    2692 0.045  50                        American IPA     16
-    2       1 NorthGate Brewing  Minneapolis    MN     1 Maggie's Leap    2691 0.049  26                  Milk / Sweet Stout     16
-    3       1 NorthGate Brewing  Minneapolis    MN     1    Wall's End    2690 0.048  19                   English Brown Ale     16
-    4       1 NorthGate Brewing  Minneapolis    MN     1       Pumpion    2689 0.060  38                         Pumpkin Ale     16
-    5       1 NorthGate Brewing  Minneapolis    MN     1    Stronghold    2688 0.060  25                     American Porter     16
-    6       1 NorthGate Brewing  Minneapolis    MN     1   Parapet ESB    2687 0.056  47 Extra Special / Strong Bitter (ESB)     16
+      Brew_ID            Brewery        City State count          Beer Beer_ID   ABV IBU
+    1       1 NorthGate Brewing  Minneapolis    MN     1  Get Together    2692 0.045  50
+    2       1 NorthGate Brewing  Minneapolis    MN     1 Maggie's Leap    2691 0.049  26
+    3       1 NorthGate Brewing  Minneapolis    MN     1    Wall's End    2690 0.048  19
+    4       1 NorthGate Brewing  Minneapolis    MN     1       Pumpion    2689 0.060  38
+    5       1 NorthGate Brewing  Minneapolis    MN     1    Stronghold    2688 0.060  25
+    6       1 NorthGate Brewing  Minneapolis    MN     1   Parapet ESB    2687 0.056  47
+                                    Style Ounces
+    1                        American IPA     16
+    2                  Milk / Sweet Stout     16
+    3                   English Brown Ale     16
+    4                         Pumpkin Ale     16
+    5                     American Porter     16
+    6 Extra Special / Strong Bitter (ESB)     16
 
     tail(bbDF)
 
-         Brew_ID                       Brewery          City State count                      Beer Beer_ID   ABV IBU                   Style
-    2405     556         Ukiah Brewing Company         Ukiah    CA     1             Pilsner Ukiah      98 0.055  NA         German Pilsener
-    2406     557       Butternuts Beer and Ale Garrattsville    NY     1  Heinnieweisse Weissebier      52 0.049  NA              Hefeweizen
-    2407     557       Butternuts Beer and Ale Garrattsville    NY     1           Snapperhead IPA      51 0.068  NA            American IPA
-    2408     557       Butternuts Beer and Ale Garrattsville    NY     1         Moo Thunder Stout      50 0.049  NA      Milk / Sweet Stout
-    2409     557       Butternuts Beer and Ale Garrattsville    NY     1         Porkslap Pale Ale      49 0.043  NA American Pale Ale (APA)
-    2410     558 Sleeping Lady Brewing Company     Anchorage    AK     1 Urban Wilderness Pale Ale      30 0.049  NA        English Pale Ale
-         Ounces
-    2405     12
-    2406     12
-    2407     12
-    2408     12
-    2409     12
-    2410     12
+         Brew_ID                       Brewery          City State count                      Beer Beer_ID   ABV IBU
+    2405     556         Ukiah Brewing Company         Ukiah    CA     1             Pilsner Ukiah      98 0.055  NA
+    2406     557       Butternuts Beer and Ale Garrattsville    NY     1  Heinnieweisse Weissebier      52 0.049  NA
+    2407     557       Butternuts Beer and Ale Garrattsville    NY     1           Snapperhead IPA      51 0.068  NA
+    2408     557       Butternuts Beer and Ale Garrattsville    NY     1         Moo Thunder Stout      50 0.049  NA
+    2409     557       Butternuts Beer and Ale Garrattsville    NY     1         Porkslap Pale Ale      49 0.043  NA
+    2410     558 Sleeping Lady Brewing Company     Anchorage    AK     1 Urban Wilderness Pale Ale      30 0.049  NA
+                           Style Ounces
+    2405         German Pilsener     12
+    2406              Hefeweizen     12
+    2407            American IPA     12
+    2408      Milk / Sweet Stout     12
+    2409 American Pale Ale (APA)     12
+    2410        English Pale Ale     12
 
 **Question 3: Here we find the missing values in the dataset,
 investigate the reason they may be missing, and categorize them into
@@ -344,23 +346,23 @@ random.**
     #this makes it into a table
     miss_data %>% gt()
 
-<div id="ettxxahdoj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ettxxahdoj table {
+<div id="vdzejcwevz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vdzejcwevz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ettxxahdoj thead, #ettxxahdoj tbody, #ettxxahdoj tfoot, #ettxxahdoj tr, #ettxxahdoj td, #ettxxahdoj th {
+#vdzejcwevz thead, #vdzejcwevz tbody, #vdzejcwevz tfoot, #vdzejcwevz tr, #vdzejcwevz td, #vdzejcwevz th {
   border-style: none;
 }
 
-#ettxxahdoj p {
+#vdzejcwevz p {
   margin: 0;
   padding: 0;
 }
 
-#ettxxahdoj .gt_table {
+#vdzejcwevz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -386,12 +388,12 @@ random.**
   border-left-color: #D3D3D3;
 }
 
-#ettxxahdoj .gt_caption {
+#vdzejcwevz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ettxxahdoj .gt_title {
+#vdzejcwevz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -403,7 +405,7 @@ random.**
   border-bottom-width: 0;
 }
 
-#ettxxahdoj .gt_subtitle {
+#vdzejcwevz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -415,7 +417,7 @@ random.**
   border-top-width: 0;
 }
 
-#ettxxahdoj .gt_heading {
+#vdzejcwevz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -427,13 +429,13 @@ random.**
   border-right-color: #D3D3D3;
 }
 
-#ettxxahdoj .gt_bottom_border {
+#vdzejcwevz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ettxxahdoj .gt_col_headings {
+#vdzejcwevz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -448,7 +450,7 @@ random.**
   border-right-color: #D3D3D3;
 }
 
-#ettxxahdoj .gt_col_heading {
+#vdzejcwevz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -468,7 +470,7 @@ random.**
   overflow-x: hidden;
 }
 
-#ettxxahdoj .gt_column_spanner_outer {
+#vdzejcwevz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -480,15 +482,15 @@ random.**
   padding-right: 4px;
 }
 
-#ettxxahdoj .gt_column_spanner_outer:first-child {
+#vdzejcwevz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ettxxahdoj .gt_column_spanner_outer:last-child {
+#vdzejcwevz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ettxxahdoj .gt_column_spanner {
+#vdzejcwevz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -500,11 +502,11 @@ random.**
   width: 100%;
 }
 
-#ettxxahdoj .gt_spanner_row {
+#vdzejcwevz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ettxxahdoj .gt_group_heading {
+#vdzejcwevz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -530,7 +532,7 @@ random.**
   text-align: left;
 }
 
-#ettxxahdoj .gt_empty_group_heading {
+#vdzejcwevz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -545,15 +547,15 @@ random.**
   vertical-align: middle;
 }
 
-#ettxxahdoj .gt_from_md > :first-child {
+#vdzejcwevz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ettxxahdoj .gt_from_md > :last-child {
+#vdzejcwevz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ettxxahdoj .gt_row {
+#vdzejcwevz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -572,7 +574,7 @@ random.**
   overflow-x: hidden;
 }
 
-#ettxxahdoj .gt_stub {
+#vdzejcwevz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -585,7 +587,7 @@ random.**
   padding-right: 5px;
 }
 
-#ettxxahdoj .gt_stub_row_group {
+#vdzejcwevz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -599,15 +601,15 @@ random.**
   vertical-align: top;
 }
 
-#ettxxahdoj .gt_row_group_first td {
+#vdzejcwevz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ettxxahdoj .gt_row_group_first th {
+#vdzejcwevz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ettxxahdoj .gt_summary_row {
+#vdzejcwevz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -617,16 +619,16 @@ random.**
   padding-right: 5px;
 }
 
-#ettxxahdoj .gt_first_summary_row {
+#vdzejcwevz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ettxxahdoj .gt_first_summary_row.thick {
+#vdzejcwevz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ettxxahdoj .gt_last_summary_row {
+#vdzejcwevz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -636,7 +638,7 @@ random.**
   border-bottom-color: #D3D3D3;
 }
 
-#ettxxahdoj .gt_grand_summary_row {
+#vdzejcwevz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -646,7 +648,7 @@ random.**
   padding-right: 5px;
 }
 
-#ettxxahdoj .gt_first_grand_summary_row {
+#vdzejcwevz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -656,7 +658,7 @@ random.**
   border-top-color: #D3D3D3;
 }
 
-#ettxxahdoj .gt_last_grand_summary_row_top {
+#vdzejcwevz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -666,11 +668,11 @@ random.**
   border-bottom-color: #D3D3D3;
 }
 
-#ettxxahdoj .gt_striped {
+#vdzejcwevz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ettxxahdoj .gt_table_body {
+#vdzejcwevz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -679,7 +681,7 @@ random.**
   border-bottom-color: #D3D3D3;
 }
 
-#ettxxahdoj .gt_footnotes {
+#vdzejcwevz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -693,7 +695,7 @@ random.**
   border-right-color: #D3D3D3;
 }
 
-#ettxxahdoj .gt_footnote {
+#vdzejcwevz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -702,7 +704,7 @@ random.**
   padding-right: 5px;
 }
 
-#ettxxahdoj .gt_sourcenotes {
+#vdzejcwevz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -716,7 +718,7 @@ random.**
   border-right-color: #D3D3D3;
 }
 
-#ettxxahdoj .gt_sourcenote {
+#vdzejcwevz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -724,63 +726,63 @@ random.**
   padding-right: 5px;
 }
 
-#ettxxahdoj .gt_left {
+#vdzejcwevz .gt_left {
   text-align: left;
 }
 
-#ettxxahdoj .gt_center {
+#vdzejcwevz .gt_center {
   text-align: center;
 }
 
-#ettxxahdoj .gt_right {
+#vdzejcwevz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ettxxahdoj .gt_font_normal {
+#vdzejcwevz .gt_font_normal {
   font-weight: normal;
 }
 
-#ettxxahdoj .gt_font_bold {
+#vdzejcwevz .gt_font_bold {
   font-weight: bold;
 }
 
-#ettxxahdoj .gt_font_italic {
+#vdzejcwevz .gt_font_italic {
   font-style: italic;
 }
 
-#ettxxahdoj .gt_super {
+#vdzejcwevz .gt_super {
   font-size: 65%;
 }
 
-#ettxxahdoj .gt_footnote_marks {
+#vdzejcwevz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ettxxahdoj .gt_asterisk {
+#vdzejcwevz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ettxxahdoj .gt_indent_1 {
+#vdzejcwevz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ettxxahdoj .gt_indent_2 {
+#vdzejcwevz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ettxxahdoj .gt_indent_3 {
+#vdzejcwevz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ettxxahdoj .gt_indent_4 {
+#vdzejcwevz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ettxxahdoj .gt_indent_5 {
+#vdzejcwevz .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -875,23 +877,23 @@ random.**
     missing_styles = prop_missing_style %>% filter(prop_missing == 1)
     missing_styles %>% gt()
 
-<div id="ylsqqorptk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ylsqqorptk table {
+<div id="mqjptoerxy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mqjptoerxy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ylsqqorptk thead, #ylsqqorptk tbody, #ylsqqorptk tfoot, #ylsqqorptk tr, #ylsqqorptk td, #ylsqqorptk th {
+#mqjptoerxy thead, #mqjptoerxy tbody, #mqjptoerxy tfoot, #mqjptoerxy tr, #mqjptoerxy td, #mqjptoerxy th {
   border-style: none;
 }
 
-#ylsqqorptk p {
+#mqjptoerxy p {
   margin: 0;
   padding: 0;
 }
 
-#ylsqqorptk .gt_table {
+#mqjptoerxy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -917,12 +919,12 @@ random.**
   border-left-color: #D3D3D3;
 }
 
-#ylsqqorptk .gt_caption {
+#mqjptoerxy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ylsqqorptk .gt_title {
+#mqjptoerxy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -934,7 +936,7 @@ random.**
   border-bottom-width: 0;
 }
 
-#ylsqqorptk .gt_subtitle {
+#mqjptoerxy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -946,7 +948,7 @@ random.**
   border-top-width: 0;
 }
 
-#ylsqqorptk .gt_heading {
+#mqjptoerxy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -958,13 +960,13 @@ random.**
   border-right-color: #D3D3D3;
 }
 
-#ylsqqorptk .gt_bottom_border {
+#mqjptoerxy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ylsqqorptk .gt_col_headings {
+#mqjptoerxy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -979,7 +981,7 @@ random.**
   border-right-color: #D3D3D3;
 }
 
-#ylsqqorptk .gt_col_heading {
+#mqjptoerxy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -999,7 +1001,7 @@ random.**
   overflow-x: hidden;
 }
 
-#ylsqqorptk .gt_column_spanner_outer {
+#mqjptoerxy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1011,15 +1013,15 @@ random.**
   padding-right: 4px;
 }
 
-#ylsqqorptk .gt_column_spanner_outer:first-child {
+#mqjptoerxy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ylsqqorptk .gt_column_spanner_outer:last-child {
+#mqjptoerxy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ylsqqorptk .gt_column_spanner {
+#mqjptoerxy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1031,11 +1033,11 @@ random.**
   width: 100%;
 }
 
-#ylsqqorptk .gt_spanner_row {
+#mqjptoerxy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ylsqqorptk .gt_group_heading {
+#mqjptoerxy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1061,7 +1063,7 @@ random.**
   text-align: left;
 }
 
-#ylsqqorptk .gt_empty_group_heading {
+#mqjptoerxy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1076,15 +1078,15 @@ random.**
   vertical-align: middle;
 }
 
-#ylsqqorptk .gt_from_md > :first-child {
+#mqjptoerxy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ylsqqorptk .gt_from_md > :last-child {
+#mqjptoerxy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ylsqqorptk .gt_row {
+#mqjptoerxy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1103,7 +1105,7 @@ random.**
   overflow-x: hidden;
 }
 
-#ylsqqorptk .gt_stub {
+#mqjptoerxy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1116,7 +1118,7 @@ random.**
   padding-right: 5px;
 }
 
-#ylsqqorptk .gt_stub_row_group {
+#mqjptoerxy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1130,15 +1132,15 @@ random.**
   vertical-align: top;
 }
 
-#ylsqqorptk .gt_row_group_first td {
+#mqjptoerxy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ylsqqorptk .gt_row_group_first th {
+#mqjptoerxy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ylsqqorptk .gt_summary_row {
+#mqjptoerxy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1148,16 +1150,16 @@ random.**
   padding-right: 5px;
 }
 
-#ylsqqorptk .gt_first_summary_row {
+#mqjptoerxy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ylsqqorptk .gt_first_summary_row.thick {
+#mqjptoerxy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ylsqqorptk .gt_last_summary_row {
+#mqjptoerxy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1167,7 +1169,7 @@ random.**
   border-bottom-color: #D3D3D3;
 }
 
-#ylsqqorptk .gt_grand_summary_row {
+#mqjptoerxy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1177,7 +1179,7 @@ random.**
   padding-right: 5px;
 }
 
-#ylsqqorptk .gt_first_grand_summary_row {
+#mqjptoerxy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1187,7 +1189,7 @@ random.**
   border-top-color: #D3D3D3;
 }
 
-#ylsqqorptk .gt_last_grand_summary_row_top {
+#mqjptoerxy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1197,11 +1199,11 @@ random.**
   border-bottom-color: #D3D3D3;
 }
 
-#ylsqqorptk .gt_striped {
+#mqjptoerxy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ylsqqorptk .gt_table_body {
+#mqjptoerxy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1210,7 +1212,7 @@ random.**
   border-bottom-color: #D3D3D3;
 }
 
-#ylsqqorptk .gt_footnotes {
+#mqjptoerxy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1224,7 +1226,7 @@ random.**
   border-right-color: #D3D3D3;
 }
 
-#ylsqqorptk .gt_footnote {
+#mqjptoerxy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1233,7 +1235,7 @@ random.**
   padding-right: 5px;
 }
 
-#ylsqqorptk .gt_sourcenotes {
+#mqjptoerxy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1247,7 +1249,7 @@ random.**
   border-right-color: #D3D3D3;
 }
 
-#ylsqqorptk .gt_sourcenote {
+#mqjptoerxy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1255,63 +1257,63 @@ random.**
   padding-right: 5px;
 }
 
-#ylsqqorptk .gt_left {
+#mqjptoerxy .gt_left {
   text-align: left;
 }
 
-#ylsqqorptk .gt_center {
+#mqjptoerxy .gt_center {
   text-align: center;
 }
 
-#ylsqqorptk .gt_right {
+#mqjptoerxy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ylsqqorptk .gt_font_normal {
+#mqjptoerxy .gt_font_normal {
   font-weight: normal;
 }
 
-#ylsqqorptk .gt_font_bold {
+#mqjptoerxy .gt_font_bold {
   font-weight: bold;
 }
 
-#ylsqqorptk .gt_font_italic {
+#mqjptoerxy .gt_font_italic {
   font-style: italic;
 }
 
-#ylsqqorptk .gt_super {
+#mqjptoerxy .gt_super {
   font-size: 65%;
 }
 
-#ylsqqorptk .gt_footnote_marks {
+#mqjptoerxy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ylsqqorptk .gt_asterisk {
+#mqjptoerxy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ylsqqorptk .gt_indent_1 {
+#mqjptoerxy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ylsqqorptk .gt_indent_2 {
+#mqjptoerxy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ylsqqorptk .gt_indent_3 {
+#mqjptoerxy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ylsqqorptk .gt_indent_4 {
+#mqjptoerxy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ylsqqorptk .gt_indent_5 {
+#mqjptoerxy .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1718,37 +1720,37 @@ the highest IBU.**
     #finding the overall most ABV and IBU and find the state it is in
     head(bbDF %>% arrange(desc(ABV), State, Brew_ID))
 
-      Brew_ID                    Brewery       City State count                                                 Beer Beer_ID   ABV IBU
-    1      52    Upslope Brewing Company    Boulder    CO     1 Lee Hill Series Vol. 5 - Belgian Style Quadrupel Ale    2565 0.128  NA
-    2       2  Against the Grain Brewery Louisville    KY     1                                       London Balling    2685 0.125  80
-    3      18    Tin Man Brewing Company Evansville    IN     1                                                 Csar    2621 0.120  90
-    4      52    Upslope Brewing Company    Boulder    CO     1     Lee Hill Series Vol. 4 - Manhattan Style Rye Ale    2564 0.104  NA
-    5      47        Sixpoint Craft Ales   Brooklyn    NY     1                                               4Beans    2574 0.100  52
-    6      34 The Dudes' Brewing Company   Torrance    CA     1                                         Double Trunk    1561 0.099 101
-                               Style Ounces
-    1               Quadrupel (Quad)   19.2
-    2             English Barleywine   16.0
-    3         Russian Imperial Stout   16.0
-    4                       Rye Beer   19.2
-    5                  Baltic Porter   12.0
-    6 American Double / Imperial IPA   16.0
+      Brew_ID                    Brewery       City State count                                                 Beer
+    1      52    Upslope Brewing Company    Boulder    CO     1 Lee Hill Series Vol. 5 - Belgian Style Quadrupel Ale
+    2       2  Against the Grain Brewery Louisville    KY     1                                       London Balling
+    3      18    Tin Man Brewing Company Evansville    IN     1                                                 Csar
+    4      52    Upslope Brewing Company    Boulder    CO     1     Lee Hill Series Vol. 4 - Manhattan Style Rye Ale
+    5      47        Sixpoint Craft Ales   Brooklyn    NY     1                                               4Beans
+    6      34 The Dudes' Brewing Company   Torrance    CA     1                                         Double Trunk
+      Beer_ID   ABV IBU                          Style Ounces
+    1    2565 0.128  NA               Quadrupel (Quad)   19.2
+    2    2685 0.125  80             English Barleywine   16.0
+    3    2621 0.120  90         Russian Imperial Stout   16.0
+    4    2564 0.104  NA                       Rye Beer   19.2
+    5    2574 0.100  52                  Baltic Porter   12.0
+    6    1561 0.099 101 American Double / Imperial IPA   16.0
 
     head(bbDF %>% arrange(desc(IBU), State, Brew_ID))
 
-      Brew_ID                            Brewery            City State count                            Beer Beer_ID   ABV IBU
-    1     375            Astoria Brewing Company         Astoria    OR     1       Bitter Bitch Imperial IPA     980 0.082 138
-    2     345         Wolf Hills Brewing Company        Abingdon    VA     1              Troopers Alley IPA    1676 0.059 135
-    3     231           Cape Ann Brewing Company      Gloucester    MA     1                   Dead-Eye DIPA    2067 0.090 130
-    4     100 Christian Moerlein Brewing Company      Cincinnati    OH     1 Bay of Bengal Double IPA (2014)    2440 0.089 126
-    5      62              Surly Brewing Company Brooklyn Center    MN     1                    Abrasive Ale      15 0.097 120
-    6     273                      The Alchemist       Waterbury    VT     1                    Heady Topper    1111 0.080 120
-                               Style Ounces
-    1 American Double / Imperial IPA     12
-    2                   American IPA     12
-    3 American Double / Imperial IPA     16
-    4 American Double / Imperial IPA     12
-    5 American Double / Imperial IPA     16
-    6 American Double / Imperial IPA     16
+      Brew_ID                            Brewery            City State count                            Beer Beer_ID
+    1     375            Astoria Brewing Company         Astoria    OR     1       Bitter Bitch Imperial IPA     980
+    2     345         Wolf Hills Brewing Company        Abingdon    VA     1              Troopers Alley IPA    1676
+    3     231           Cape Ann Brewing Company      Gloucester    MA     1                   Dead-Eye DIPA    2067
+    4     100 Christian Moerlein Brewing Company      Cincinnati    OH     1 Bay of Bengal Double IPA (2014)    2440
+    5      62              Surly Brewing Company Brooklyn Center    MN     1                    Abrasive Ale      15
+    6     273                      The Alchemist       Waterbury    VT     1                    Heady Topper    1111
+        ABV IBU                          Style Ounces
+    1 0.082 138 American Double / Imperial IPA     12
+    2 0.059 135                   American IPA     12
+    3 0.090 130 American Double / Imperial IPA     16
+    4 0.089 126 American Double / Imperial IPA     12
+    5 0.097 120 American Double / Imperial IPA     16
+    6 0.080 120 American Double / Imperial IPA     16
 
 -   The highest percent alcohol beer overall is in Colorado. It is
     Upslope Brewing Company’s Lee Hill Series Vol. 5 - Belgian Style
@@ -1790,23 +1792,23 @@ distribution.**
     summaryStats[4,1] = "IBU_NArm"
     summaryStats %>% gt()
 
-<div id="iqyeruncqa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#iqyeruncqa table {
+<div id="pbasirreqv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pbasirreqv table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#iqyeruncqa thead, #iqyeruncqa tbody, #iqyeruncqa tfoot, #iqyeruncqa tr, #iqyeruncqa td, #iqyeruncqa th {
+#pbasirreqv thead, #pbasirreqv tbody, #pbasirreqv tfoot, #pbasirreqv tr, #pbasirreqv td, #pbasirreqv th {
   border-style: none;
 }
 
-#iqyeruncqa p {
+#pbasirreqv p {
   margin: 0;
   padding: 0;
 }
 
-#iqyeruncqa .gt_table {
+#pbasirreqv .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1832,12 +1834,12 @@ distribution.**
   border-left-color: #D3D3D3;
 }
 
-#iqyeruncqa .gt_caption {
+#pbasirreqv .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#iqyeruncqa .gt_title {
+#pbasirreqv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1849,7 +1851,7 @@ distribution.**
   border-bottom-width: 0;
 }
 
-#iqyeruncqa .gt_subtitle {
+#pbasirreqv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1861,7 +1863,7 @@ distribution.**
   border-top-width: 0;
 }
 
-#iqyeruncqa .gt_heading {
+#pbasirreqv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1873,13 +1875,13 @@ distribution.**
   border-right-color: #D3D3D3;
 }
 
-#iqyeruncqa .gt_bottom_border {
+#pbasirreqv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#iqyeruncqa .gt_col_headings {
+#pbasirreqv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1894,7 +1896,7 @@ distribution.**
   border-right-color: #D3D3D3;
 }
 
-#iqyeruncqa .gt_col_heading {
+#pbasirreqv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1914,7 +1916,7 @@ distribution.**
   overflow-x: hidden;
 }
 
-#iqyeruncqa .gt_column_spanner_outer {
+#pbasirreqv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1926,15 +1928,15 @@ distribution.**
   padding-right: 4px;
 }
 
-#iqyeruncqa .gt_column_spanner_outer:first-child {
+#pbasirreqv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#iqyeruncqa .gt_column_spanner_outer:last-child {
+#pbasirreqv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#iqyeruncqa .gt_column_spanner {
+#pbasirreqv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1946,11 +1948,11 @@ distribution.**
   width: 100%;
 }
 
-#iqyeruncqa .gt_spanner_row {
+#pbasirreqv .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#iqyeruncqa .gt_group_heading {
+#pbasirreqv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1976,7 +1978,7 @@ distribution.**
   text-align: left;
 }
 
-#iqyeruncqa .gt_empty_group_heading {
+#pbasirreqv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1991,15 +1993,15 @@ distribution.**
   vertical-align: middle;
 }
 
-#iqyeruncqa .gt_from_md > :first-child {
+#pbasirreqv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#iqyeruncqa .gt_from_md > :last-child {
+#pbasirreqv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#iqyeruncqa .gt_row {
+#pbasirreqv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2018,7 +2020,7 @@ distribution.**
   overflow-x: hidden;
 }
 
-#iqyeruncqa .gt_stub {
+#pbasirreqv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2031,7 +2033,7 @@ distribution.**
   padding-right: 5px;
 }
 
-#iqyeruncqa .gt_stub_row_group {
+#pbasirreqv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2045,15 +2047,15 @@ distribution.**
   vertical-align: top;
 }
 
-#iqyeruncqa .gt_row_group_first td {
+#pbasirreqv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#iqyeruncqa .gt_row_group_first th {
+#pbasirreqv .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#iqyeruncqa .gt_summary_row {
+#pbasirreqv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2063,16 +2065,16 @@ distribution.**
   padding-right: 5px;
 }
 
-#iqyeruncqa .gt_first_summary_row {
+#pbasirreqv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#iqyeruncqa .gt_first_summary_row.thick {
+#pbasirreqv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#iqyeruncqa .gt_last_summary_row {
+#pbasirreqv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2082,7 +2084,7 @@ distribution.**
   border-bottom-color: #D3D3D3;
 }
 
-#iqyeruncqa .gt_grand_summary_row {
+#pbasirreqv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2092,7 +2094,7 @@ distribution.**
   padding-right: 5px;
 }
 
-#iqyeruncqa .gt_first_grand_summary_row {
+#pbasirreqv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2102,7 +2104,7 @@ distribution.**
   border-top-color: #D3D3D3;
 }
 
-#iqyeruncqa .gt_last_grand_summary_row_top {
+#pbasirreqv .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2112,11 +2114,11 @@ distribution.**
   border-bottom-color: #D3D3D3;
 }
 
-#iqyeruncqa .gt_striped {
+#pbasirreqv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#iqyeruncqa .gt_table_body {
+#pbasirreqv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2125,7 +2127,7 @@ distribution.**
   border-bottom-color: #D3D3D3;
 }
 
-#iqyeruncqa .gt_footnotes {
+#pbasirreqv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2139,7 +2141,7 @@ distribution.**
   border-right-color: #D3D3D3;
 }
 
-#iqyeruncqa .gt_footnote {
+#pbasirreqv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2148,7 +2150,7 @@ distribution.**
   padding-right: 5px;
 }
 
-#iqyeruncqa .gt_sourcenotes {
+#pbasirreqv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2162,7 +2164,7 @@ distribution.**
   border-right-color: #D3D3D3;
 }
 
-#iqyeruncqa .gt_sourcenote {
+#pbasirreqv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2170,63 +2172,63 @@ distribution.**
   padding-right: 5px;
 }
 
-#iqyeruncqa .gt_left {
+#pbasirreqv .gt_left {
   text-align: left;
 }
 
-#iqyeruncqa .gt_center {
+#pbasirreqv .gt_center {
   text-align: center;
 }
 
-#iqyeruncqa .gt_right {
+#pbasirreqv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#iqyeruncqa .gt_font_normal {
+#pbasirreqv .gt_font_normal {
   font-weight: normal;
 }
 
-#iqyeruncqa .gt_font_bold {
+#pbasirreqv .gt_font_bold {
   font-weight: bold;
 }
 
-#iqyeruncqa .gt_font_italic {
+#pbasirreqv .gt_font_italic {
   font-style: italic;
 }
 
-#iqyeruncqa .gt_super {
+#pbasirreqv .gt_super {
   font-size: 65%;
 }
 
-#iqyeruncqa .gt_footnote_marks {
+#pbasirreqv .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#iqyeruncqa .gt_asterisk {
+#pbasirreqv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#iqyeruncqa .gt_indent_1 {
+#pbasirreqv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#iqyeruncqa .gt_indent_2 {
+#pbasirreqv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#iqyeruncqa .gt_indent_3 {
+#pbasirreqv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#iqyeruncqa .gt_indent_4 {
+#pbasirreqv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#iqyeruncqa .gt_indent_5 {
+#pbasirreqv .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -4411,7 +4413,7 @@ increased competition from the craft beer market.
 
     devtools::session_info()
 
-    ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    ─ Session info ─────────────────────────────────────────────────────────────────────────────────────────────────
      setting  value
      version  R version 4.3.2 (2023-10-31)
      os       macOS Monterey 12.7.5
@@ -4425,7 +4427,7 @@ increased competition from the craft beer market.
      rstudio  2023.12.1+402 Ocean Storm (desktop)
      pandoc   3.1.1 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/ (via rmarkdown)
 
-    ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    ─ Packages ─────────────────────────────────────────────────────────────────────────────────────────────────────
      package      * version    date (UTC) lib source
      cachem         1.1.0      2024-05-16 [1] CRAN (R 4.3.3)
      caret        * 6.0-94     2023-03-21 [1] CRAN (R 4.3.0)
@@ -4521,13 +4523,13 @@ increased competition from the craft beer market.
      rlang          1.1.3      2024-01-10 [1] CRAN (R 4.3.0)
      rmarkdown      2.25       2023-09-18 [1] CRAN (R 4.3.0)
      rpart          4.1.21     2023-10-09 [1] CRAN (R 4.3.2)
+     rsconnect      1.2.1      2024-01-31 [1] CRAN (R 4.3.2)
      rstudioapi     0.15.0     2023-07-07 [1] CRAN (R 4.3.0)
      sass           0.4.8      2023-12-06 [1] CRAN (R 4.3.0)
      scales       * 1.3.0      2023-11-28 [1] CRAN (R 4.3.0)
      sessioninfo    1.2.2      2021-12-06 [1] CRAN (R 4.3.0)
      sf           * 1.0-15     2023-12-18 [1] CRAN (R 4.3.0)
      shiny          1.9.1      2024-08-01 [1] CRAN (R 4.3.3)
-     shinythemes    1.2.0      2021-01-25 [1] CRAN (R 4.3.0)
      stringi        1.8.3      2023-12-11 [1] CRAN (R 4.3.0)
      stringr      * 1.5.1      2023-11-14 [1] CRAN (R 4.3.0)
      survival       3.5-7      2023-08-14 [1] CRAN (R 4.3.2)
@@ -4556,6 +4558,6 @@ increased competition from the craft beer market.
 
      [1] /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/library
 
-    ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    ────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-    # rmarkdown::render("Analysis_BeersAndBreweries.Rmd", "md_document")
+    # rmarkdown::render("_projects/Analysis_BeersAndBreweries.Rmd", "md_document")

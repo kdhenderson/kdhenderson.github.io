@@ -4,7 +4,7 @@ title: Superconductor Regression
 description: Regularized Linear Regression: Prediction of Critical Temperature and Identification of Key Properties
 img: assets/img/plt_tuning_L1.png
 importance: 8
-category: fun
+category: recent
 ---
 
 <style>

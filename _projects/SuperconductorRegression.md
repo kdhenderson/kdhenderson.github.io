@@ -32,6 +32,7 @@ category: recent
 </head>
 
 <body>
-<iframe src="https://kdhenderson.github.io/assets/pdf/SuperconductorRegularizedLinearRegression.pdf" width="100%" height="600px"></iframe>
+
+<iframe src="/assets/pdf/SuperconductorRegularizedLinearRegression.pdf" width="100%" height="600px"></iframe>
   
 </body>

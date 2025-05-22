@@ -25,4 +25,4 @@ category: recent
     }
 </style>
 
-<iframe src="{{ site.baseurl }}/assets/pdf/SuperconductorRegularizedLinearRegression.pdf" width="100%" height="600px"></iframe>
+<iframe src="{{ '/assets/pdf/SuperconductorRegularizedLinearRegression.pdf' | relative_url }}" width="100%" height="600px"></iframe>

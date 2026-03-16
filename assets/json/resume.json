@@ -32,39 +32,34 @@
   "work": [
     {
       "location": "Ashburn, VA",
-      "position": "Research Technician II, Jayaraman Lab, HHMI",
+      "position": "Research Technician III, Jayaraman Lab",
       "website": "",
       "startDate": "2021",
       "endDate": "Present",
       "highlights": [
-        "Pioneers the use of mature Danionella, tiny, translucent fish, to study the neuronal basis of navigation",
-        "Collaboratively designs, tests and optimizes a multi-component behavioral rig, including a fish tank, maze arena, IR lighting, synchronous cameras, automated feeding, and sound stimuli and recording",
-        "Establishes replicability by using MATLAB and python for machine learning based animal tracking",
-        "Builds team knowledge by regularly presenting data and scientific literature at lab meetings"
+        "Built semi-automated Python pipelines to collect and process 100+ GB/day of behavioral video data for downstream statistical analysis and modeling.",
+        "Applied statistical analysis and machine learning methods to identify patterns and behavioral structure from video tracking data.",
+        "Collaborated with scientists and engineers to define analytical questions, assess data availability, and develop quantitative analyses and visualizations.",
+        "Documented hardware, software, and analysis workflows to support data quality, reproducibility, and cross-team use."
       ],
       "company": "Howard Hughes Medical Institute, Janelia Research Campus"
     },
     {
       "highlights": [
-        "Published novel findings on memory formation and persistence in neural circuits",
-        "Conducted courtship conditioning, sleep, and neural luminescence assays with precision and speed",
-        "Expertly applied Drosophila genetics for flawless execution of crosses and stock maintenance",
-        "Ensured successful publication via contributions to scientific discussions and manuscript revision",
-        "Employed multiple software applications to accurately record, rigorously analyze and visualize data"
+        "Led data analysis and experiments studying learning and memory; prepared datasets, figures, and results for publication."
       ],
       "company": "Howard Hughes Medical Institute, Janelia Research Campus",
-      "position": "Research Technician II, Keleman Lab, HHMI",
+      "position": "Research Technician II, Keleman Lab",
       "location": "Ashburn, VA",
       "startDate": "2017",
       "endDate": "2021"
     },
     {
       "highlights": [
-        "Expertly dissected and mounted adult Drosophila central nervous systems",
-        "Reliably provided precise immunohistochemistry and confocal microscopy data to collaborators"
+        "Supported high-precision microscopy data collection and quality control to enable downstream quantitative analyses."
       ],
       "company": "Howard Hughes Medical Institute, Janelia Research Campus",
-      "position": "Research Technician I, Project Technical Resources, HHMI",
+      "position": "Research Technician I, Project Technical Resources",
       "location": "Ashburn, VA",
       "startDate": "2015",
       "endDate": "2016"
@@ -74,26 +69,67 @@
     {
       "level": "",
       "keywords": [
-        "R",
         "Python",
-        "MATLAB"
+        "R",
+        "SAS",
+        "MATLAB",
+        "SQL",
+        "Bash"
       ],
       "name": "Programming"
     },
     {
       "keywords": [
+        "NumPy",
+        "pandas",
+        "dplyr",
+        "tidyverse",
+        "scikit-learn",
+        "XGBoost",
+        "PyTorch"
+      ],
+      "name": "Data & Analysis Libraries"
+    },
+    {
+      "keywords": [
+        "Hugging Face",
+        "embeddings",
+        "RAG",
+        "LoRA fine-tuning",
+        "transfer learning"
+      ],
+      "name": "Machine Learning & AI"
+    },
+    {
+      "keywords": [
+        "matplotlib",
+        "seaborn",
         "ggplot2",
-        "Graphpad Prism"
+        "D3.js",
+        "Tableau",
+        "R Shiny"
       ],
       "name": "Data Visualization"
     },
     {
       "keywords": [
-        "Version control – Git & GitHub",
-        "Data transformation",
-        "Machine learning & computer vision"
+        "Git",
+        "GitHub",
+        "Jupyter notebooks",
+        "Quarto",
+        "Markdown"
       ],
-      "name": "Other Tools"
+      "name": "Documentation & Version Control"
+    },
+    {
+      "keywords": [
+        "Parquet",
+        "PostgreSQL",
+        "MySQL",
+        "AWS (RDS, EC2)",
+        "LSF clusters"
+      ],
+      "name": "Data Formats & Infrastructure"
     }
   ],
   "sections": [

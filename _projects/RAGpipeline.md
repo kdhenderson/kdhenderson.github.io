@@ -1,7 +1,7 @@
 ---
 layout: page
 title: RAG Pipeline with Custom Embeddings
-description: Custom RAG system with trained embeddings, LoRA fine-tuning, and cross-encoder reranking
+description: `Custom RAG system with pre-trained embeddings, LoRA fine-tuning, and reranking
 img: assets/img/pg_mlm_loss_v3.png
 importance: 1
 category: recent

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: RAG with Custom Embeddings
+title: Custom RAG System
 description: Custom RAG System with Pre-Trained Embeddings, LoRA Fine-Tuning, and Reranking
 img: assets/img/pg_mlm_loss_v3.png
 importance: 1

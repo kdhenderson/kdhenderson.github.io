@@ -71,29 +71,15 @@
       "keywords": [
         "Python",
         "R",
-        "SAS",
-        "MATLAB",
-        "SQL",
-        "Bash"
+        "SQL"
       ],
       "name": "Programming"
     },
     {
       "keywords": [
-        "NumPy",
-        "pandas",
-        "dplyr",
-        "tidyverse",
         "scikit-learn",
         "XGBoost",
-        "PyTorch"
-      ],
-      "name": "Data & Analysis Libraries"
-    },
-    {
-      "keywords": [
-        "Hugging Face",
-        "embeddings",
+        "PyTorch",
         "RAG",
         "LoRA fine-tuning",
         "transfer learning"
@@ -102,34 +88,12 @@
     },
     {
       "keywords": [
-        "matplotlib",
-        "seaborn",
-        "ggplot2",
-        "D3.js",
-        "Tableau",
-        "R Shiny"
+        "NumPy",
+        "pandas",
+        "dplyr",
+        "tidyverse"
       ],
-      "name": "Data Visualization"
-    },
-    {
-      "keywords": [
-        "Git",
-        "GitHub",
-        "Jupyter notebooks",
-        "Quarto",
-        "Markdown"
-      ],
-      "name": "Documentation & Version Control"
-    },
-    {
-      "keywords": [
-        "Parquet",
-        "PostgreSQL",
-        "MySQL",
-        "AWS (RDS, EC2)",
-        "LSF clusters"
-      ],
-      "name": "Data Formats & Infrastructure"
+      "name": "Data & Analysis Libraries"
     }
   ],
   "sections": [

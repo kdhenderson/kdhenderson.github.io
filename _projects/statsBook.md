@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Statistics Notes for Data Science
-description: An open-source Quarto-based statistics reference linking theory to applied data science, covering statistical foundations and applied methods with R and SAS examples
+description: Open-source statistics reference linking theory to applied data science, with R and SAS examples
 img: assets/img/fch04_errors_and_power.png
 importance: 2
 category: recent

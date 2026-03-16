@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Statistics Notes for Data Science
-description: Open-source statistics reference for data science, with R and SAS examples
+title: Stats Notes for Data Science
+description: Open-Source Statistics Reference for Data Science, with R and SAS Examples
 img: assets/img/fch04_errors_and_power.png
 importance: 2
 category: recent

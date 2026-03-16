@@ -24,10 +24,8 @@ I earned a Bachelor of Science in Biology from the Evergreen State College in Ol
 
 In my current role as a biological research technician at Howard Hughes Medical Institute, I observe and quantify the behavior of miniature, translucent fish in the recently discovered genus, *Danionella*. My ultimate goal is to understand complex navigational behaviors at a neuronal circuit level in a vertebrate system.
 
-I am currently pursuing a Master of Science in Data Science at Southern Methodist University in Dallas, TX. Throughout my career, I have focused on generating data and using analytical tools to extract information to explain those data. While I will always have a passion for the natural world, I am drawn to data science for its ability to reach people across many industries and address a myriad of questions and problems. This passion has led me to pursue graduate work in this field.
+I am currently pursuing a Master of Science in Data Science at Southern Methodist University in Dallas, TX. Throughout my career, I have focused on generating data and using analytical tools to extract information to extract meaning from data. While I will always have a passion for the natural world, I am drawn to data science for its ability to reach people across many industries and address a myriad of questions and problems. This passion has led me to pursue graduate work in this field.
 
 Outside of work and school, I volunteer as a Certified Virginia Master Naturalist. I can also be found hiking, fishing and spending time with my dog. 
 
-Please explore my portfolio and don't hesitate to reach out. I am enthusiastic about embracing new challenges and opportunities to apply my diverse skill set.
-
-For a portfolio of past python projects, please take a look at [my pythonanywhere site](http://kdhende.pythonanywhere.com/works.html).
+<!-- For a portfolio of past python projects, please take a look at [my pythonanywhere site](http://kdhende.pythonanywhere.com/works.html). -->

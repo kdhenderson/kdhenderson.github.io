@@ -16,16 +16,34 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-Hi, I'm Kristin, a biologist and data science graduate student.
+Hi, I'm Kristin, a data scientist based in Leesburg, VA.
 
-I'm a native Virginian and currently live in Leesburg, VA.
+I earned a Master of Science in Data Science from Southern Methodist 
+University, and I have 10+ years of experience working with research 
+data, including 4+ years building ML-based tracking and analysis systems 
+at Howard Hughes Medical Institute (HHMI).
 
-I earned a Bachelor of Science in Biology from the Evergreen State College in Olympia, WA. Since then, I have worked with marine invertebrates, plants, fungi, fruit flies and now fish.
+My work spans statistical modeling, applied machine learning, and GenAI. 
+Recent projects include a decision analysis framework I built for a global 
+brokerage and distribution firm to score the investment potential of 
+emerging consumer brands, and a Retrieval-Augmented Generation pipeline 
+with a contrastive-trained embedding model and a LoRA fine-tuned language 
+model. At HHMI, I build Python pipelines that process 100+ GB/day of 
+video data, and apply machine learning and statistical methods to find 
+patterns in animal behavior.
 
-In my current role as a biological research technician at Howard Hughes Medical Institute, I observe and quantify the behavior of miniature, translucent fish in the recently discovered genus, *Danionella*. My ultimate goal is to understand complex navigational behaviors at a neuronal circuit level in a vertebrate system.
+I also maintain an open-source statistics reference for data science at 
+[kdhenderson.github.io/stats-notes-for-ds](https://kdhenderson.github.io/stats-notes-for-ds), 
+which links statistical theory to applied practice.
 
-I am currently pursuing a Master of Science in Data Science at Southern Methodist University in Dallas, TX. Throughout my career, I have focused on generating data and using analytical tools to extract information to extract meaning from data. While I will always have a passion for the natural world, I am drawn to data science for its ability to reach people across many industries and address a myriad of questions and problems. This passion has led me to pursue graduate work in this field.
+I came to data science from a background in biological research, with a 
+Bachelor of Science in Biology from the Evergreen State College. That 
+background gave me a strong foundation in experimental design, working 
+with messy real-world data, knowing what questions to ask, and 
+communicating technical work clearly.
 
-Outside of work and school, I volunteer as a Certified Virginia Master Naturalist. I can also be found hiking, fishing and spending time with my dog. 
+Take a look at my [projects](/projects/) to see this work in more detail, 
+or [email me](mailto:kdhenderson@gmail.com) if you'd like to talk.
 
-<!-- For a portfolio of past python projects, please take a look at [my pythonanywhere site](http://kdhende.pythonanywhere.com/works.html). -->
+Outside of work, I volunteer as a Virginia Master Naturalist and spend 
+time hiking, fishing, and walking my dog.

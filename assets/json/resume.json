@@ -18,8 +18,8 @@
       "institution": "Southern Methodist University",
       "location": "Dallas, TX",
       "area": "Data Science",
-      "studyType": "Master of Science Candidate",
-      "endDate": "expected graduation 2026",
+      "studyType": "Master of Science",
+      "endDate": "2026",
       "gpa": ""
     },
     {
@@ -94,6 +94,17 @@
         "tidyverse"
       ],
       "name": "Data & Analysis Libraries"
+    },
+    {
+      "keywords": [
+        "matplotlib",
+        "seaborn",
+        "ggplot2",
+        "R Shiny",
+        "Tableau",
+        "D3.js"
+      ],
+      "name": "Data Visualization"
     }
   ],
   "sections": [

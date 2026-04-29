@@ -38,7 +38,7 @@ evaluation for investment and acquisition decisions.
 
 **[Read the paper](/assets/pdf/EmergingBrandScoring.pdf)**
 
-**[View the slide deck](/assets/pdf/EmergingBrandScoring.pptx)**
+**[View the slide deck](/assets/pdf/EvaluatingEmergingBrands_SlideDeck.pdf)**
 
 *Forthcoming in the SMU Data Science Review.*
 

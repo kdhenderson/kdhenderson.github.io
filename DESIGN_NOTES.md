@@ -4,6 +4,26 @@ Layout, sizing, and naming conventions for content on this site. These are
 forward-looking standards for new content. Existing files may not match yet;
 update incrementally when touching them.
 
+## Repository structure
+
+The site uses a parallel pattern for projects and assets: an active directory
+for content the live site uses, plus optional sibling `_*_archive/` and
+`_*_template/` directories for content kept in the repo but not deployed.
+
+| Purpose | Projects | Assets |
+|---|---|---|
+| Active (deployed) | `_projects/` | `assets/` |
+| al-folio stock kept for reference | `_projects_template/` | `_assets_template/` |
+| Own superseded content | `_projects_archive/` | `_assets_archive/` |
+
+Jekyll auto-ignores `_*` directories that aren't configured as collections in
+`_config.yml`, so files in template and archive directories don't deploy.
+
+When in doubt, **delete unused content rather than archive it**. Git history
+is the archive for one-off files. Reserve archive directories for content with
+intentional reference value (e.g., a previous design iteration you might
+revisit).
+
 ## Project cards (on /projects/)
 
 ### Title

@@ -14,7 +14,7 @@ related_publications: false
 <p><br></p>
 </div>
 
-### Abstract
+### Overview
 
 Decision makers in consumer-packaged goods supply chains must decide which
 emerging brands to support or invest in. These decisions are often made
@@ -27,8 +27,12 @@ emerging brands. The framework uses demand-based features combined into
 a single opportunity score, with room for expansion to include additional
 retail performance indicators. To benchmark the MCDA rankings, an ordinal
 logistic regression model is used to assign brands to ordered opportunity
-tiers. Model performance is evaluated using a hand-labeled truth set and
-tested across forecast horizons of 6 to 18 months. Results indicate that
+tiers. Built in collaboration with a consumer-packaged goods brokerage and
+distribution agency, the framework was applied to ~22,500 brand extensions
+across a 77M-observation retail dataset, with results delivered via an
+interactive HTML dashboard for stakeholder review. Model performance is
+evaluated using a hand-labeled truth set and tested across forecast
+horizons of 6 to 18 months. Results indicate that
 median year-over-year case sales growth distinguishes low-performing from
 viable brands with up to 85% balanced accuracy, and that performance is
 stable up to 18 months in advance. The ordinal model provides finer-grained

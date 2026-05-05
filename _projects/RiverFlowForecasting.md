@@ -38,4 +38,4 @@ forecasting horizon.
 <br>
 
 #### Skills
-<small>R · Time Series Analysis · Forecasting · ARIMA · VAR · Ensemble Modeling</small>
+<small>R · Time series analysis · Forecasting · ARIMA · VAR · Ensemble modeling</small>

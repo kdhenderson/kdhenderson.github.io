@@ -47,4 +47,4 @@ R and SAS code examples, and a hypothesis test flowchart for method selection.
 <br>
 
 #### Skills
-<small>R · SAS · Quarto · Hypothesis Testing · Statistical Modeling · Technical Writing</small>
+<small>R · SAS · Quarto · Hypothesis testing · Statistical modeling · Technical writing</small>

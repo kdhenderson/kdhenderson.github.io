@@ -14,7 +14,7 @@ related_publications: false
 <p><br></p>
 </div>
 
-### Abstract
+### Overview
 
 This project builds a complete Retrieval-Augmented Generation (RAG)
 pipeline on Paul Graham's essays. Two embedding models were pre-trained

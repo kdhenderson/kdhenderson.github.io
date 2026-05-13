@@ -30,6 +30,8 @@ revisit).
 - Target: 28 characters or fewer to fit on 2 lines
 - Titles 32+ characters risk wrapping to 3 lines
 - Verify on render when approaching the limit
+- Use Title Case (e.g., `Emerging Brand Scoring`, not `emerging brand scoring`)
+- Acronyms keep their natural capitalization (e.g., `RAG`, `ML`, `ARIMA`)
 
 ### Description
 - Target: 100 characters or fewer to fit on 3 lines

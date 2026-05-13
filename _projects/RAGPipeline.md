@@ -1,6 +1,6 @@
 ---
 layout: page
-title: custom RAG system
+title: Custom RAG System
 description: Custom RAG System with Pre-Trained Embeddings, LoRA Fine-Tuning, and Reranking
 img: assets/img/RAGPipeline.png
 importance: 2

@@ -33,7 +33,7 @@ category: data_science
 
 ### Overview
 
-Seven applied case studies in statistical machine learning, completed in a graduate-level course taken near the end of the SMU MS in Data Science program. Each tackles a different kind of problem with the methods that suit it best: regularized regression for a high-dimensional materials dataset, logistic regression with multiple imputation on messy clinical data, a Naive Bayes spam filter, ensemble methods for imbalanced bankruptcy prediction, SVMs and SGD for multi-class network traffic, deep neural networks for high-energy physics event classification, and cost-sensitive learning where false positives and false negatives carry different price tags.
+These seven applied case studies in statistical machine learning were completed in a graduate-level course near the end of the SMU MS in Data Science program. Each tackles a different kind of problem with the methods that suit it best: regularized regression for prediction and feature interpretation on a materials dataset, logistic regression with multiple imputation on messy clinical data, a Naive Bayes spam filter, ensemble methods for imbalanced bankruptcy prediction, SVMs and SGD for multi-class network traffic, deep neural networks for high-energy physics event classification on a 7M-event dataset, and cost-sensitive classification on anonymized data, where false positives and false negatives carry different financial costs.
 
 Every case study includes a Jupyter notebook with the full analysis and a LaTeX-typeset report summarizing the methodology, results, and interpretation.
 
@@ -127,11 +127,11 @@ Every case study includes a Jupyter notebook with the full analysis and a LaTeX-
 
 ### What this collection demonstrates
 
-- **Method selection.** Each problem is matched to a model family that fits its structure: regularization for high dimensions, imputation for missingness, ensembles for imbalance, neural nets for scale, threshold tuning for cost asymmetry.
+- **Method selection.** Each problem is matched to a model family that fits its structure: regularization for feature interpretation, imputation for missingness, ensembles for imbalance, neural nets for scale, threshold tuning for cost asymmetry.
 - **Full analysis cycle.** Data cleaning, feature engineering, cross-validation, hyperparameter tuning, diagnostics, and interpretation, all the way to a written report.
 - **Tool breadth.** scikit-learn, XGBoost, PyTorch, PyTorch Lightning, statsmodels, and the standard Python data stack.
 - **Communication.** Every project includes a LaTeX-typeset PDF report aimed at a technical reader.
-- **Concrete outcomes.** A Swish-activation neural network reached 79% accuracy on the HEPMASS independent test set; threshold tuning on a cost-sensitive task cut total misclassification cost by 50% vs. baseline.
+- **Concrete outcomes.** A neural network with Swish activation reached 79% accuracy on the HEPMASS independent test set; threshold tuning on a cost-sensitive task cut total misclassification cost by 50% vs. baseline.
 
 <br>
 

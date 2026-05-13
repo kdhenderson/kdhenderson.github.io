@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Emerging Brand Scoring
-description: A Decision Framework for Ranking Emerging Consumer Brands by Investment Potential
+description: A decision framework for ranking emerging consumer brands by investment potential
 img: assets/img/EmergingBrandScoring.png
 importance: 1
 category: data_science

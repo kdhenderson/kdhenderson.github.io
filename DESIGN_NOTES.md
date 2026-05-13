@@ -35,6 +35,8 @@ revisit).
 
 ### Description
 - Target: 100 characters or fewer to fit on 3 lines
+- Use sentence case (e.g., `An infographic on cobalt mining`, not `An Infographic on Cobalt Mining`). Keep proper nouns and acronyms capitalized.
+- Wrap descriptions containing a colon in double quotes (YAML otherwise interprets the second colon as a key separator and the page fails to render).
 
 ### Thumbnail image
 - Standard aspect ratio: 3:2 (e.g., 1500 by 1000 pixels)

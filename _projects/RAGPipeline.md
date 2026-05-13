@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Custom RAG System
-description: Custom RAG System with Pre-Trained Embeddings, LoRA Fine-Tuning, and Reranking
+description: Custom RAG system with pre-trained embeddings, LoRA fine-tuning, and reranking
 img: assets/img/RAGPipeline.png
 importance: 2
 category: data_science

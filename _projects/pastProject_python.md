@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Password Guardian
-description: A Python Tool to Securely Verify Password Integrity
+description: A Python tool to securely verify password integrity
 img: assets/img/lockedGateEdit.jpeg
 importance: 7
 category: past

@@ -1,7 +1,7 @@
 ---
 layout: page
 title: River Flow Forecasting
-description: Time Series Forecasting of River Flow for Water Resource Management
+description: Time series forecasting of river flow for water resource management
 img: assets/img/RiverFlowForecasting.png
 importance: 4
 category: data_science

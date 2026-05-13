@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Attrition Data Analysis
-description: Data Analysis of Employee Attrition and Income - A Case Study
+description: "Data analysis of employee attrition and income: a case study"
 img: assets/img/top3_income_jobLevel_box.png
 importance: 5
 category: recent

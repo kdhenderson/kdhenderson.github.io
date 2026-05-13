@@ -31,6 +31,12 @@ category: data_science
 }
 </style>
 
+<div id="header">
+<h4 class="author">Kristin Henderson</h4>
+<h4 class="date">Summer 2025</h4>
+<p><br></p>
+</div>
+
 ### Overview
 
 These seven applied case studies in statistical machine learning were completed in a graduate-level course near the end of the SMU MS in Data Science program. Each tackles a different kind of problem with the methods that suit it best: regularized regression for prediction and feature interpretation on a materials dataset, logistic regression with multiple imputation on messy clinical data, a Naive Bayes spam filter, ensemble methods for imbalanced bankruptcy prediction, SVMs and SGD for multi-class network traffic, deep neural networks for high-energy physics event classification on a 7M-event dataset, and cost-sensitive classification on anonymized data, where false positives and false negatives carry different financial costs.

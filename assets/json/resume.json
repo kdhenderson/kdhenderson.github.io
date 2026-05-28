@@ -19,7 +19,7 @@
       "location": "Dallas, TX",
       "area": "Data Science",
       "studyType": "Master of Science",
-      "endDate": "2026",
+      "endDate": "May 2026",
       "gpa": ""
     },
     {
@@ -37,10 +37,10 @@
       "startDate": "2021",
       "endDate": "Present",
       "highlights": [
-        "Built semi-automated Python pipelines to collect and process 100+ GB/day of behavioral video data for downstream statistical analysis and modeling.",
-        "Applied statistical analysis and machine learning methods to identify patterns and behavioral structure from video tracking data.",
-        "Collaborated with scientists and engineers to define analytical questions, assess data availability, and develop quantitative analyses and visualizations.",
-        "Documented hardware, software, and analysis workflows to support data quality, reproducibility, and cross-team use."
+        "Build semi-automated Python pipelines to collect and process 100+ GB/day of behavioral video data for downstream statistical analysis and modeling.",
+        "Apply statistical analysis and machine learning methods to identify patterns and behavioral structure from video tracking data.",
+        "Collaborate with scientists and engineers to define analytical questions, assess data availability, and develop quantitative analyses and visualizations.",
+        "Document hardware, software, and analysis workflows to support data quality, reproducibility, and cross-team use."
       ],
       "company": "Howard Hughes Medical Institute, Janelia Research Campus"
     },
@@ -56,7 +56,7 @@
     },
     {
       "highlights": [
-        "Supported high-precision microscopy data collection and quality control to enable downstream quantitative analyses."
+        "Supported high-precision microscopy data collection for downstream quantitative analyses."
       ],
       "company": "Howard Hughes Medical Institute, Janelia Research Campus",
       "position": "Research Technician I, Project Technical Resources",

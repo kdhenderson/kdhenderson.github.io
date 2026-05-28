@@ -41,6 +41,7 @@ revisit).
 ### Thumbnail image
 - Standard aspect ratio: 3:2 (e.g., 1500 by 1000 pixels)
 - File size: keep under 500KB; under 200KB ideal
+- Generation recipe (Pillow): crop source to 3:2 aspect (center, or biased to keep important content), resize to 1500x1000 with `Image.LANCZOS`, save as JPEG with `quality=85, optimize=True`. Typical output is 200-400KB for natural/AI-generated images.
 
 ## Project page internal layout
 

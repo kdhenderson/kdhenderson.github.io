@@ -17,10 +17,10 @@ category: data_science
   padding: 8px 10px;
   text-align: left;
   vertical-align: top;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--global-divider-color);
 }
 .dataset-table th {
-  background-color: #f5f5f5;
+  background-color: var(--global-divider-color);
 }
 </style>
 

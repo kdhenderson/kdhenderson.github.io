@@ -58,6 +58,16 @@
     font-family: 'Staatliches', sans-serif;
     font-size: 16px;
 }
+
+/* Narrow viewports: taller container, smaller fonts so the chart stays usable */
+@media (max-width: 600px) {
+    .cobalt-vis              { padding-bottom: 90%; }
+    .cobalt-vis .cobalt-title    { font-size: 12px; }
+    .cobalt-vis .cobalt-subtitle { font-size: 11px; }
+    .cobalt-vis .axis text       { font-size: 11.5px; }
+    .cobalt-vis .bar-label       { font-size: 11.5px; }
+    .cobalt-vis .below-min       { font-size: 10px; }
+}
 </style>
 
 <div class="cobalt-vis">
@@ -82,7 +92,6 @@
     const tableauDashboardURL = 'https://public.tableau.com/app/profile/kristin.henderson/viz/miningDashboard/MiningDashboard';
 
     const svg = d3.select(".cobalt-vis svg");
-    const margin = { top: 60, right: 20, bottom: 30, left: 60 };
 
     // Draw the chart at the SVG's current rendered size.
     // Called on first load and on window resize so the chart fits the container.
@@ -91,6 +100,11 @@
 
         const svgWidth = svg.node().clientWidth;
         const svgHeight = svg.node().clientHeight;
+        // Smaller margins on narrow viewports so the chart area doesn't collapse
+        const isNarrow = svgWidth < 350;
+        const margin = isNarrow
+            ? { top: 35, right: 10, bottom: 25, left: 40 }
+            : { top: 60, right: 20, bottom: 30, left: 60 };
         const width = svgWidth - margin.left - margin.right;
         const height = svgHeight - margin.top - margin.bottom;
 
@@ -135,12 +149,20 @@
             .attr("text-anchor", "middle")
             .text(d => `${d.category}`);
 
-        g.append("text")
-            .attr("class", "bar-label")
+        const belowLabel = g.append("text")
+            .attr("class", "bar-label below-min")
             .attr("x", x(data[0].category) + x.bandwidth() / 2)
-            .attr("y", y(data[0].percentage) + 40)
-            .attr("text-anchor", "middle")
-            .text("below minimum wage");
+            .attr("y", y(data[0].percentage) + 36)
+            .attr("text-anchor", "middle");
+        belowLabel.append("tspan").text("below");
+        belowLabel.append("tspan")
+            .attr("x", x(data[0].category) + x.bandwidth() / 2)
+            .attr("dy", "0.9em")
+            .text("minimum");
+        belowLabel.append("tspan")
+            .attr("x", x(data[0].category) + x.bandwidth() / 2)
+            .attr("dy", "0.9em")
+            .text("wage");
     }
 
     d3.select(".cobalt-vis .cobalt-background")

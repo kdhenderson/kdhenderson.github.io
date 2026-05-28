@@ -17,12 +17,12 @@ category: data_science
   padding: 8px 10px;
   text-align: left;
   vertical-align: top;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--global-divider-color);
   font-size: 0.875rem !important;
   line-height: 1.4;
 }
 .cs-table th {
-  background-color: #f5f5f5;
+  background-color: var(--global-divider-color);
   font-size: 0.875rem !important;
 }
 .cs-table td.links a {

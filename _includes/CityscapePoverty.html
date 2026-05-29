@@ -1,0 +1,383 @@
+<script src="https://d3js.org/d3.v6.min.js"></script>
+
+<style>
+.cityscape-vis {
+    position: relative;
+    width: 100%;
+    padding-bottom: 52.12%; /* matches 1535 x 800 viewBox aspect ratio */
+    background-color: #000032;
+    overflow: hidden;
+    container-type: inline-size; /* enable container query units (cqi) for child sizing */
+}
+.cityscape-vis svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.cityscape-vis .tooltip {
+    position: absolute;
+    text-align: left;
+    width: 22cqi;
+    height: auto;
+    padding: 0.8cqi;
+    background: rgba(25, 25, 50, 0.8);
+    border-radius: 0.4cqi;
+    pointer-events: none;
+    color: white;
+    font-size: 1.3cqi;
+    z-index: 20;
+}
+.cityscape-vis .legend {
+    position: absolute;
+    width: 35cqi;
+    height: auto;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.8cqi;
+    background: rgba(0, 0, 50, 0.9);
+    border-radius: 1cqi;
+    color: white;
+    text-align: left;
+    font-size: 1.5cqi;
+    line-height: 1.3;
+    display: none;
+    z-index: 10;
+    overflow: auto;
+}
+.cityscape-vis .legend p {
+    color: white; /* bump specificity to defeat al-folio theme p color */
+    margin: 0.2cqi 0;
+}
+.cityscape-vis .legend-button {
+    position: absolute;
+    bottom: 1cqi;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1cqi 2cqi;
+    background: #483D8B;
+    color: white;
+    border: none;
+    border-radius: 0.6cqi;
+    cursor: pointer;
+    font-size: 1.4cqi;
+    z-index: 10;
+}
+.cityscape-vis .reflection {
+    opacity: 0.5;
+    filter: blur(2px);
+}
+</style>
+
+<div class="cityscape-vis">
+    <svg viewBox="0 0 1535 800" preserveAspectRatio="xMidYMid meet"></svg>
+    <div class="tooltip" style="opacity:0;"></div>
+    <div class="legend" id="cityscape-legend">
+        <p>Building Height: Population</p>
+        <p>Building Width: GDP per Capita</p>
+        <p>Building Color:
+            <span style="color:#ff6347;">Africa</span>,
+            <span style="color:#32cd32;">North America</span>,
+            <span style="color:#8a2be2;">South America</span>,
+            <span style="color:#daa520;">Asia</span>,
+            <span style="color:#4682b4;">Europe</span>,
+            <span style="color:#ff69b4;">Oceania</span>
+        </p>
+        <p>Star Size: Mean Income</p>
+        <p>Star Height: Poverty Line</p>
+        <p>Window Color: Proportion
+            <span style="color:#ffff96;">Above</span> /
+            <span style="color:#6e6e6e;">Below</span>
+            the Poverty Line
+        </p>
+    </div>
+    <button class="legend-button" onclick="toggleCityscapeLegend()">Toggle Legend</button>
+</div>
+
+<script>
+function toggleCityscapeLegend() {
+    const legend = document.getElementById('cityscape-legend');
+    legend.style.display = (legend.style.display === 'block') ? 'none' : 'block';
+}
+
+(function() {
+    const containerEl = document.querySelector('.cityscape-vis');
+    const svg = d3.select(".cityscape-vis svg");
+    const width = 1535;
+    const height = 800;
+
+    const canvasTop = height / 1.56;
+
+    let continentColors = {
+        "Africa": "#ff6347",
+        "Europe": "#4682b4",
+        "Asia": "#daa520",
+        "North America": "#32cd32",
+        "South America": "#8a2be2",
+        "Oceania": "#ff69b4"
+    };
+
+    const tooltip = d3.select(".cityscape-vis .tooltip");
+
+    d3.csv("{{ site.baseurl }}/assets/data/world_poverty_geo.csv").then(data => {
+        data.forEach(d => {
+            d.gdp = +d['GDP per capita, PPP (constant 2017 international $)'];
+            d.population = +d.population_y;
+            d.povertyRatio = +d['Poverty headcount ratio at national poverty lines (% of population)'];
+            d.meanIncome = +d['Mean income or consumption'];
+            d.nationalPovertyLine = +d['Harmonized national poverty line_y'];
+        });
+
+        // Cityscape spans edge-to-edge of the viewBox like a real skyline. The
+        // rightmost building's right edge extends a few px past the right edge of
+        // the frame, giving a subtle "city continues off-frame" effect.
+        const buildingSpacing = width / data.length;
+
+        // Background gradient
+        let twilightGradient = svg.append("defs")
+            .append("linearGradient")
+            .attr("id", "twilightGradient")
+            .attr("x1", "0%")
+            .attr("y1", "0%")
+            .attr("x2", "0%")
+            .attr("y2", "100%");
+
+        twilightGradient.append("stop").attr("offset", "0%").attr("stop-color", "rgb(25, 25, 50)");
+        twilightGradient.append("stop").attr("offset", "45%").attr("stop-color", "rgb(25, 25, 50)");   // dark stop position controls how high the pink blends into the sky
+        twilightGradient.append("stop").attr("offset", "85%").attr("stop-color", "rgb(255, 110, 180)"); // pink peak below horizon; horizon itself reads as ~75% pink
+
+        svg.append("rect")
+            .attr("x", 0).attr("y", 0)
+            .attr("width", width).attr("height", height)
+            .style("fill", "url(#twilightGradient)");
+
+        // Reflection gradient mask
+        let reflectionMask = svg.append("defs")
+            .append("linearGradient")
+            .attr("id", "reflectionMask")
+            .attr("x1", "0%").attr("y1", "0%")
+            .attr("x2", "0%").attr("y2", "100%");
+
+        reflectionMask.append("stop").attr("offset", "0%").attr("stop-opacity", "1").attr("stop-color", "white");
+        reflectionMask.append("stop").attr("offset", "100%").attr("stop-opacity", "0").attr("stop-color", "white");
+
+        // Water background
+        svg.append("rect")
+            .attr("x", 0).attr("y", height * 0.75)
+            .attr("width", width).attr("height", height * 0.25)
+            .style("fill", "rgb(0, 0, 50)");
+
+        // Generate random colors for stars
+        const startColor = d3.color("rgb(255, 255, 215)");
+        const midColor = d3.color("rgb(255, 255, 255)");
+        const endColor = d3.color("rgb(215, 255, 255)");
+        const grayColor = d3.color("rgb(192, 192, 192)");
+        const starColors = data.map(() => {
+            const gradientPos = Math.random();
+            let starColor;
+            if (gradientPos < 0.5) {
+                starColor = d3.interpolateRgb(startColor, midColor)(gradientPos * 2);
+            } else {
+                starColor = d3.interpolateRgb(midColor, endColor)((gradientPos - 0.5) * 2);
+            }
+            return d3.interpolateRgb(starColor, grayColor)(0.1);
+        });
+
+        function drawPolygon(sides, radius) {
+            let angle = (2 * Math.PI) / sides;
+            let points = [];
+            for (let i = 0; i < sides; i++) {
+                let x = Math.cos(i * angle) * radius;
+                let y = Math.sin(i * angle) * radius;
+                points.push([x, y]);
+            }
+            return points;
+        }
+
+        const sidesOptions = [15, 17, 19, 21];
+        const starSides = data.map(() => sidesOptions[Math.floor(Math.random() * sidesOptions.length)]);
+
+        // Stars behind buildings
+        const stars = svg.selectAll(".star")
+            .data(data)
+            .enter().append("polygon")
+            .attr("class", "star")
+            .attr("points", (d, i) => drawPolygon(starSides[i], d.meanIncome ? Math.sqrt(d.meanIncome) : 5)
+                .map(point => point.join(",")).join(" "))
+            .attr("transform", (d, i) => `translate(${buildingSpacing * i + buildingSpacing / 2},${canvasTop - d.nationalPovertyLine * 10})`)
+            .attr("fill", (d, i) => starColors[i]);
+
+        // Buildings
+        const buildings = svg.selectAll(".building")
+            .data(data)
+            .enter().append("g")
+            .attr("class", "building")
+            .attr("transform", (d, i) => `translate(${buildingSpacing * i},${height * 0.75 - Math.sqrt((d.population / 1000000) * 100)})`);
+
+        buildings.append("rect")
+            .attr("width", d => Math.sqrt((d.gdp / 100) * 10))
+            .attr("height", d => Math.sqrt((d.population / 1000000) * 100))
+            .attr("fill", d => continentColors[d.Continent] || "white");
+
+        // Windows on buildings
+        buildings.each(function(d, i) {
+            const building = d3.select(this);
+            const buildingWidth = Math.sqrt((d.gdp / 100) * 10);
+            const buildingHeight = Math.sqrt((d.population / 1000000) * 100);
+            const windowSize = 4;
+            const windowSpacing = 1;
+            const numWindowsX = Math.floor(buildingWidth / (windowSize + windowSpacing));
+            const numWindowsY = Math.floor(buildingHeight / (windowSize + windowSpacing));
+            const totalWindows = numWindowsX * numWindowsY;
+            const povertyWindows = Math.floor(totalWindows * (d.povertyRatio / 100));
+            const nonPovertyWindows = totalWindows - povertyWindows;
+
+            let windows = [];
+            for (let j = 0; j < povertyWindows; j++) windows.push("#6e6e6e");
+            for (let j = 0; j < nonPovertyWindows; j++) windows.push("#ffff96");
+
+            const xOffset = (buildingWidth - numWindowsX * (windowSize + windowSpacing)) / 2;
+
+            building.selectAll(".window")
+                .data(windows)
+                .enter().append("rect")
+                .attr("class", "window")
+                .attr("x", (w, j) => xOffset + (j % numWindowsX) * (windowSize + windowSpacing))
+                .attr("y", (w, j) => Math.floor(j / numWindowsX) * (windowSize + windowSpacing))
+                .attr("width", windowSize).attr("height", windowSize)
+                .attr("fill", w => w);
+        });
+
+        // Reflection group
+        const reflection = svg.append("g")
+            .attr("class", "reflection")
+            .attr("transform", `translate(0, ${height * 1.5}) scale(1, -1)`)
+            .style("mask", "url(#reflectionMask)");
+
+        const reflectedStars = reflection.selectAll(".star")
+            .data(data)
+            .enter().append("polygon")
+            .attr("class", "star")
+            .attr("points", (d, i) => drawPolygon(starSides[i], d.meanIncome ? Math.sqrt(d.meanIncome) : 5)
+                .map(point => point.join(",")).join(" "))
+            .attr("transform", (d, i) => `translate(${buildingSpacing * i + buildingSpacing / 2},${canvasTop - d.nationalPovertyLine * 10})`)
+            .attr("fill", (d, i) => starColors[i]);
+
+        const reflectedBuildings = reflection.selectAll(".building")
+            .data(data)
+            .enter().append("g")
+            .attr("class", "building")
+            .attr("transform", (d, i) => `translate(${buildingSpacing * i},${height * 0.75 - Math.sqrt((d.population / 1000000) * 100)})`);
+
+        reflectedBuildings.append("rect")
+            .attr("width", d => Math.sqrt((d.gdp / 100) * 10))
+            .attr("height", d => Math.sqrt((d.population / 1000000) * 100))
+            .attr("fill", d => continentColors[d.Continent] || "white");
+
+        reflectedBuildings.each(function(d, i) {
+            const building = d3.select(this);
+            const buildingWidth = Math.sqrt((d.gdp / 100) * 10);
+            const buildingHeight = Math.sqrt((d.population / 1000000) * 100);
+            const windowSize = 4;
+            const windowSpacing = 1;
+            const numWindowsX = Math.floor(buildingWidth / (windowSize + windowSpacing));
+            const numWindowsY = Math.floor(buildingHeight / (windowSize + windowSpacing));
+            const totalWindows = numWindowsX * numWindowsY;
+            const povertyWindows = Math.floor(totalWindows * (d.povertyRatio / 100));
+            const nonPovertyWindows = totalWindows - povertyWindows;
+
+            let windows = [];
+            for (let j = 0; j < povertyWindows; j++) windows.push("#6e6e6e");
+            for (let j = 0; j < nonPovertyWindows; j++) windows.push("#ffff96");
+
+            const xOffset = (buildingWidth - numWindowsX * (windowSize + windowSpacing)) / 2;
+
+            building.selectAll(".window")
+                .data(windows)
+                .enter().append("rect")
+                .attr("class", "window")
+                .attr("x", (w, j) => xOffset + (j % numWindowsX) * (windowSize + windowSpacing))
+                .attr("y", (w, j) => Math.floor(j / numWindowsX) * (windowSize + windowSpacing))
+                .attr("width", windowSize).attr("height", windowSize)
+                .attr("fill", w => w);
+        });
+
+        // Tooltip + star highlighting (container-relative coords)
+        svg.selectAll(".building")
+            .on("mouseover", function(event, d) {
+                const rect = containerEl.getBoundingClientRect();
+                tooltip.transition().duration(200).style("opacity", 0.9);
+                tooltip.html(
+                    `<b>Country:</b> ${d.Entity}<br>` +
+                    `<b>GDP per Capita:</b> ${d.gdp.toLocaleString()}<br>` +
+                    `<b>Population:</b> ${d.population.toLocaleString()}<br>` +
+                    `<b>Poverty Ratio:</b> ${d.povertyRatio}%<br>` +
+                    `<b>Hourly Poverty Line:</b> ${d.nationalPovertyLine.toFixed(2)}`
+                );
+                // Flip tooltip to the left of the cursor when hovering past the container
+                // midpoint so it doesn't clip off the right edge. Tooltip width = 22cqi
+                // = 22% of container width.
+                const cursorX = event.clientX - rect.left;
+                const tooltipWidth = rect.width * 0.22;
+                const leftPx = cursorX > rect.width / 2
+                    ? cursorX - tooltipWidth - 10
+                    : cursorX + 10;
+                tooltip
+                    .style("left", leftPx + "px")
+                    .style("top",  (event.clientY - rect.top - 90) + "px");
+
+                const index = data.findIndex(el => el.Entity === d.Entity);
+                pulseStar(stars.filter((_, i) => i === index), index);
+                pulseStar(reflectedStars.filter((_, i) => i === index), index);
+            })
+            .on("mouseout", function(event, d) {
+                tooltip.transition().duration(500).style("opacity", 0);
+                const index = data.findIndex(el => el.Entity === d.Entity);
+                resetStar(stars.filter((_, i) => i === index), index);
+                resetStar(reflectedStars.filter((_, i) => i === index), index);
+            });
+
+        function pulseStar(starSel, index) {
+            starSel
+                .attr("fill", "white")
+                .style("filter", "drop-shadow(0 0 6px white)")
+                .transition().duration(1000)
+                .attr("transform", (dd) => `translate(${buildingSpacing * index + buildingSpacing / 2},${canvasTop - dd.nationalPovertyLine * 10}) scale(2.5)`)
+                .transition().duration(1000)
+                .attr("transform", (dd) => `translate(${buildingSpacing * index + buildingSpacing / 2},${canvasTop - dd.nationalPovertyLine * 10}) scale(1)`)
+                .on("end", function repeat() {
+                    d3.select(this)
+                        .transition().duration(1000)
+                        .attr("transform", (dd) => `translate(${buildingSpacing * index + buildingSpacing / 2},${canvasTop - dd.nationalPovertyLine * 10}) scale(2.5)`)
+                        .transition().duration(1000)
+                        .attr("transform", (dd) => `translate(${buildingSpacing * index + buildingSpacing / 2},${canvasTop - dd.nationalPovertyLine * 10}) scale(1)`)
+                        .on("end", repeat);
+                });
+        }
+
+        function resetStar(starSel, index) {
+            starSel
+                .interrupt()
+                .attr("fill", () => starColors[index])
+                .style("filter", null)
+                .attr("transform", (dd) => `translate(${buildingSpacing * index + buildingSpacing / 2},${canvasTop - dd.nationalPovertyLine * 10}) scale(1)`);
+        }
+
+        // Title
+        svg.append("text")
+            .attr("x", width / 2)
+            .attr("y", 60)
+            .attr("text-anchor", "middle")
+            .style("font-size", "32px")
+            .style("fill", "white")
+            .style("text-shadow", "0 0 10px rgba(255, 200, 220, 0.8), 2px 2px 3px rgba(0, 0, 0, 0.5)")
+            .text("Poverty Turning Off the Lights Around the World");
+
+    }).catch(error => {
+        console.error("Error loading the cityscape data file:", error);
+    });
+})();
+</script>

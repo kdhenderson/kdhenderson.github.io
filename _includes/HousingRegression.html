@@ -1,0 +1,437 @@
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<div class="housing-regression-vis">
+<style>
+  .housing-regression-vis {
+    background-color: #3b5999;
+    color: #F2F2F2;
+    font-family: 'Arial', sans-serif;
+    padding: 20px 10px;
+    border-radius: 4px;
+  }
+  .housing-regression-vis .dot { opacity: 0.6; }
+  .housing-regression-vis .line { fill: none; stroke-width: 2px; }
+  .housing-regression-vis .legend,
+  .housing-regression-vis .axis-label,
+  .housing-regression-vis .chart-title,
+  .housing-regression-vis .regression-equation,
+  .housing-regression-vis .secondary-label {
+    font-size: 15px;
+    fill: #F2F2F2;
+    font-family: 'Arial', sans-serif;
+  }
+  .housing-regression-vis .chart-title {
+    font-size: 25px;
+    text-anchor: middle;
+  }
+  .housing-regression-vis .legend-title { fill: white; font-weight: normal; }
+  .housing-regression-vis .legend-item text { font-size: 15px; font-weight: normal; }
+  .housing-regression-vis .legend-toggle { cursor: pointer; }
+  .housing-regression-vis .domain { stroke: #F2F2F2; }
+  .housing-regression-vis .tick line { stroke: #F2F2F2; }
+  .housing-regression-vis .tick text { fill: #B5C5E0; font-size: 12px; font-family: 'Arial', sans-serif; }
+  .housing-regression-vis .controls {
+    font-size: 12px;
+    margin-left: 50px;
+    margin-top: 10px;
+    color: #F2F2F2;
+  }
+  .housing-regression-vis .controls label { color: #F2F2F2; display: block; margin: 1px 0; }
+  .housing-regression-vis .controls input { transform: scale(0.85); margin-right: 2px; vertical-align: middle; }
+  .housing-regression-vis .regression-equations {
+    font-size: 15px;
+    fill: #F2F2F2;
+    font-family: 'Arial', sans-serif;
+    text-anchor: start;
+  }
+  .housing-regression-tooltip {
+    position: absolute;
+    text-align: center;
+    width: 80px;
+    height: 28px;
+    padding: 2px;
+    font: 12px 'Arial', sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+    color: #000;
+  }
+</style>
+
+<div id="chart-housing"></div>
+
+<div class="controls">
+  <label><input type="checkbox" id="logScale-housing"> Log Scale</label>
+  <label><input type="checkbox" id="removeOutliers-housing"> Remove Outliers</label>
+  <label><input type="radio" name="regressionType-housing" value="simple" checked> Simple Linear Regression</label>
+  <label><input type="radio" name="regressionType-housing" value="parallel"> Multiple Linear Regression (Parallel Slopes)</label>
+  <label><input type="radio" name="regressionType-housing" value="independent"> Multiple Linear Regression (Independent Slopes)</label>
+</div>
+</div>
+
+<script>
+(function() {
+  d3.csv("{{ site.baseurl }}/assets/csv/train.csv").then(data => {
+    data.forEach(d => {
+      d.GrLivArea = +d.GrLivArea;
+      d.SalePrice = +d.SalePrice;
+    });
+
+    const neighborhoods = ["BrkSide", "Edwards", "NAmes"];
+    const neighborhoodFullNames = {
+      "BrkSide": "Brookside",
+      "Edwards": "Edwards",
+      "NAmes": "North Ames"
+    };
+    let filteredData = data.filter(d => neighborhoods.includes(d.Neighborhood));
+
+    const width = 800, height = 500, margin = { top: 50, right: 60, bottom: 50, left: 80 };
+    const totalWidth = width + margin.left + margin.right;
+    const totalHeight = height + margin.top + margin.bottom;
+    const svg = d3.select('#chart-housing').append('svg')
+                  .attr('viewBox', `0 0 ${totalWidth} ${totalHeight}`)
+                  .attr('preserveAspectRatio', 'xMidYMid meet')
+                  .style('width', '100%')
+                  .style('height', 'auto');
+
+    svg.append('image')
+       .attr('xlink:href', '{{ site.baseurl }}/assets/img/processed_house_outline.png')
+       .attr('x', 0)
+       .attr('y', 0)
+       .attr('width', totalWidth)
+       .attr('height', totalHeight)
+       .attr('preserveAspectRatio', 'none')
+       .attr('opacity', 0.05);
+
+    const g = svg.append('g')
+                  .attr('transform', `translate(${margin.left},${margin.top})`);
+
+    const colors = d3.scaleOrdinal().domain(neighborhoods).range(["#FF6348", "#69B3A3", "#FFCC01"]);
+    const symbols = d3.scaleOrdinal().domain(neighborhoods).range([d3.symbolSquare, d3.symbolCircle, d3.symbolTriangle]);
+
+    let x = d3.scaleLinear().domain([300, 6000]).range([0, width]);
+    let y = d3.scaleLinear().domain([20000, 400000]).range([height, 0]);
+
+    const xAxis = g.append('g').attr('transform', `translate(0,${height})`);
+    const yAxis = g.append('g');
+    const xAxisTop = g.append('g').attr('transform', `translate(0,${height})`);
+    const yAxisRight = g.append('g').attr('transform', `translate(${width},0)`);
+
+    g.selectAll("line")
+       .attr("stroke", "#F2F2F2")
+       .attr("stroke-width", "0.5");
+
+    g.selectAll("text").attr("fill", "#f0f0f0");
+
+    g.append('text')
+       .attr('class', 'chart-title')
+       .attr('x', width / 2)
+       .attr('y', -20)
+       .text('House Sale Prices by Living Area');
+
+    let xAxisLabel = g.append('text')
+       .attr('class', 'axis-label')
+       .attr('x', width / 2)
+       .attr('y', height + 40)
+       .style('text-anchor', 'middle')
+       .text('Above Grade Living Area (square feet)');
+
+    let yAxisLabel = g.append('text')
+       .attr('class', 'axis-label')
+       .attr('transform', 'rotate(-90)')
+       .attr('x', -height / 2)
+       .attr('y', -65)
+       .style('text-anchor', 'middle')
+       .text('Sale Price (dollars)');
+
+    const legend = g.append('g')
+                      .attr('class', 'legend')
+                      .attr('transform', `translate(50,40)`);
+
+    legend.append('text')
+          .attr('class', 'legend-title')
+          .attr('x', 0)
+          .attr('y', 0)
+          .text('Neighborhood');
+
+    legend.selectAll('.legend-item')
+          .data(neighborhoods)
+          .enter().append('g')
+          .attr('class', 'legend-item')
+          .attr('transform', (d, i) => `translate(0,${(i + 1) * 20})`)
+          .call(g => {
+            g.append('path')
+             .attr('d', d3.symbol().type(d => symbols(d)).size(150))
+             .attr('transform', 'translate(10, 0)')
+             .style('fill', d => colors(d));
+
+            g.append('text')
+             .attr('x', 30)
+             .attr('y', 0)
+             .attr('dy', '.35em')
+             .style('text-anchor', 'start')
+             .text(d => neighborhoodFullNames[d])
+             .attr('class', 'legend');
+
+            g.append('foreignObject')
+             .attr('x', 110)
+             .attr('y', -10)
+             .attr('width', 20)
+             .attr('height', 20)
+             .append('xhtml:div')
+             .html('<input type="checkbox" class="legend-toggle" checked style="width:14px;height:14px;"/>')
+             .on('change', function(event, d) {
+               const checked = d3.select(this).select('input').property('checked');
+               d3.selectAll(`.dot.${d}`).transition().style('opacity', checked ? 0.6 : 0);
+               d3.selectAll(`.line.${d}`).transition().style('opacity', checked ? 1 : 0);
+             });
+          });
+
+    const tooltip = d3.select('body').append('div').attr('class', 'housing-regression-tooltip').style('opacity', 0);
+
+    function plotScatterPlot() {
+      const logScale = d3.select("#logScale-housing").property("checked");
+      const removeOutliers = d3.select("#removeOutliers-housing").property("checked");
+
+      let plotData = filteredData;
+      if (removeOutliers) {
+        plotData = removeOutliersFromData(filteredData);
+      }
+
+      if (logScale) {
+        x = d3.scaleLinear().domain([Math.log(300), Math.log(6000)]).range([0, width]);
+        y = d3.scaleLinear().domain([Math.log(20000), Math.log(400000)]).range([height, 0]);
+        xAxisLabel.text('Log(Above Grade Living Area)');
+        yAxisLabel.text('Log(Sale Price)');
+      } else {
+        x = d3.scaleLinear().domain([300, 6000]).range([0, width]);
+        y = d3.scaleLinear().domain([20000, 400000]).range([height, 0]);
+        xAxisLabel.text('Above Grade Living Area (square feet)');
+        yAxisLabel.text('Sale Price (dollars)');
+      }
+
+      const linearTicksX = d3.ticks(Math.log(300), Math.log(6000), 10).slice(1, -1);
+      const linearTicksY = d3.ticks(Math.log(20000), Math.log(400000), 10);
+      const logScaleTicksY = [50000, 100000, 200000, 300000, 400000];
+
+      const xAxisCall = logScale ? d3.axisBottom(x).tickValues(linearTicksX).tickFormat(d => Math.round(d * 100) / 100) : d3.axisBottom(x).ticks(10);
+      const xAxisTopCall = logScale ? d3.axisTop(d3.scaleLog().domain([300, 6000]).range([0, width])).tickValues(d3.ticks(300, 6000, 10).slice(1, -1)) : null;
+      const yAxisCall = logScale ? d3.axisLeft(y).tickValues(linearTicksY).tickFormat(d => Math.round(d * 100) / 100) : d3.axisLeft(y).ticks(10);
+      const yAxisRightCall = logScale ? d3.axisRight(d3.scaleLinear().domain([20000, 400000]).range([height, 0])).tickValues(logScaleTicksY).tickFormat(d3.format("~s")) : null;
+
+      xAxis.transition().duration(1000).call(xAxisCall);
+      yAxis.transition().duration(1000).call(yAxisCall);
+
+      if (logScale) {
+        xAxisTop.transition().duration(1000).call(xAxisTopCall);
+        yAxisRight.transition().duration(1000).call(yAxisRightCall);
+      } else {
+        xAxisTop.selectAll('*').remove();
+        yAxisRight.selectAll('*').remove();
+      }
+
+      neighborhoods.forEach((neighborhood, i) => {
+        const neighborhoodData = plotData.filter(d => d.Neighborhood === neighborhood);
+        neighborhoodData.sort((a, b) => a.GrLivArea - b.GrLivArea);
+
+        let dots = g.selectAll(`.dot.${neighborhood}`)
+                    .data(neighborhoodData, d => d.Id);
+
+        dots.exit().remove();
+
+        const dotsEnter = dots.enter().append('path')
+            .attr('class', `dot ${neighborhood}`)
+            .attr('d', d3.symbol().type(symbols(neighborhood)).size(64))
+            .attr('transform', d => `translate(${x(logScale ? Math.log(d.GrLivArea) : d.GrLivArea)}, ${y(logScale ? Math.log(d.SalePrice) : d.SalePrice)})`)
+            .style('fill', colors(neighborhood))
+            .style('opacity', 0)
+            .on('mouseover', function(event, d) {
+               tooltip.transition().duration(200).style('opacity', .9);
+               tooltip.html(`${d.GrLivArea} sq.ft.<br>$${d.SalePrice}`)
+                      .style('left', (event.pageX + 5) + 'px')
+                      .style('top', (event.pageY - 28) + 'px');
+             })
+             .on('mouseout', function() {
+               tooltip.transition().duration(500).style('opacity', 0);
+             });
+
+        dotsEnter.transition()
+            .duration(800)
+            .delay((d, j) => i * 600 + j * 30)
+            .attr('transform', d => `translate(${x(logScale ? Math.log(d.GrLivArea) : d.GrLivArea)}, ${y(logScale ? Math.log(d.SalePrice) : d.SalePrice)})`)
+            .style('opacity', 0.6);
+
+        dots.transition()
+            .duration(1000)
+            .attr('transform', d => `translate(${x(logScale ? Math.log(d.GrLivArea) : d.GrLivArea)}, ${y(logScale ? Math.log(d.SalePrice) : d.SalePrice)})`);
+      });
+
+      drawRegressionLines();
+    }
+
+    function drawRegressionLines() {
+      const logScale = d3.select("#logScale-housing").property("checked");
+      const removeOutliers = d3.select("#removeOutliers-housing").property("checked");
+      const regressionType = d3.select('input[name="regressionType-housing"]:checked').node().value;
+
+      let plotData = filteredData;
+      if (removeOutliers) {
+        plotData = removeOutliersFromData(filteredData);
+      }
+
+      g.selectAll('.line').remove();
+      d3.select('#chart-housing').selectAll('.regression-equation').remove();
+
+      if (regressionType === "simple") {
+        const regressionData = plotData.map(d => [logScale ? Math.log(d.GrLivArea) : d.GrLivArea, logScale ? Math.log(d.SalePrice) : d.SalePrice]);
+
+        const regression = linearRegression(regressionData.map(d => d[0]), regressionData.map(d => d[1]));
+        const line = d3.line()
+          .x(d => x(d[0]))
+          .y(d => y(d[1]));
+
+        const regressionLineData = [
+          [d3.min(regressionData, d => d[0]), regression.predict(d3.min(regressionData, d => d[0]))],
+          [d3.max(regressionData, d => d[0]), regression.predict(d3.max(regressionData, d => d[0]))]
+        ];
+
+        g.append('path')
+          .datum(regressionLineData)
+          .attr('class', 'line')
+          .attr('d', line)
+          .style('stroke', 'white')
+          .style('fill', 'none')
+          .style('stroke-width', 3)
+          .style('opacity', 0)
+          .transition()
+          .duration(1500)
+          .style('opacity', 1);
+
+        g.append('text')
+          .attr('class', 'regression-equation')
+          .attr('x', width - 320)
+          .attr('y', height - 40)
+          .style('text-anchor', 'start')
+          .style('fill', 'white')
+          .text(logScale ? `log(Price) = ${regression.slope.toFixed(2)} * log(Area) + ${regression.intercept.toFixed(2)}` : `Price = ${regression.slope.toFixed(2)} * Area + ${regression.intercept.toFixed(2)}`);
+
+      } else if (regressionType === "parallel") {
+        const overallRegressionData = plotData.map(d => [logScale ? Math.log(d.GrLivArea) : d.GrLivArea, logScale ? Math.log(d.SalePrice) : d.SalePrice]);
+
+        const overallRegression = linearRegression(overallRegressionData.map(d => d[0]), overallRegressionData.map(d => d[1]));
+        neighborhoods.forEach((neighborhood, i) => {
+          const neighborhoodData = plotData.filter(d => d.Neighborhood === neighborhood);
+          const line = d3.line()
+            .x(d => x(d[0]))
+            .y(d => y(d[1]));
+
+          const interceptAdjustment = (logScale ? Math.log(neighborhoodData[0].SalePrice) : neighborhoodData[0].SalePrice) - overallRegression.predict(logScale ? Math.log(neighborhoodData[0].GrLivArea) : neighborhoodData[0].GrLivArea);
+
+          const regressionLineData = [
+            [d3.min(neighborhoodData, d => logScale ? Math.log(d.GrLivArea) : d.GrLivArea), overallRegression.predict(logScale ? Math.log(d3.min(neighborhoodData, d => d.GrLivArea)) : d3.min(neighborhoodData, d => d.GrLivArea)) + interceptAdjustment],
+            [d3.max(neighborhoodData, d => logScale ? Math.log(d.GrLivArea) : d.GrLivArea), overallRegression.predict(logScale ? Math.log(d3.max(neighborhoodData, d => d.GrLivArea)) : d3.max(neighborhoodData, d => d.GrLivArea)) + interceptAdjustment]
+          ];
+
+          g.append('path')
+            .datum(regressionLineData)
+            .attr('class', `line ${neighborhood}`)
+            .attr('d', line)
+            .style('stroke', colors(neighborhood))
+            .style('fill', 'none')
+            .style('stroke-width', 3)
+            .style('opacity', 0)
+            .transition()
+            .duration(1500)
+            .style('opacity', 1);
+
+          g.append('text')
+            .attr('class', 'regression-equation')
+            .attr('x', width - 320)
+            .attr('y', height - 40 - (20 * i))
+            .style('text-anchor', 'start')
+            .style('fill', colors(neighborhood))
+            .text(logScale ? `log(Price) = ${overallRegression.slope.toFixed(2)} * log(Area) + ${(logScale ? Math.exp(interceptAdjustment) : interceptAdjustment).toFixed(2)}` : `Price = ${overallRegression.slope.toFixed(2)} * Area + ${interceptAdjustment.toFixed(2)}`);
+        });
+
+      } else {
+        neighborhoods.forEach((neighborhood, i) => {
+          const neighborhoodData = plotData.filter(d => d.Neighborhood === neighborhood);
+          const regressionData = neighborhoodData.map(d => [logScale ? Math.log(d.GrLivArea) : d.GrLivArea, logScale ? Math.log(d.SalePrice) : d.SalePrice]);
+
+          const regression = linearRegression(regressionData.map(d => d[0]), regressionData.map(d => d[1]));
+          const line = d3.line()
+            .x(d => x(d[0]))
+            .y(d => y(d[1]));
+
+          const regressionLineData = [
+            [d3.min(regressionData, d => d[0]), regression.predict(d3.min(regressionData, d => d[0]))],
+            [d3.max(regressionData, d => d[0]), regression.predict(d3.max(regressionData, d => d[0]))]
+          ];
+
+          g.append('path')
+            .datum(regressionLineData)
+            .attr('class', `line ${neighborhood}`)
+            .attr('d', line)
+            .style('stroke', colors(neighborhood))
+            .style('fill', 'none')
+            .style('stroke-width', 3)
+            .style('opacity', 0)
+            .transition()
+            .duration(1500)
+            .style('opacity', 1);
+
+          g.append('text')
+            .attr('class', 'regression-equation')
+            .attr('x', width - 320)
+            .attr('y', height - 40 - (20 * i))
+            .style('text-anchor', 'start')
+            .style('fill', colors(neighborhood))
+            .text(logScale ? `log(Price) = ${regression.slope.toFixed(2)} * log(Area) + ${regression.intercept.toFixed(2)}` : `Price = ${regression.slope.toFixed(2)} * Area + ${regression.intercept.toFixed(2)}`);
+        });
+      }
+    }
+
+    function removeOutliersFromData(data) {
+      const grLivAreaValues = data.map(d => d.GrLivArea);
+      const salePriceValues = data.map(d => d.SalePrice);
+
+      const grLivAreaMean = d3.mean(grLivAreaValues);
+      const grLivAreaStdDev = d3.deviation(grLivAreaValues);
+      const salePriceMean = d3.mean(salePriceValues);
+      const salePriceStdDev = d3.deviation(salePriceValues);
+
+      return data.filter(d =>
+        Math.abs(d.GrLivArea - grLivAreaMean) <= 3 * grLivAreaStdDev &&
+        Math.abs(d.SalePrice - salePriceMean) <= 3 * salePriceStdDev
+      );
+    }
+
+    plotScatterPlot();
+
+    d3.select("#logScale-housing").on("change", plotScatterPlot);
+    d3.select("#removeOutliers-housing").on("change", plotScatterPlot);
+    d3.selectAll('input[name="regressionType-housing"]').on('change', drawRegressionLines);
+
+  }).catch(error => {
+    console.error('Error loading or processing data:', error);
+  });
+
+  function linearRegression(x, y) {
+    const n = x.length;
+    const sumX = d3.sum(x);
+    const sumY = d3.sum(y);
+    const sumXY = d3.sum(x.map((xi, i) => xi * y[i]));
+    const sumX2 = d3.sum(x.map(xi => xi * xi));
+
+    const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
+    const intercept = (sumY - slope * sumX) / n;
+
+    return {
+      slope,
+      intercept,
+      predict: x => slope * x + intercept
+    };
+  }
+})();
+</script>

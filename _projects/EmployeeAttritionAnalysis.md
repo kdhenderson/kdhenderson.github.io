@@ -33,6 +33,8 @@ The second objective fits a linear regression for monthly income, comparing forw
 
 **[View the full analysis notebook](/assets/html/EmployeeAttritionAnalysis.html)**
 
+**[View on GitHub](https://github.com/kdhenderson/EmployeeAttritionAnalysis)**
+
 **Interactive companion**
 
 <small>*First load may take 10 to 30 seconds while the app wakes (shinyapps.io free tier).*</small>

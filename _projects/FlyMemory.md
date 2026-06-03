@@ -4,7 +4,7 @@ title: Remembering in Fruit Flies
 description: Unraveling the mysteries of memory formation
 img: assets/img/fly01.jpeg
 importance: 8
-category: past
+category: biology
 ---
 
 <style>

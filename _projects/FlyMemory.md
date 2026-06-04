@@ -1,74 +1,71 @@
 ---
 layout: page
 title: Remembering in Fruit Flies
-description: Unraveling the mysteries of memory formation
-img: assets/img/fly01.jpeg
+description: Finding the neurons needed to form long-term memories
+img: assets/img/FlyMemory.jpg
 importance: 8
 category: biology
 ---
 
-<style>
-    /* Custom CSS for formatting */
-    .paragraph {
-        margin-bottom: 10px; /* Add margin bottom for paragraphs */
-        font-family: Arial, Helvetica, sans-serif; /* Change font family */
-    }
-    .figure-container {
-        margin-top: 20px; /* Add margin to the top of the figure container */
-    }
-    .acknowledgment {
-        font-size: 12px; /* Adjust font size for acknowledgment text */
-        margin-top: 20px; /* Add margin to the top of the acknowledgment */
-    }
-</style>
+<div id="header">
+<h4 class="author">Kristin Henderson</h4>
+<h4 class="date">2019-2021</h4>
+<p><br></p>
+</div>
 
-<div class="row">
-    <div class="col-12 mt-3 mt-md-0">
-        <p class="paragraph">
-            This is data from a study about how brains remember important things. Fruit flies are uniquely useful in the field of neuroscience because they grow quickly, have comparatively few neurons, and there are genetic tools to isolate and control individual neuron types.
-        </p>
-        <p class="paragraph">
-            While fruit flies may seem very different from humans, the way their brains are wired and the mechanisms that their neurons use are quite similar to the brains of other animals, including humans.
-        </p>
-        <p class="paragraph">
-            Here, I was investigating if certain neurons that are active when flies learn something new are tagged with a molecular signal. I also wanted to know if these neurons need to be active both when a fly is learning and again later on to enable the formation of memories.
-        </p>
+This data comes from a study of how the brain forms memories. Fruit flies are
+uniquely useful for this kind of work because they grow quickly, have
+comparatively few neurons, and come with genetic tools that let us target and
+control individual neuron types.
+
+While fruit flies may seem very different from us, the way their brains are
+wired and the mechanisms their neurons use are quite similar to those of other
+animals, including humans.
+
+Here, I asked whether the neurons that fire when a fly learns something new are
+tagged with a molecular signal. I also wanted to know whether those neurons
+need to be active twice, both as the fly learns and again afterward, for a
+memory to form.
+
+<div class="row" style="margin-left: -8px; margin-right: -8px;">
+    <div class="col-sm mt-3 mt-md-0" style="padding-left: 8px; padding-right: 8px;">
+        {% include figure.liquid loading="eager" path="assets/img/Luminescence.png" title="Figure 1" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="padding-left: 8px; padding-right: 8px;">
+        {% include figure.liquid loading="eager" path="assets/img/SilenceTraining.png" title="Figure 2" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="padding-left: 8px; padding-right: 8px;">
+        {% include figure.liquid loading="eager" path="assets/img/SilenceConsolidation.png" title="Figure 3" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
-<div class="row figure-container">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/nrmLum.png" title="Figure 1" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/silTrn.png" title="Figure 2" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/silCns.png" title="Figure 3" class="img-fluid rounded z-depth-1" %}
-    </div>
+Each set of bars labeled DAN refers to a different class of neurons that release
+dopamine.
+
+In the left figure, I found that only two of these classes are active after
+learning, which suggests they are somehow singled out, perhaps tagged with a
+molecular marker the first time they fire.
+
+In the middle figure, I transiently silenced those same two classes during
+learning, and the flies could not form long-term memories.
+
+In the right figure, I again transiently silenced them, but in a time window
+after learning, and the flies still could not form long-term memories. All of
+this suggests that these two classes are needed both during and after a
+meaningful experience for a long-term memory to form.
+
+<br>
+
+<div class="text-muted">
+<small>
+I would like to acknowledge and thank K. Keleman, U. Dag, Z. Lei, and
+I. Siwanowicz for their contributions to project conceptualization, to
+experimental design, to figure making, for the fruit fly photo, and for their
+help and support.
+</small>
 </div>
 
-<div class="row">
-    <div class="col-12 mt-3 mt-md-0">
-        <p class="paragraph">
-            Here, I'll explain what these figures show. Each set of bars labeled DAN refers to a different class of neurons that release dopamine.
-        </p>
-        <p class="paragraph">
-            In the left figure, I found that only two of these classes are active after learning, suggesting that these two are somehow selected for activation. They are possibly tagged with a molecular marker during a learning experience when they are first active.
-        </p>
-        <p class="paragraph">
-            In the middle figure, I transiently silenced the activity of those same two neurons during learning, and flies could not form long-term memories.
-        </p>
-        <p class="paragraph">
-            In the right figure, I silenced those two neurons in a time window after learning, and flies also could not form memories. All of this suggests that these two neurons are necessary both during and after an experience worth remembering in order for these memories to stick!
-        </p>
-    </div>
-</div>
+<br>
 
-<div class="row acknowledgment">
-    <div class="col-12">
-        <p>
-            I would like to acknowledge and thank K. Keleman, U. Dag, Z. Lei, and I. Siwanowicz for their contributions to project conceptualization, to experimental design, to figure making, for the fruit fly photo, and for their help and support.
-        </p>
-    </div>
-</div>
+#### Skills
+<small>MATLAB · Prism · Experimental design · Data analysis · Scientific figure preparation</small>

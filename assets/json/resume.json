@@ -41,7 +41,7 @@
         "Validated against hand-labeled data at 6 to 18 months; median year-over-year case sales growth separated low-performing from viable brands with up to 85% balanced accuracy; ordinal logistic regression reached 93% adjacent accuracy.",
         "Built a 4-stage R pipeline ending in a self-contained interactive dashboard that stakeholders view locally; presented to the client and about 40 others, with a paper forthcoming in the SMU Data Science Review."
       ],
-      "company": "Southern Methodist University"
+      "name": "Southern Methodist University"
     },
     {
       "location": "Ashburn, VA",
@@ -56,14 +56,14 @@
         "Applied nonparametric tests with multiple-comparison correction; all 9 fish learned a closed-loop task to some extent.",
         "Documented rig workflows; onboarded 2 lab members and trained 1 researcher to run the rig."
       ],
-      "company": "Howard Hughes Medical Institute, Janelia Research Campus"
+      "name": "Howard Hughes Medical Institute, Janelia Research Campus"
     },
     {
       "highlights": [
         "Second author on a 2022 Nature Communications paper on learning and sleep in Drosophila long-term memory; ran the experiments and analyzed the data for four figure panels covering about 900 flies, using permutation and Wilcoxon tests.",
         "Took over an unpublished dopamine neuron memory project, independently redoing all experiments, analysis, and figures."
       ],
-      "company": "Howard Hughes Medical Institute, Janelia Research Campus",
+      "name": "Howard Hughes Medical Institute, Janelia Research Campus",
       "position": "Research Technician II, Keleman Lab",
       "location": "Ashburn, VA",
       "startDate": "2017",
@@ -73,7 +73,7 @@
       "highlights": [
         "Processed 20 to 40 dissection samples per day for a large-scale fly neuron screening project, keeping low-quality samples from reaching the confocal microscope; co-authored the 2025 eLife paper on the split-GAL4 driver line resource."
       ],
-      "company": "Howard Hughes Medical Institute, Janelia Research Campus",
+      "name": "Howard Hughes Medical Institute, Janelia Research Campus",
       "position": "Research Technician I, Project Technical Resources",
       "location": "Ashburn, VA",
       "startDate": "2015",

@@ -37,14 +37,11 @@
       "startDate": "2026",
       "endDate": "2026",
       "highlights": [
-        "Built a multi-criteria decision analysis framework in R, solo, for a confidential global consumer-packaged goods client,
-        scoring the investment potential of about 22,500 brand extensions across a 77-million-row retail dataset."
-        "Validated against hand-labeled data at 6 to 18 months; median year-over-year case sales growth separated low-performing
-        from viable brands with up to 85% balanced accuracy; ordinal logistic regression reached 93% adjacent accuracy.""
-        "Built a 4-stage R pipeline ending in a self-contained interactive dashboard that stakeholders view locally; presented to the
-        client and about 40 others, with a paper forthcoming in the SMU Data Science Review."
+        "Built a multi-criteria decision analysis framework in R, solo, for a confidential global consumer-packaged goods client, scoring the investment potential of about 22,500 brand extensions across a 77-million-row retail dataset.",
+        "Validated against hand-labeled data at 6 to 18 months; median year-over-year case sales growth separated low-performing from viable brands with up to 85% balanced accuracy; ordinal logistic regression reached 93% adjacent accuracy.",
+        "Built a 4-stage R pipeline ending in a self-contained interactive dashboard that stakeholders view locally; presented to the client and about 40 others, with a paper forthcoming in the SMU Data Science Review."
       ],
-      "company": "Howard Hughes Medical Institute, Janelia Research Campus"
+      "company": "Southern Methodist University"
     },
     {
       "location": "Ashburn, VA",
@@ -53,21 +50,17 @@
       "startDate": "2021",
       "endDate": "Present",
       "highlights": [
-        "Build semi-automated Python pipelines that process 100+ GB/day of behavioral video, applying statistical analysis and
-        machine learning, including YOLO object detection and tracking, to characterize behavior."
-        "Directed design of the institute’s first automated Danionella rig, with closed-loop feeders, 3 cameras, projected stimuli, and
-        a hydrophone, built with engineers; co-developed its control software, which a colleague now uses."
-        "Benchmarked fish trackers against hand-labeled frames, scoring position error, detection rate, and identity swaps, and
-        reduced swaps with Hungarian and greedy trajectory stitching; adding contrastive learning to a YOLO model, in progress."
-        "Applied nonparametric tests with multiple-comparison correction; all 9 fish learned a closed-loop task to some extent."
+        "Build semi-automated Python pipelines that process 100+ GB/day of behavioral video, applying statistical analysis and machine learning, including YOLO object detection and tracking, to characterize behavior.",
+        "Directed design of the institute’s first automated Danionella rig, with closed-loop feeders, 3 cameras, projected stimuli, and a hydrophone, built with engineers; co-developed its control software, which a colleague now uses.",
+        "Benchmarked fish trackers against hand-labeled frames, scoring position error, detection rate, and identity swaps, and reduced swaps with Hungarian and greedy trajectory stitching; adding contrastive learning to a YOLO model, in progress.",
+        "Applied nonparametric tests with multiple-comparison correction; all 9 fish learned a closed-loop task to some extent.",
         "Documented rig workflows; onboarded 2 lab members and trained 1 researcher to run the rig."
       ],
       "company": "Howard Hughes Medical Institute, Janelia Research Campus"
     },
     {
       "highlights": [
-        "Second author on a 2022 Nature Communications paper on learning and sleep in Drosophila long-term memory; ran the
-        experiments and analyzed the data for four figure panels covering about 900 flies, using permutation and Wilcoxon tests."
+        "Second author on a 2022 Nature Communications paper on learning and sleep in Drosophila long-term memory; ran the experiments and analyzed the data for four figure panels covering about 900 flies, using permutation and Wilcoxon tests.",
         "Took over an unpublished dopamine neuron memory project, independently redoing all experiments, analysis, and figures."
       ],
       "company": "Howard Hughes Medical Institute, Janelia Research Campus",
@@ -78,8 +71,7 @@
     },
     {
       "highlights": [
-        "Processed 20 to 40 dissection samples per day for a large-scale fly neuron screening project, keeping low-quality samples
-        from reaching the confocal microscope; co-authored the 2025 eLife paper on the split-GAL4 driver line resource."
+        "Processed 20 to 40 dissection samples per day for a large-scale fly neuron screening project, keeping low-quality samples from reaching the confocal microscope; co-authored the 2025 eLife paper on the split-GAL4 driver line resource."
       ],
       "company": "Howard Hughes Medical Institute, Janelia Research Campus",
       "position": "Research Technician I, Project Technical Resources",
@@ -104,8 +96,7 @@
         "XGBoost",
         "PyTorch",
         "RAG",
-        "LoRA fine-tuning",
-        "transfer learning"
+        "LoRA fine-tuning"
       ],
       "name": "Machine Learning & AI"
     },

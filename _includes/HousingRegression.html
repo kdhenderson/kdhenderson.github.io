@@ -63,7 +63,7 @@
 
 <div class="controls">
   <label><input type="checkbox" id="logScale-housing"> Log Scale</label>
-  <label><input type="checkbox" id="removeOutliers-housing"> Remove Outliers</label>
+  <label><input type="checkbox" id="removeOutliers-housing"> Remove Outliers (Partially Completed Houses)</label>
   <label><input type="radio" name="regressionType-housing" value="simple" checked> Simple Linear Regression</label>
   <label><input type="radio" name="regressionType-housing" value="parallel"> Multiple Linear Regression (Parallel Slopes)</label>
   <label><input type="radio" name="regressionType-housing" value="independent"> Multiple Linear Regression (Independent Slopes)</label>
@@ -317,20 +317,31 @@
           .text(logScale ? `log(Price) = ${regression.slope.toFixed(2)} * log(Area) + ${regression.intercept.toFixed(2)}` : `Price = ${regression.slope.toFixed(2)} * Area + ${regression.intercept.toFixed(2)}`);
 
       } else if (regressionType === "parallel") {
-        const overallRegressionData = plotData.map(d => [logScale ? Math.log(d.GrLivArea) : d.GrLivArea, logScale ? Math.log(d.SalePrice) : d.SalePrice]);
+        // Parallel slopes: one least squares fit of y on area plus a 0/1 indicator for each
+        // neighborhood except the first (Brookside). All neighborhoods share the same slope.
+        const rows = plotData.map(d => ({
+          x: logScale ? Math.log(d.GrLivArea) : d.GrLivArea,
+          y: logScale ? Math.log(d.SalePrice) : d.SalePrice,
+          neighborhood: d.Neighborhood
+        }));
+        const indicatorNeighborhoods = neighborhoods.slice(1);
+        const design = rows.map(r => [1, r.x, ...indicatorNeighborhoods.map(nb => (r.neighborhood === nb ? 1 : 0))]);
+        const beta = olsFit(design, rows.map(r => r.y));   // [intercept, slope, Edwards, North Ames]
+        const sharedSlope = beta[1];
 
-        const overallRegression = linearRegression(overallRegressionData.map(d => d[0]), overallRegressionData.map(d => d[1]));
         neighborhoods.forEach((neighborhood, i) => {
-          const neighborhoodData = plotData.filter(d => d.Neighborhood === neighborhood);
+          const neighborhoodRows = rows.filter(r => r.neighborhood === neighborhood);
+          if (neighborhoodRows.length === 0) return;
+          const intercept = beta[0] + (i === 0 ? 0 : beta[1 + i]);
           const line = d3.line()
             .x(d => x(d[0]))
             .y(d => y(d[1]));
 
-          const interceptAdjustment = (logScale ? Math.log(neighborhoodData[0].SalePrice) : neighborhoodData[0].SalePrice) - overallRegression.predict(logScale ? Math.log(neighborhoodData[0].GrLivArea) : neighborhoodData[0].GrLivArea);
-
+          const xMin = d3.min(neighborhoodRows, r => r.x);
+          const xMax = d3.max(neighborhoodRows, r => r.x);
           const regressionLineData = [
-            [d3.min(neighborhoodData, d => logScale ? Math.log(d.GrLivArea) : d.GrLivArea), overallRegression.predict(logScale ? Math.log(d3.min(neighborhoodData, d => d.GrLivArea)) : d3.min(neighborhoodData, d => d.GrLivArea)) + interceptAdjustment],
-            [d3.max(neighborhoodData, d => logScale ? Math.log(d.GrLivArea) : d.GrLivArea), overallRegression.predict(logScale ? Math.log(d3.max(neighborhoodData, d => d.GrLivArea)) : d3.max(neighborhoodData, d => d.GrLivArea)) + interceptAdjustment]
+            [xMin, sharedSlope * xMin + intercept],
+            [xMax, sharedSlope * xMax + intercept]
           ];
 
           g.append('path')
@@ -351,7 +362,7 @@
             .attr('y', height - 40 - (20 * i))
             .style('text-anchor', 'start')
             .style('fill', colors(neighborhood))
-            .text(logScale ? `log(Price) = ${overallRegression.slope.toFixed(2)} * log(Area) + ${(logScale ? Math.exp(interceptAdjustment) : interceptAdjustment).toFixed(2)}` : `Price = ${overallRegression.slope.toFixed(2)} * Area + ${interceptAdjustment.toFixed(2)}`);
+            .text(logScale ? `log(Price) = ${sharedSlope.toFixed(2)} * log(Area) + ${intercept.toFixed(2)}` : `Price = ${sharedSlope.toFixed(2)} * Area + ${intercept.toFixed(2)}`);
         });
 
       } else {
@@ -392,19 +403,10 @@
       }
     }
 
+    // The outliers in these neighborhoods are the four partially completed houses
+    // (SaleCondition = "Partial"). The analysis excludes them, so this checkbox does too.
     function removeOutliersFromData(data) {
-      const grLivAreaValues = data.map(d => d.GrLivArea);
-      const salePriceValues = data.map(d => d.SalePrice);
-
-      const grLivAreaMean = d3.mean(grLivAreaValues);
-      const grLivAreaStdDev = d3.deviation(grLivAreaValues);
-      const salePriceMean = d3.mean(salePriceValues);
-      const salePriceStdDev = d3.deviation(salePriceValues);
-
-      return data.filter(d =>
-        Math.abs(d.GrLivArea - grLivAreaMean) <= 3 * grLivAreaStdDev &&
-        Math.abs(d.SalePrice - salePriceMean) <= 3 * salePriceStdDev
-      );
+      return data.filter(d => d.SaleCondition !== "Partial");
     }
 
     plotScatterPlot();
@@ -416,6 +418,30 @@
   }).catch(error => {
     console.error('Error loading or processing data:', error);
   });
+
+  // Least squares for any number of predictors: solves the normal equations (X'X) b = X'y
+  // with Gaussian elimination. Each row of X is one house, with a leading 1 for the intercept.
+  function olsFit(X, y) {
+    const p = X[0].length;
+    const A = Array.from({ length: p }, () => new Array(p + 1).fill(0));
+    X.forEach((row, k) => {
+      for (let i = 0; i < p; i++) {
+        for (let j = 0; j < p; j++) A[i][j] += row[i] * row[j];
+        A[i][p] += row[i] * y[k];
+      }
+    });
+    for (let col = 0; col < p; col++) {
+      let pivot = col;                                   // pick the largest value in this column
+      for (let r = col + 1; r < p; r++) if (Math.abs(A[r][col]) > Math.abs(A[pivot][col])) pivot = r;
+      [A[col], A[pivot]] = [A[pivot], A[col]];
+      for (let r = 0; r < p; r++) {
+        if (r === col) continue;
+        const factor = A[r][col] / A[col][col];
+        for (let c = col; c <= p; c++) A[r][c] -= factor * A[col][c];
+      }
+    }
+    return A.map((row, i) => row[p] / row[i]);
+  }
 
   function linearRegression(x, y) {
     const n = x.length;

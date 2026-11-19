@@ -62,7 +62,7 @@ Every case study includes a Jupyter notebook with the full analysis and a LaTeX-
       <td>1</td>
       <td>Predict critical temperature of superconductors from material properties</td>
       <td>Linear regression, LASSO, Ridge, ElasticNet; cross-validation; residual diagnostics</td>
-      <td>Superconductor materials (UCI, 21K rows, 82 features)</td>
+      <td>Superconductor materials (UCI, 21K rows, 167 features (81 properties + 86 element counts))</td>
       <td class="links">
         <a href="https://github.com/kdhenderson/applied_stat_ml_case_studies/blob/main/case_study_01_linear_regression_regularization_superconductor/case_study_01_analysis.ipynb">Notebook</a>
         <a href="https://github.com/kdhenderson/applied_stat_ml_case_studies/blob/main/case_study_01_linear_regression_regularization_superconductor/case_study_01_report.pdf">Report</a>
